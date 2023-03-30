@@ -2658,56 +2658,75 @@ Public Class MDIMain
 
     End Sub
 
-    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
-        Dim per = "Λίστα Α Υλών "
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles hotels.Click
+
+        Dim per = "Ξενοδοχεία"
         Dim kod = "00"
 
-        Dim mergates As New ergates()
+
+
+        Dim frm As New ergates  ' form2 
+        'Dim Mn1 As String = "3"
+        frm.Label1.Text = "select NAME,CATEGORY,EMAIL,THL,DIE,ID  FROM HOTELS "
+
+
+
+
         For k = 0 To 20
-            mergates.widths(7) = 100
+            frm.widths(7) = 100
         Next
-        Dim Mn1 As String
-        Mn1 = kod    '  Split(KATHG.Text, ";")(0)
-        mergates.Text = per '"Αρχείο Υλικών"
+        ' Dim per As String = "Αναλώσιμα     "
+
+        frm.Text = per '"Αρχείο Υλικών"
 
 
-
-        mergates.Label1.Text = "SELECT T.KOD,ONO AS [ΠΕΡΙΓΡΑΦΗ],round(SUM(YPOL),1) AS [ΥΠΟΛ],Y.ID,' ' as [.]  FROM TIMS T LEFT JOIN YLIKA Y ON T.KOD=Y.KOD  where YPOL>0 GROUP BY T.KOD,ONO,Y.ID ORDER BY T.KOD "
-        ' mergates.Label1.Text = "select KOD,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],ID  FROM TIMSPOL ORDER BY HME "
-
-        ' ergates.MdiParent = Me
-        'mergates.WindowState = FormWindowState.Maximized
-        mergates.STHLHONOMATOS_ID = 1
-        mergates.STHLHTOY_ID = 3
-        mergates.widths(1) = 100
-        mergates.QUERY_AFTER = "" ' update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
+        '' ergates.MdiParent = Me
+        ' frm.WindowState = FormWindowState.Maximized
+        frm.STHLHONOMATOS_ID = 1
+        frm.STHLHTOY_ID = 5
+        frm.widths(1) = 100
+        frm.QUERY_AFTER = ""  'update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
         For KK As Integer = 0 To 6
-            mergates.widths(KK) = 100
+            frm.widths(KK) = 100
         Next
-        mergates.Label2.Text = per '"υλικα...."   ' KATHG.Text
-        mergates.widths(4) = 600
+        'frm.Label2.Text = "υλικα...."   ' KATHG.Text
+        frm.widths(0) = 400
         gMenu = 22
-        mergates.widths(1) = 500
-        'mergates.GridView1.Colu. = 500
-        ' mergates.GridView1.Columns(0).HeaderText = "aaa"
-        mergates.Alignments(2) = DataGridViewContentAlignment.MiddleRight
-        'mergates.GridView1.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        'Dim frm As New report
-        mergates.TopLevel = False
-        mergates.Visible = True
-        mergates.FormBorderStyle = FormBorderStyle.None
-        mergates.Dock = DockStyle.Fill
+
+
+
+        ' frm.n1.Text = mn1
+        'frm.Alignments(3) = DataGridViewContentAlignment.MiddleRight
+        ' frm.Alignments(4) = DataGridViewContentAlignment.MiddleRight
+        ' frm.Alignments(5) = DataGridViewContentAlignment.MiddleRight
+
+        frm.Width = TabControl1.Width
+        frm.Height = TabControl1.Height
+        'If Mn1 = "4" Then
+        '    frm.SYNTAGES.Visible = True
+        'End If
+        'frm.Read_Only = True ' : frm.delete.Visible = True : frm.delete.Enabled = True 'frm.DELETEQUERY.Text = "DELETE FROM YLIKA WHERE YPOL>0 AND ID="
+        frm.TopLevel = False
+        frm.Visible = True
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Dock = DockStyle.Fill
+
         Dim PAGE As New TabPage
         Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = per  '"ΥΛΙΚΑ.....   ."
+        PAGE.Text = per ' "Αναλώσιμα  ."
+
+        'frm.AnalPartidas.Visible = True
+        'frm.Proeleysi_Partidas.Visible = True
+
+        frm.Read_Only = True
+
+        frm.add_pel.Visible = True
+        frm.dior_pel.Visible = True
+
+
+
         TabControl1.TabPages.Add(PAGE)
-
-        mergates.Width = TabControl1.Width
-        mergates.Height = TabControl1.Height
-
-        mergates.Read_Only = True
-
-        TabControl1.TabPages(N).Controls.Add(mergates)
+        TabControl1.TabPages(N).Controls.Add(frm)
         TabControl1.SelectTab(N)
 
     End Sub
@@ -2961,7 +2980,7 @@ Public Class MDIMain
 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
 
-        Dim per = "Πελάτες"
+        Dim per = "Προσκεκλημένοι"
         Dim kod = "00"
 
 

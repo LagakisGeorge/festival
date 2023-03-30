@@ -2,6 +2,16 @@
 PEL PRIMARY KEY EMAIL NOT NULL
 
 
+CREATE TABLE [dbo].[HOTELS](
+	[ID] [int] NOT NULL,
+	[CATEGORY] int NULL,
+	[RANK] int NULL,
+	[EMAIL] nvarchar(50),
+	[THL] NVARCHAR(30),
+	[DIE] NVARCHAR(35),
+	[NAME] [varchar](50) NULL)
+
+
 
 
 

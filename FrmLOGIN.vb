@@ -93,7 +93,7 @@
                 MDIMain.cmdCustomerOrder.Enabled = True
                 MDIMain.Button6.Enabled = True
                 MDIMain.Button7.Enabled = True
-                MDIMain.Button8.Enabled = True
+                MDIMain.hotels.Enabled = True
                 MDIMain.Button4.Enabled = True
                 MDIMain.Button9.Enabled = True
                 MDIMain.SystemFileToolStripMenuItem.Enabled = True

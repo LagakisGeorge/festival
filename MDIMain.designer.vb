@@ -72,7 +72,7 @@ Partial Class MDIMain
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.PanelSales = New System.Windows.Forms.Panel
         Me.Button9 = New System.Windows.Forms.Button
-        Me.Button8 = New System.Windows.Forms.Button
+        Me.hotels = New System.Windows.Forms.Button
         Me.ImageList4 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button7 = New System.Windows.Forms.Button
         Me.Button5 = New System.Windows.Forms.Button
@@ -477,7 +477,7 @@ Partial Class MDIMain
         '
         Me.PanelSales.BackColor = System.Drawing.Color.WhiteSmoke
         Me.PanelSales.Controls.Add(Me.Button9)
-        Me.PanelSales.Controls.Add(Me.Button8)
+        Me.PanelSales.Controls.Add(Me.hotels)
         Me.PanelSales.Controls.Add(Me.Button7)
         Me.PanelSales.Controls.Add(Me.Button5)
         Me.PanelSales.Controls.Add(Me.Button4)
@@ -503,21 +503,21 @@ Partial Class MDIMain
         Me.Button9.Text = "ΠΕΛΑΤΕΣ"
         Me.Button9.UseVisualStyleBackColor = True
         '
-        'Button8
+        'hotels
         '
-        Me.Button8.BackColor = System.Drawing.Color.White
-        Me.Button8.Enabled = False
-        Me.Button8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button8.ImageKey = "print_64.png"
-        Me.Button8.ImageList = Me.ImageList4
-        Me.Button8.Location = New System.Drawing.Point(4, 293)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(162, 27)
-        Me.Button8.TabIndex = 40
-        Me.Button8.Text = "        Υπόλοιπα Α' Υλών"
-        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button8.UseVisualStyleBackColor = False
+        Me.hotels.BackColor = System.Drawing.Color.White
+        Me.hotels.Enabled = False
+        Me.hotels.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.hotels.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.hotels.ImageKey = "print_64.png"
+        Me.hotels.ImageList = Me.ImageList4
+        Me.hotels.Location = New System.Drawing.Point(4, 293)
+        Me.hotels.Name = "hotels"
+        Me.hotels.Size = New System.Drawing.Size(162, 27)
+        Me.hotels.TabIndex = 40
+        Me.hotels.Text = "Λίστα Ξενοδοχείων"
+        Me.hotels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.hotels.UseVisualStyleBackColor = False
         '
         'ImageList4
         '
@@ -1318,7 +1318,7 @@ Partial Class MDIMain
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents hotels As System.Windows.Forms.Button
     Friend WithEvents TabControl1 As TECHNOPLASTIKI.TabControlEx
     Friend WithEvents Button9 As System.Windows.Forms.Button
 

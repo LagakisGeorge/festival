@@ -88,23 +88,23 @@
 
     Private Sub FrmAddSupplier_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Dim SQL As String
-        Dim mMON As String = Str(Val(AFM.Text))
+        'Dim SQL As String
+        'Dim mMON As String = Str(Val(AFM.Text))
 
-        Dim mb As String = DIE.Text
-        mb = Str(Val(mb))
-        If Len(KOD.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΚΩΔΙΚΟ")
-            Exit Sub
-        End If
-        If Len(ONO.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΠΕΡΙΓΡΑΦΗ")
-            Exit Sub
-        End If
-        If Len(AFM.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΜΟΝΑΔΑ ΜΕΤΡΗΣΗΣ")
-            Exit Sub
-        End If
+        'Dim mb As String = DIE.Text
+        'mb = Str(Val(mb))
+        'If Len(KOD.Text) = 0 Then
+        '    MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΚΩΔΙΚΟ")
+        '    Exit Sub
+        'End If
+        'If Len(ONO.Text) = 0 Then
+        '    MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΠΕΡΙΓΡΑΦΗ")
+        '    Exit Sub
+        'End If
+        'If Len(AFM.Text) = 0 Then
+        '    MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΜΟΝΑΔΑ ΜΕΤΡΗΣΗΣ")
+        '    Exit Sub
+        'End If
 
     End Sub
 End Class

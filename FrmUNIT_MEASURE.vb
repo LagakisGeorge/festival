@@ -1781,37 +1781,85 @@ Public Class ergates
 
 
     Private Sub Button3_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dior_pel.Click
-        FrmAddSupplier.n1.Text = n1.Text
-        FrmAddSupplier.IsNew = False
+        If Me.Text = "Ξενοδοχεία" Then
+            Dim M_ID As String = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString()
 
-        '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
-        '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
+            FrmADDSUPPLIER_ITEM.IsNew = False
+            FrmADDSUPPLIER_ITEM.ID = M_ID
+            FrmADDSUPPLIER_ITEM.N1.Text = M_ID
+            FrmADDSUPPLIER_ITEM.txtDie.Text = GridView1.CurrentRow.Cells(4).Value.ToString
+            ' "select NAME,CATEGORY,EMAIL,THL,DIE,ID  FROM HOTELS "txtcategory
+            FrmADDSUPPLIER_ITEM.txtTHL.Text = GridView1.CurrentRow.Cells(3).Value.ToString
+            FrmADDSUPPLIER_ITEM.txtEmail.Text = GridView1.CurrentRow.Cells(2).Value.ToString
+            FrmADDSUPPLIER_ITEM.txtName.Text = GridView1.CurrentRow.Cells(0).Value.ToString
+            FrmADDSUPPLIER_ITEM.txtcategory.Text = GridView1.CurrentRow.Cells(1).Value.ToString
 
-        FrmAddSupplier.KOD.Text = GridView1.CurrentRow.Cells(0).Value.ToString
-        FrmAddSupplier.ONO.Text = GridView1.CurrentRow.Cells(1).Value.ToString
-        FrmAddSupplier.AFM.Text = GridView1.CurrentRow.Cells(2).Value.ToString
-        FrmAddSupplier.DIE.Text = GridView1.CurrentRow.Cells(3).Value.ToString
-        FrmAddSupplier.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
-        'FrmAddSupplier.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString
 
 
-        FrmAddSupplier.ShowDialog()
+
+            FrmADDSUPPLIER_ITEM.ShowDialog()
+        Else
+
+
+            FrmAddSupplier.n1.Text = n1.Text
+            FrmAddSupplier.IsNew = False
+
+            '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
+            '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
+
+            FrmAddSupplier.KOD.Text = GridView1.CurrentRow.Cells(0).Value.ToString
+            FrmAddSupplier.ONO.Text = GridView1.CurrentRow.Cells(1).Value.ToString
+            FrmAddSupplier.AFM.Text = GridView1.CurrentRow.Cells(2).Value.ToString
+            FrmAddSupplier.DIE.Text = GridView1.CurrentRow.Cells(3).Value.ToString
+            FrmAddSupplier.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
+            'FrmAddSupplier.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString
+
+
+            FrmAddSupplier.ShowDialog()
+        End If
+
         paint_ergasies()
 
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles add_pel.Click
-        FrmAddSupplier.KOD.Text = ""  'GridView1.CurrentRow.Cells(0).Value.ToString
-        FrmAddSupplier.ONO.Text = ""  'GridView1.CurrentRow.Cells(1).Value.ToString
-        FrmAddSupplier.AFM.Text = "" ' GridView1.CurrentRow.Cells(2).Value.ToString
-        FrmAddSupplier.DIE.Text = ""  'GridView1.CurrentRow.Cells(3).Value.ToString
+
+        If Me.Text = "Ξενοδοχεία" Then
+            'Dim M_ID As String = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString()
+
+
+            FrmADDSUPPLIER_ITEM.txtDie.Text = ""
+            ' "select NAME,CATEGORY,EMAIL,THL,DIE,ID  FROM HOTELS "txtcategory
+            FrmADDSUPPLIER_ITEM.txtTHL.Text = ""
+            FrmADDSUPPLIER_ITEM.txtEmail.Text = ""
+            FrmADDSUPPLIER_ITEM.txtName.Text = ""
+            FrmADDSUPPLIER_ITEM.txtcategory.Text = ""
+
+
+            FrmADDSUPPLIER_ITEM.IsNew = True
+
+            FrmADDSUPPLIER_ITEM.ShowDialog()
+
+            ' FrmADDSUPPLIER_ITEM.ID = M_ID
+            ' FrmADDSUPPLIER_ITEM.N1.Text = M_ID
+
+        Else
+
+
+            FrmAddSupplier.KOD.Text = ""  'GridView1.CurrentRow.Cells(0).Value.ToString
+            FrmAddSupplier.ONO.Text = ""  'GridView1.CurrentRow.Cells(1).Value.ToString
+            FrmAddSupplier.AFM.Text = "" ' GridView1.CurrentRow.Cells(2).Value.ToString
+            FrmAddSupplier.DIE.Text = ""  'GridView1.CurrentRow.Cells(3).Value.ToString
 
 
 
 
-        FrmAddSupplier.n1.Text = n1.Text
-        FrmAddSupplier.IsNew = True
-        FrmAddSupplier.ShowDialog()
+            FrmAddSupplier.n1.Text = n1.Text
+            FrmAddSupplier.IsNew = True
+            FrmAddSupplier.ShowDialog()
+        End If
+
         paint_ergasies()
+
     End Sub
 End Class
