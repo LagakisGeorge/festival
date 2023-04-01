@@ -1599,181 +1599,23 @@ Public Class ergates
 
     End Sub
 
-    Private Sub symorfosi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles symorfosi.Click
-        Dim A As Integer = PRINT_SYM(0)
-        If A > 0 Then
-            A = PRINT_SYM(A + 1)
-        End If
+    Private Sub symorfosi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EditDomatia.Click
 
-        If A > 0 Then
-            A = PRINT_SYM(A + 1)
-        End If
+        Dim M_ID As String = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString()
 
-        If A > 0 Then
-            A = PRINT_SYM(A + 1)
-        End If
+        Fdomatia.Text = GridView1.CurrentRow.Cells(1).Value.ToString()
+        Fdomatia.ID = M_ID
 
-        If A > 0 Then
-            A = PRINT_SYM(A + 1)
-        End If
+
+        Fdomatia.ShowDialog()
+
+
+
 
 
 
     End Sub
-    Private Function PRINT_SYM(ByVal SELIDES As Integer) As Integer
-        ' ο κωδικος του προιοντος που διαλεξα
-        ' Dim mID As String = GridView1.CurrentRow.Cells("IDTIMS").Value.ToString
-        'Dim mpos As String '= GridView1.CurrentRow.Cells("IDTIMS").Value.ToString
-        ' Dim mpART As String = GridView1.CurrentRow.Cells(0).Value.ToString
-        Dim mHMERA As String = GridView1.CurrentRow.Cells(2).Value.ToString
-        'Dim mORA As String = GridView1.CurrentRow.Cells(0).Value.ToString
-
-
-
-        Dim L1 As Integer = InStr(mHMERA, " ")
-        If L1 = 0 Then L1 = 10
-        mHMERA = Mid(mHMERA, 1, L1)
-
-        Dim L2 As Integer = InStr(mHMERA, "/")
-        Dim L3 As Integer = InStrRev(mHMERA, "/")
-        If L2 = 0 Then L2 = 3
-        If L3 = 0 Then L3 = 6
-
-
-
-
-
-
-        Dim mHME As String = Mid(mHMERA, L2 + 1, L3 - L2 - 1) + "/" + Mid(mHMERA, 1, L2 - 1) + "/" + Mid(mHMERA, L3 + 1, 4)
-        Dim mAtim As String
-        Dim mpel As String = ""
-        mAtim = GridView1.CurrentRow.Cells(5).Value.ToString
-        'Exit Sub
-
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
-
-        xlApp = New Excel.ApplicationClass
-        xlWorkBook = xlApp.Workbooks.Open("C:\mercvb\symorfosi.xlsx")
-        xlWorkSheet = xlWorkBook.Worksheets("sh1")
-        'display the cells value B2
-        '    MsgBox(xlWorkSheet.Cells(6, 1).value)
-        'edit the cell with new value
-
-
-
-
-        Dim YLIKA As New DataTable
-
-        ExecuteSQLQuery("SELECT T.KOD,Y.N1,T.PARTIDA,T.HME,T.ATIM,T.POSO,P.EPO,P.AFM ,Y.ONO,D.HME AS HMERPART FROM TIMSPOL T INNER JOIN PEL P ON T.PROM=P.KOD AND P.EIDOS='e' INNER JOIN YLIKA Y ON T.KOD=Y.KOD INNER JOIN PARTIDES D ON D.PARTIDA=T.PARTIDA where T.HME='" + mHME + "' AND T.ATIM='" + mAtim + "' AND Y.N1<>3 ", YLIKA)
-
-        If YLIKA.Rows.Count = 0 Then
-            MsgBox("ΔΕΝ ΒΡΙΣΚΩ ΕΓΓΡΑΦΕΣ ΤΙΜΟΛΟΓΙΟΥ")
-            Exit Function
-
-        End If
-        xlWorkSheet.Cells(8, 3) = YLIKA.Rows(0).Item("EPO").ToString + " AΦΜ:" + YLIKA.Rows(0).Item("afm").ToString
-        xlWorkSheet.Cells(31, 5) = YLIKA.Rows(0).Item("EPO").ToString + " AΦΜ:" + YLIKA.Rows(0).Item("afm").ToString
-        xlWorkSheet.Cells(9, 8) = "--" + Format(YLIKA.Rows(0).Item("HME"), "dd/MM/yyyy")
-
-
-        Dim TEL_SELIDA As Integer
-
-
-        If SELIDES = 0 Then
-            TEL_SELIDA = 11
-        Else
-            TEL_SELIDA = SELIDES + 11
-        End If
-
-        If TEL_SELIDA > YLIKA.Rows.Count - 1 Then
-            TEL_SELIDA = YLIKA.Rows.Count - 1
-        Else
-            '
-        End If
-
-        Dim ROW As Integer = 0
-
-
-        For KY = SELIDES To TEL_SELIDA  ' YLIKA.Rows.Count - 1
-            ' If YLIKA.Rows(KY).Item(1) = 3 Then 'YLIKA SYSKEYASIA OXI 
-            ' Else
-
-
-
-            'YL = YLIKA.Rows(KY).Item(0).ToString  'ΚΩΔΙΚΟΣ ΣΥΣΤΑΤΙΚΟΥ
-            xlWorkSheet.Cells(13 + ROW, 2) = "'" + YLIKA.Rows(KY).Item(0).ToString
-
-            xlWorkSheet.Cells(13 + ROW, 3) = YLIKA.Rows(KY).Item("PARTIDA").ToString
-            xlWorkSheet.Cells(13 + ROW, 4) = YLIKA.Rows(KY).Item("HMERPART").ToString
-            xlWorkSheet.Cells(13 + ROW, 5) = YLIKA.Rows(KY).Item("ono").ToString
-            xlWorkSheet.Cells(13 + ROW, 7) = YLIKA.Rows(KY).Item("POSO").ToString
-
-            ' xlWorkSheet.Cells(13 + KY, 6) = "ΤΙΜ/ΔΑ"
-            xlWorkSheet.Cells(13 + ROW, 9) = YLIKA.Rows(KY).Item("atim").ToString
-            ' End If
-
-            ROW = ROW + 1
-
-
-        Next
-
-        For KY = ROW To 12
-            xlWorkSheet.Cells(13 + KY, 1) = ""
-            xlWorkSheet.Cells(13 + KY, 2) = ""
-            xlWorkSheet.Cells(13 + KY, 3) = ""
-            xlWorkSheet.Cells(13 + KY, 4) = ""
-            xlWorkSheet.Cells(13 + KY, 5) = ""
-            xlWorkSheet.Cells(13 + KY, 6) = ""
-            xlWorkSheet.Cells(13 + KY, 7) = ""
-            xlWorkSheet.Cells(13 + KY, 8) = ""
-            xlWorkSheet.Cells(13 + KY, 9) = ""
-
-
-        Next
-
-        Dim ddd As String = DefaultPrinterName()
-
-        Dim bo As Boolean = SetDefaultPrinter(ComboBox1.Text)
-
-        xlWorkBook.Save()
-
-        xlWorkSheet.PrintOut(From:=1, To:=1, Copies:=1, Preview:=False)
-
-        bo = SetDefaultPrinter(ddd)
-
-        xlWorkBook.Save()
-
-
-        xlWorkBook.Close()
-        xlApp.Quit()
-
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
-
-
-
-        If TEL_SELIDA < YLIKA.Rows.Count - 1 Then
-            PRINT_SYM = TEL_SELIDA
-        Else
-            PRINT_SYM = 0
-        End If
-
-
-        'ComboBox1.Items.Clear()
-        'For Each printer As String In Printing.PrinterSettings.InstalledPrinters
-        '    ComboBox1.Items.Add(printer)
-        'Next printer
-
-
-
-
-
-
-
-    End Function
+  
 
 
 

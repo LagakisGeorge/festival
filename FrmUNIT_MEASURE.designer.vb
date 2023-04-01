@@ -50,7 +50,7 @@ Partial Class ergates
         Me.CMDEPANEKTYPOSI = New System.Windows.Forms.Button
         Me.cmdEdit = New System.Windows.Forms.Button
         Me.analtimpol = New System.Windows.Forms.Button
-        Me.symorfosi = New System.Windows.Forms.Button
+        Me.EditDomatia = New System.Windows.Forms.Button
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.dior_pel = New System.Windows.Forms.Button
         Me.add_pel = New System.Windows.Forms.Button
@@ -349,21 +349,21 @@ Partial Class ergates
         Me.analtimpol.UseVisualStyleBackColor = True
         Me.analtimpol.Visible = False
         '
-        'symorfosi
+        'EditDomatia
         '
-        Me.symorfosi.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.symorfosi.Location = New System.Drawing.Point(210, 25)
-        Me.symorfosi.Name = "symorfosi"
-        Me.symorfosi.Size = New System.Drawing.Size(113, 38)
-        Me.symorfosi.TabIndex = 26
-        Me.symorfosi.Text = "Δήλωση Συμμόρφωσης"
-        Me.symorfosi.UseVisualStyleBackColor = False
-        Me.symorfosi.Visible = False
+        Me.EditDomatia.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.EditDomatia.Location = New System.Drawing.Point(6, 23)
+        Me.EditDomatia.Name = "EditDomatia"
+        Me.EditDomatia.Size = New System.Drawing.Size(113, 38)
+        Me.EditDomatia.TabIndex = 26
+        Me.EditDomatia.Text = "Δήλωση Δωματίων"
+        Me.EditDomatia.UseVisualStyleBackColor = False
+        Me.EditDomatia.Visible = False
         '
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(73, 41)
+        Me.ComboBox1.Location = New System.Drawing.Point(129, -2)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(131, 21)
         Me.ComboBox1.TabIndex = 27
@@ -400,7 +400,7 @@ Partial Class ergates
         Me.Controls.Add(Me.add_pel)
         Me.Controls.Add(Me.dior_pel)
         Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.symorfosi)
+        Me.Controls.Add(Me.EditDomatia)
         Me.Controls.Add(Me.analtimpol)
         Me.Controls.Add(Me.cmdEdit)
         Me.Controls.Add(Me.CMDEPANEKTYPOSI)
@@ -461,7 +461,7 @@ Partial Class ergates
     Friend WithEvents CMDEPANEKTYPOSI As System.Windows.Forms.Button
     Friend WithEvents cmdEdit As System.Windows.Forms.Button
     Friend WithEvents analtimpol As System.Windows.Forms.Button
-    Friend WithEvents symorfosi As System.Windows.Forms.Button
+    Friend WithEvents EditDomatia As System.Windows.Forms.Button
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents dior_pel As System.Windows.Forms.Button
     Friend WithEvents add_pel As System.Windows.Forms.Button

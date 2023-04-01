@@ -2604,7 +2604,7 @@ Public Class MDIMain
         Next
         Dim Mn1 As String
 
-        mergates.symorfosi.Visible = True
+        mergates.EditDomatia.Visible = True
 
         Mn1 = kod    '  Split(KATHG.Text, ";")(0)
         mergates.Text = per '"Αρχείο Υλικών"
@@ -2669,6 +2669,7 @@ Public Class MDIMain
         'Dim Mn1 As String = "3"
         frm.Label1.Text = "select NAME,CATEGORY,EMAIL,THL,DIE,ID  FROM HOTELS "
 
+        frm.EditDomatia.Visible = True
 
 
 

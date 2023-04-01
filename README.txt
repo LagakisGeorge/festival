@@ -12,7 +12,31 @@ CREATE TABLE [dbo].[HOTELS](
 	[NAME] [varchar](50) NULL)
 
 
-
+CREATE TABLE [dbo].[HOTROOMS](
+	[ROOMN] [varchar](5) NOT NULL,
+	[HOTELID] [int] NOT NULL,
+	[DOMATIA] [int] NULL,
+	[CATEGORY] [int] NULL,
+	[APO] [datetime] NULL,
+	[EOS] [datetime] NULL,
+	[N1] [real] NULL,
+	[N2] [real] NULL,
+	[N3] [real] NULL,
+	[C1] [nvarchar](50) NULL,
+	[C2] [nvarchar](50) NULL,
+	[C3] [nvarchar](50) NULL,
+	[H1] [datetime] NULL,
+	[H2] [datetime] NULL,
+	[H3] [datetime] NULL,
+	[B1] [bit] NULL,
+	[B2] [bit] NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_HOTROOMS] PRIMARY KEY CLUSTERED 
+(
+	[ROOMN] ASC,
+	[HOTELID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
 
 
