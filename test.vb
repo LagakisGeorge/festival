@@ -112,10 +112,26 @@
 
     
     Private Sub Krarhseis_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Krarhseis.Click
-        Dim HTR As New DataTable
+        Dim PEL As New DataTable
         ' ΦΟΡΤΩΝΩ ΤΟΥΣ ΠΕΛΑΤΕΣ
-        ExecuteSQLQuery("select * from PEL  ", HTR)
-        For K As Integer = 0 To HTR.Rows.Count - 1
+        Dim MDAY As String, dcin As Date
+        ExecuteSQLQuery("select * from PEL  ", PEL)
+        For K As Integer = 0 To PEL.Rows.Count - 1
+            MDAY = Format(PEL.Rows(K)("CHECKIN"), "dd/MM") ' βρηκα την ημερα checkin
+            dcin = PEL.Rows(K)("CHECKIN") ' βρηκα την ημερα checkin
+            ' α τροπος κρατησεις με database    ( b me pinaka datagridview)
+            Dim HTR As New DataTable
+            ' ΒΑΖΩ ΕΠΙΚΕΦΑΛΙΔΕΣ
+            ExecuteSQLQuery("select DATECHECKIN,IDPEL,D.ID AS ID,HOTELID from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE IDPEL=0 ORDER BY RANK ", HTR)
+            For L As Integer = 0 To HTR.Rows.Count - 1
+                ExecuteSQLQuery("UPDATE PEL SET NUM1=" + HTR.Rows(0)("ID").ToString + ",NUM2=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + HTR(0)("PELID").ToString)
+                ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=" + PEL(0)("ID").ToString + " WHERE ID=" + HTR(0)("ID"))
+
+            Next
+
+
+
+
 
         Next
 
