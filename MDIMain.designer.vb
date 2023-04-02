@@ -545,7 +545,7 @@ Partial Class MDIMain
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(166, 27)
         Me.Button7.TabIndex = 39
-        Me.Button7.Text = "         Λίστα Τιμολ.Πώλησης"
+        Me.Button7.Text = "       "
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button7.UseVisualStyleBackColor = False
         '
@@ -561,7 +561,6 @@ Partial Class MDIMain
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(166, 27)
         Me.Button5.TabIndex = 37
-        Me.Button5.Text = "Παρτίδες"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'ImageList5
@@ -595,7 +594,6 @@ Partial Class MDIMain
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(166, 27)
         Me.Button3.TabIndex = 35
-        Me.Button3.Text = "Εμπορεύματα"
         Me.Button3.UseVisualStyleBackColor = False
         '
         'ImageList6
@@ -616,7 +614,6 @@ Partial Class MDIMain
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(166, 27)
         Me.Button2.TabIndex = 34
-        Me.Button2.Text = "  Προϊόντα"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button1
@@ -631,7 +628,6 @@ Partial Class MDIMain
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(166, 27)
         Me.Button1.TabIndex = 33
-        Me.Button1.Text = " Α'   Υλες"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'cmdSTATISTICS
@@ -700,7 +696,7 @@ Partial Class MDIMain
         Me.cmdExcel.Name = "cmdExcel"
         Me.cmdExcel.Size = New System.Drawing.Size(166, 34)
         Me.cmdExcel.TabIndex = 3
-        Me.cmdExcel.Text = "Υπόλ. Τιμ.Αγοράς-Απογραφής"
+        Me.cmdExcel.Text = "test"
         Me.cmdExcel.UseVisualStyleBackColor = False
         '
         'cmdCustomerOrder
@@ -715,7 +711,6 @@ Partial Class MDIMain
         Me.cmdCustomerOrder.Name = "cmdCustomerOrder"
         Me.cmdCustomerOrder.Size = New System.Drawing.Size(166, 27)
         Me.cmdCustomerOrder.TabIndex = 29
-        Me.cmdCustomerOrder.Text = "       Αναλώσιμα"
         Me.cmdCustomerOrder.UseVisualStyleBackColor = False
         '
         'PanelMaintain
@@ -743,7 +738,6 @@ Partial Class MDIMain
         Me.ListaErgasion.Name = "ListaErgasion"
         Me.ListaErgasion.Size = New System.Drawing.Size(166, 27)
         Me.ListaErgasion.TabIndex = 51
-        Me.ListaErgasion.Text = "       Δημιουργία ετικέτας"
         Me.ListaErgasion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ListaErgasion.UseVisualStyleBackColor = False
         '
@@ -773,7 +767,6 @@ Partial Class MDIMain
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(166, 27)
         Me.Button6.TabIndex = 38
-        Me.Button6.Text = "             Τιμολόγια Πώλησης"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -789,7 +782,7 @@ Partial Class MDIMain
         Me.excelanal.Name = "excelanal"
         Me.excelanal.Size = New System.Drawing.Size(166, 27)
         Me.excelanal.TabIndex = 30
-        Me.excelanal.Text = "             Τιμολόγια Αγορών"
+        Me.excelanal.Text = "            "
         Me.excelanal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.excelanal.UseVisualStyleBackColor = False
         '

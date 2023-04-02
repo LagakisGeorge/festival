@@ -1603,11 +1603,12 @@ Public Class ergates
 
         Dim M_ID As String = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString()
 
-        Fdomatia.Text = GridView1.CurrentRow.Cells(1).Value.ToString()
-        Fdomatia.ID = M_ID
 
-
-        Fdomatia.ShowDialog()
+        Dim F As New Fdomatia
+        F.Text = GridView1.CurrentRow.Cells(1).Value.ToString()
+        F.ID = M_ID
+        F.HotelName.Text = GridView1.CurrentRow.Cells(0).Value.ToString()
+        F.ShowDialog()
 
 
 
@@ -1643,7 +1644,7 @@ Public Class ergates
         Else
 
 
-            FrmAddSupplier.n1.Text = n1.Text
+            'FrmAddSupplier.n1.Text = n1.Text
             FrmAddSupplier.IsNew = False
 
             '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
@@ -1696,7 +1697,7 @@ Public Class ergates
 
 
 
-            FrmAddSupplier.n1.Text = n1.Text
+            ' FrmAddSupplier.n1.Text = n1.Text
             FrmAddSupplier.IsNew = True
             FrmAddSupplier.ShowDialog()
         End If

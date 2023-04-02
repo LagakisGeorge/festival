@@ -40,8 +40,8 @@
         Dim mb As String = DIE.Text
         mb = Str(Val(mb))
         If Len(KOD.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ email")
-            Exit Sub
+            'MsgBox("ΔΕΝ ΒΑΛΑΤΕ email")
+            'Exit Sub
         End If
         If Len(ONO.Text) = 0 Then
             MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΕΠΩΝΥΜΙΑ")
@@ -59,13 +59,18 @@
         Dim m_mon As String = AFM.Text
 
         Dim mBaros As String = DIE.Text
+        Dim ff As String = "MM/dd/yyyy HH:mm"
+        Dim ci As String = Format(DTCheckin.Value, ff)
+        Dim co As String = Format(DTCheckout.Value, ff)
+        Dim aaf As String = Format(DtAirAfixi.Value, ff)
+        Dim aan As String = Format(dtAirAnax.Value, ff)
 
         If IsNew Then
 
-            SQL = "insert into PEL (EIDOS,EMAIL,EPO,AFM,DIE) VALUES ('e','" + KOD.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + AFM.Text + "','" + mBaros + "')"
+            SQL = "insert into PEL (CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,AFM,DIE) VALUES ('" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + KOD.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + AFM.Text + "','" + mBaros + "')"
 
         Else
-            SQL = "UPDATE PEL SET EMAIL='" + mkod + "',EPO='" + mono + "',AFM='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
+            SQL = "UPDATE PEL SET CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',AFM='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
 
 
         End If
@@ -87,7 +92,8 @@
     End Sub
 
     Private Sub FrmAddSupplier_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        DTCheckin.CustomFormat = "dd/MM/yyyy HH:mm"
+        DTCheckout.CustomFormat = "dd/MM/yyyy HH:mm"
         'Dim SQL As String
         'Dim mMON As String = Str(Val(AFM.Text))
 

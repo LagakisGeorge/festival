@@ -79,12 +79,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BARCODE.Designer.vb">
-      <DependentUpon>BARCODE.vb</DependentUpon>
-    </Compile>
-    <Compile Include="BARCODE.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="BLANK.Designer.vb">
       <DependentUpon>BLANK.vb</DependentUpon>
     </Compile>
@@ -115,6 +109,12 @@
     <Compile Include="Fdomatia.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="test.Designer.vb">
+      <DependentUpon>test.vb</DependentUpon>
+    </Compile>
+    <Compile Include="test.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmADDSUPPLIER_ITEM.Designer.vb">
       <DependentUpon>FrmADDSUPPLIER_ITEM.vb</DependentUpon>
     </Compile>
@@ -125,12 +125,6 @@
       <DependentUpon>G_UNIT_MEASURE.vb</DependentUpon>
     </Compile>
     <Compile Include="G_UNIT_MEASURE.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="poiotikos.Designer.vb">
-      <DependentUpon>poiotikos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="poiotikos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmADDeidos.designer.vb">
@@ -188,24 +182,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="report.designer.vb">
-      <DependentUpon>report.vb</DependentUpon>
-    </Compile>
-    <Compile Include="report.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TIMOLOGIA.Designer.vb">
-      <DependentUpon>TIMOLOGIA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="TIMOLOGIA.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TIMOLOGIApol.Designer.vb">
-      <DependentUpon>TIMOLOGIApol.vb</DependentUpon>
-    </Compile>
-    <Compile Include="TIMOLOGIApol.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="utilities.designer.vb">
       <DependentUpon>utilities.vb</DependentUpon>
     </Compile>
@@ -214,10 +190,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BARCODE.resx">
-      <DependentUpon>BARCODE.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Explorer1.resx">
       <DependentUpon>Explorer1.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -232,6 +204,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmADDeidos.resx">
@@ -270,22 +246,6 @@
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="poiotikos.resx">
-      <DependentUpon>poiotikos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="report.resx">
-      <DependentUpon>report.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TIMOLOGIA.resx">
-      <DependentUpon>TIMOLOGIA.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TIMOLOGIApol.resx">
-      <DependentUpon>TIMOLOGIApol.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="utilities.resx">

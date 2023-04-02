@@ -1247,62 +1247,7 @@ Public Class MDIMain
     End Sub
 
     Private Sub cmdERGASIES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExcel.Click
-        Dim per = "Λίστα Tιμολογίων Αγοράς"
-        Dim kod = "00"
-
-        Dim mergates As New ergates()
-        For k = 0 To 20
-            mergates.widths(7) = 100
-        Next
-        Dim Mn1 As String
-        Mn1 = kod    '  Split(KATHG.Text, ";")(0)
-        mergates.Text = per '"Αρχείο Υλικών"
-
-
-
-        mergates.Label1.Text = "SELECT KOD AS [ΚΩΔ.ΕΙΔΟΥΣ],PROM AS[ΠΡΟΜΗΘΕΥΤΗΣ],ATIM,HME,round(YPOL,1) AS [ΥΠΟΛ],POSO AS [ΑΡΧ.ΠΟΣΟΤΗΤΑ],' ' as [.],ID  FROM TIMS  ORDER BY KOD,HME "  ' where YPOL>0
-        ' mergates.Label1.Text = "select KOD,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],ID  FROM TIMSPOL ORDER BY HME "
-
-        ' ergates.MdiParent = Me
-        ' mergates.WindowState = FormWindowState.Maximized
-        mergates.STHLHONOMATOS_ID = 1
-        mergates.STHLHTOY_ID = 7
-        mergates.widths(1) = 100
-        mergates.QUERY_AFTER = "" ' update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
-        For KK As Integer = 0 To 7
-            mergates.widths(KK) = 100
-        Next
-        mergates.Label2.Text = per '"υλικα...."   ' KATHG.Text
-        'mergates.widths(4) = 600
-        gMenu = 22
-        'mergates.widths(1) = 500
-        'mergates.GridView1.Colu. = 500
-        ' mergates.GridView1.Columns(0).HeaderText = "aaa"
-        mergates.Alignments(5) = DataGridViewContentAlignment.MiddleRight
-        mergates.Alignments(4) = DataGridViewContentAlignment.MiddleRight
-        'mergates.GridView1.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        'Dim frm As New report
-        mergates.TopLevel = False
-        mergates.Visible = True
-        mergates.FormBorderStyle = FormBorderStyle.None
-        mergates.Dock = DockStyle.Fill
-        mergates.DEL_TIMAGOR.Visible = True
-
-
-
-
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = per  '"ΥΛΙΚΑ.....   ."
-        TabControl1.TabPages.Add(PAGE)
-
-        mergates.Width = TabControl1.Width
-        mergates.Height = TabControl1.Height
-        mergates.ANALYTICS.Visible = True
-        mergates.Read_Only = True
-
-        TabControl1.TabPages(N).Controls.Add(mergates)
-        TabControl1.SelectTab(N)
+        test.ShowDialog()
 
 
 
@@ -1321,46 +1266,8 @@ Public Class MDIMain
 
 
 
-        'Dim filename As String = "c:\mercvb\ektyp.xlsx"
-        'Dim sheetname As String = "Φύλλο1"
-        'Dim xlApp As Excel.Application
-        'Dim xlWorkBook As Excel.Workbook
-        'Dim xl As Excel.Worksheet
-        'xlApp = New Excel.ApplicationClass
-        'xlWorkBook = xlApp.Workbooks.Add 'αν ηθελα να το ανοιξω αντι για add -> Open(filename)
-        'xlWorkBook.Worksheets.Add()  '(1)
-        'xl = xlWorkBook.Worksheets(1) ' .Add
-        'xlApp.Visible = True  'ΜΠΟΡΩ ΝΑ ΤΟ ΒΛΕΠΩ
-        'xl.Name = "HL07"
-        'Dim WS(30) As Microsoft.Office.Interop.Excel.Worksheet
 
-        'Dim dt As New DataTable
-        'Dim k As Integer
-        'Dim mn1 As String = "1"
-        'Dim sql As String = "SELECT ONO AS [Ονομα ],KOD AS [ΚΩΔ],N1 AS [ΚΑΤΗΓ],BAROS AS [ΒΑΡΟΣ],C1,C2,ID  FROM YLIKA WHERE N1=" + Mn1 + " ORDER BY KOD "
-        'ExecuteSQLQuery(sql, dt) 'D.PATIENTID,CHMEEIS desc
-
-        'xl.Cells(1, 2).value = "ΕΠΙΚΕΦΑΛΙΔΑ" + "EIS"
-
-        'Dim sken As Single = 0
-        'Dim seopy As Single = 0
-
-        'Dim mSeir As Integer
-
-        'mSeir = 2
-        'For k = 0 To dt.Rows.Count - 1
-        '    mSeir = mSeir + 1
-        '    xl.Cells(mSeir, 1).value = dt.Rows(k)("ΚΩΔ")  'aa
-        '    xl.Cells(mSeir, 2).value = dt.Rows(k)("Ονομα ")  'aa
-        '    xl.Cells(mSeir, 3).value = dt.Rows(k)("ΚΑΤΗΓ")  'aa
-        '    xl.Cells(mSeir, 4).value = dt.Rows(k)("ΒΑΡΟΣ")  'aa
-
-        'Next
-        'xl.Columns.AutoFit()
-        'xlApp.Visible = True
-        'mreleaseObject(xlApp)
-        'mreleaseObject(xlWorkBook)
-        'mreleaseObject(xl)
+    
     End Sub
 
 
@@ -1588,17 +1495,17 @@ Public Class MDIMain
     Private Sub jobs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
 
-        Dim frm As New TIMOLOGIApol()
-        frm.TopLevel = False
-        frm.Visible = True
-        frm.FormBorderStyle = FormBorderStyle.None
-        frm.Dock = DockStyle.Fill
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = Str(N)
-        TabControl1.TabPages.Add(PAGE)
-        TabControl1.TabPages(N).Controls.Add(frm)
-        TabControl1.SelectTab(N)
+        'Dim frm As New TIMOLOGIApol()
+        'frm.TopLevel = False
+        'frm.Visible = True
+        'frm.FormBorderStyle = FormBorderStyle.None
+        'frm.Dock = DockStyle.Fill
+        'Dim PAGE As New TabPage
+        'Dim N As Integer = TabControl1.TabPages.Count
+        'PAGE.Text = Str(N)
+        'TabControl1.TabPages.Add(PAGE)
+        'TabControl1.TabPages(N).Controls.Add(frm)
+        'TabControl1.SelectTab(N)
 
 
 
@@ -1810,19 +1717,19 @@ Public Class MDIMain
         'TIMOLOGIA.Show()
 
 
-        Dim frm As New report
-        'frm.ShowDialog()
-        'Exit Sub
-        frm.TopLevel = False
-        frm.Visible = True
-        frm.FormBorderStyle = FormBorderStyle.None
-        frm.Dock = DockStyle.Fill
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = "Δημιουργία Ετικέτας   ."
-        TabControl1.TabPages.Add(PAGE)
-        TabControl1.TabPages(N).Controls.Add(frm)
-        TabControl1.SelectTab(N)
+        'Dim frm As New report
+        ''frm.ShowDialog()
+        ''Exit Sub
+        'frm.TopLevel = False
+        'frm.Visible = True
+        'frm.FormBorderStyle = FormBorderStyle.None
+        'frm.Dock = DockStyle.Fill
+        'Dim PAGE As New TabPage
+        'Dim N As Integer = TabControl1.TabPages.Count
+        'PAGE.Text = "Δημιουργία Ετικέτας   ."
+        'TabControl1.TabPages.Add(PAGE)
+        'TabControl1.TabPages(N).Controls.Add(frm)
+        'TabControl1.SelectTab(N)
 
         'ergates.Text = "Αρχείο Εργασιών"
         'ergates.Label1.Text = "SELECT NAME AS [Περιγραφή],ENERGOS AS [ΕΝΕΡΓΗ],SEIRES AS [ΣΕ ΚΙΛΑ],N1 AS [ID ΟΜΑΔΟΠΟΙΗΣΗΣ],C1 AS [ΠΕΡΙΓ.ΟΜΑΔ],ID AS TAYT,ID FROM JOBS " ' ORDER BY HME "
@@ -1925,17 +1832,17 @@ Public Class MDIMain
         'TabControl.TabPages.Add(page)
         'Ideally you should refactor and move the content of the form into a UserControl and then apply the control to both the form and the tabs, but changing few properties on the form you can achieve the same result.
 
-        Dim frm As New TIMOLOGIA()
-        frm.TopLevel = False
-        frm.Visible = True
-        frm.FormBorderStyle = FormBorderStyle.None
-        frm.Dock = DockStyle.Fill
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = "τιμολόγια    ."
-        TabControl1.TabPages.Add(PAGE)
-        TabControl1.TabPages(N).Controls.Add(frm)
-        TabControl1.SelectTab(N)
+        'Dim frm As New TIMOLOGIA()
+        'frm.TopLevel = False
+        'frm.Visible = True
+        'frm.FormBorderStyle = FormBorderStyle.None
+        'frm.Dock = DockStyle.Fill
+        'Dim PAGE As New TabPage
+        'Dim N As Integer = TabControl1.TabPages.Count
+        'PAGE.Text = "τιμολόγια    ."
+        'TabControl1.TabPages.Add(PAGE)
+        'TabControl1.TabPages(N).Controls.Add(frm)
+        'TabControl1.SelectTab(N)
 
 
 
@@ -2372,7 +2279,7 @@ Public Class MDIMain
         ' SynoloOres.Show()
         ' PROIONTA = 4
 
-        ylika2("4", "Προϊόντα     ")
+        ' ylika2("4", "Προϊόντα     ")
 
 
 
@@ -2381,7 +2288,7 @@ Public Class MDIMain
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        ylika2("2", "Εμπορεύματα     ")
+        'ylika2("2", "Εμπορεύματα     ")
 
         ' SynoloOres.f_othonia = 4
         '  SynoloOres.Show()
@@ -2466,72 +2373,27 @@ Public Class MDIMain
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
 
-        Dim per = "Παρτίδες"
-        Dim kod = "00"
+       
+    End Sub
 
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        'Dim frm As New TIMOLOGIApol()
+        'frm.TopLevel = False
+        'frm.Visible = True
+        'frm.FormBorderStyle = FormBorderStyle.None
+        'frm.Dock = DockStyle.Fill
+        'Dim PAGE As New TabPage
+        'Dim N As Integer = TabControl1.TabPages.Count
+        'PAGE.Text = "τιμολόγια    ."
+        'TabControl1.TabPages.Add(PAGE)
 
+        'TabControl1.TabPages(N).Controls.Add(frm)
+        'TabControl1.SelectTab(N)
 
-        Dim frm As New ergates  ' form2 
-        'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select top 400 PARTIDA AS [ΠΑΡΤΙΔΑ],HME as [ΗΜΕΡ.ΠΑΡΑΓ],P.KOD as [ΠΡΟΪΟΝ],ONO AS [ΠΕΡΙΓΡΑΦΗ ΕΙΔΟΥΣ],TEMAXIA AS [ΠΑΡΑΧΘΕΝΤΑ],TEMAXIA-YPOL AS [ΠΩΛΗΘΕΝΤΑ],YPOL AS [ΥΠΟΛΟΙΠΟ],P.ID AS [ID ΠΑΡΤΙΔΑΣ],P.ID  FROM PARTIDES P INNER JOIN YLIKA Y ON P.KOD=Y.KOD  ORDER BY HME DESC "  ' PARTIDA DESC "where GETDATE()-HME<30
+    End Sub
 
-
-
-
-        For k = 0 To 20
-            frm.widths(7) = 100
-        Next
-        ' Dim per As String = "Αναλώσιμα     "
-
-        frm.Text = per '"Αρχείο Υλικών"
-
-
-        '' ergates.MdiParent = Me
-        ' frm.WindowState = FormWindowState.Maximized
-        frm.STHLHONOMATOS_ID = 0
-        frm.STHLHTOY_ID = 8
-        frm.widths(1) = 100
-        frm.QUERY_AFTER = ""  'update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
-        For KK As Integer = 0 To 6
-            frm.widths(KK) = 100
-        Next
-        'frm.Label2.Text = "υλικα...."   ' KATHG.Text
-        frm.widths(0) = 100
-        gMenu = 22
-
-
-
-        ' frm.n1.Text = mn1
-        frm.Alignments(3) = DataGridViewContentAlignment.MiddleRight
-        frm.Alignments(4) = DataGridViewContentAlignment.MiddleRight
-        frm.Alignments(5) = DataGridViewContentAlignment.MiddleRight
-
-        frm.Width = TabControl1.Width
-        frm.Height = TabControl1.Height
-        'If Mn1 = "4" Then
-        '    frm.SYNTAGES.Visible = True
-        'End If
-        'frm.Read_Only = True ' : frm.delete.Visible = True : frm.delete.Enabled = True 'frm.DELETEQUERY.Text = "DELETE FROM YLIKA WHERE YPOL>0 AND ID="
-        frm.TopLevel = False
-        frm.Visible = True
-        frm.FormBorderStyle = FormBorderStyle.None
-        frm.Dock = DockStyle.Fill
-        
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = per ' "Αναλώσιμα  ."
-
-        frm.AnalPartidas.Visible = True
-        frm.Proeleysi_Partidas.Visible = True
-
-        frm.Read_Only = True
-
-
-        TabControl1.TabPages.Add(PAGE)
-        TabControl1.TabPages(N).Controls.Add(frm)
-        TabControl1.SelectTab(N)
-
-        'Dim per = "Παρτίδες"
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+        'Dim per = "Λίστα Τιμολογίων Πώλησης με Παρτίδες"
         'Dim kod = "00"
 
         'Dim mergates As New ergates()
@@ -2539,25 +2401,33 @@ Public Class MDIMain
         '    mergates.widths(7) = 100
         'Next
         'Dim Mn1 As String
+
+        'mergates.EditDomatia.Visible = True
+
         'Mn1 = kod    '  Split(KATHG.Text, ";")(0)
         'mergates.Text = per '"Αρχείο Υλικών"
-        'mergates.Label1.Text = "select PARTIDA AS [ΠΑΡΤΙΔΑ],HME as [ΗΜΕΡ.ΠΑΡΑΓ],KOD as [ΠΡΟΪΟΝ],TEMAXIA AS [ΠΑΡΑΧΘΕΝΤΑ],TEMAXIA-YPOL AS [ΠΩΛΗΘΕΝΤΑ],YPOL AS [ΥΠΟΛΟΙΠΟ],'' AS [ ],ID  FROM PARTIDES ORDER BY PARTIDA DESC "
+        ''ak mergates.Label1.Text = "select TIMSPOL.KOD,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],TIMSPOL.ID  FROM TIMSPOL  ORDER BY HME "
+
+        'mergates.Label1.Text = "select top 400 TIMSPOL.KOD,ONO,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],TIMSPOL.ID  FROM TIMSPOL INNER JOIN YLIKA ON TIMSPOL.KOD=YLIKA.KOD ORDER BY HME desc "
+
 
         '' ergates.MdiParent = Me
-        'mergates.WindowState = FormWindowState.Maximized
+        ''mergates.WindowState = FormWindowState.Maximized
         'mergates.STHLHONOMATOS_ID = 0
-        'mergates.STHLHTOY_ID = 7
+        'mergates.STHLHTOY_ID = 6
         'mergates.widths(1) = 100
         'mergates.QUERY_AFTER = "" ' update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
-        'For KK As Integer = 0 To 7
+        'For KK As Integer = 0 To 6
         '    mergates.widths(KK) = 100
         'Next
         'mergates.Label2.Text = per '"υλικα...."   ' KATHG.Text
-        ''mergates.widths(3) = 400
+        'mergates.widths(1) = 200
         'gMenu = 22
-        'mergates.Alignments(3) = DataGridViewContentAlignment.MiddleRight
-        'mergates.Alignments(4) = DataGridViewContentAlignment.MiddleRight
-        'mergates.Alignments(5) = DataGridViewContentAlignment.MiddleRight
+
+
+
+
+
         ''Dim frm As New report
         'mergates.TopLevel = False
         'mergates.Visible = True
@@ -2567,94 +2437,22 @@ Public Class MDIMain
         'Dim N As Integer = TabControl1.TabPages.Count
         'PAGE.Text = per  '"ΥΛΙΚΑ.....   ."
         'TabControl1.TabPages.Add(PAGE)
+
         'mergates.Width = TabControl1.Width
         'mergates.Height = TabControl1.Height
-
-        'mergates.AnalPartidas.Visible = True
-        'mergates.Proeleysi_Partidas.Visible = True
-
+        'mergates.deleteTIMPOL.Visible = True
         'mergates.Read_Only = True
+        'mergates.analtimpol.Visible = True
+        'mergates.ComboBox1.Visible = True
+        'mergates.ComboBox1.Items.Clear()
+        'For Each printer As String In Printing.PrinterSettings.InstalledPrinters
+        '    mergates.ComboBox1.Items.Add(printer)
+        'Next printer
+        'mergates.ComboBox1.Text = DefaultPrinterName()
+
+
         'TabControl1.TabPages(N).Controls.Add(mergates)
         'TabControl1.SelectTab(N)
-    End Sub
-
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-        Dim frm As New TIMOLOGIApol()
-        frm.TopLevel = False
-        frm.Visible = True
-        frm.FormBorderStyle = FormBorderStyle.None
-        frm.Dock = DockStyle.Fill
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = "τιμολόγια    ."
-        TabControl1.TabPages.Add(PAGE)
-
-        TabControl1.TabPages(N).Controls.Add(frm)
-        TabControl1.SelectTab(N)
-
-    End Sub
-
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        Dim per = "Λίστα Τιμολογίων Πώλησης με Παρτίδες"
-        Dim kod = "00"
-
-        Dim mergates As New ergates()
-        For k = 0 To 20
-            mergates.widths(7) = 100
-        Next
-        Dim Mn1 As String
-
-        mergates.EditDomatia.Visible = True
-
-        Mn1 = kod    '  Split(KATHG.Text, ";")(0)
-        mergates.Text = per '"Αρχείο Υλικών"
-        'ak mergates.Label1.Text = "select TIMSPOL.KOD,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],TIMSPOL.ID  FROM TIMSPOL  ORDER BY HME "
-
-        mergates.Label1.Text = "select top 400 TIMSPOL.KOD,ONO,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],TIMSPOL.ID  FROM TIMSPOL INNER JOIN YLIKA ON TIMSPOL.KOD=YLIKA.KOD ORDER BY HME desc "
-
-
-        ' ergates.MdiParent = Me
-        'mergates.WindowState = FormWindowState.Maximized
-        mergates.STHLHONOMATOS_ID = 0
-        mergates.STHLHTOY_ID = 6
-        mergates.widths(1) = 100
-        mergates.QUERY_AFTER = "" ' update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
-        For KK As Integer = 0 To 6
-            mergates.widths(KK) = 100
-        Next
-        mergates.Label2.Text = per '"υλικα...."   ' KATHG.Text
-        mergates.widths(1) = 200
-        gMenu = 22
-
-
-
-
-
-        'Dim frm As New report
-        mergates.TopLevel = False
-        mergates.Visible = True
-        mergates.FormBorderStyle = FormBorderStyle.None
-        mergates.Dock = DockStyle.Fill
-        Dim PAGE As New TabPage
-        Dim N As Integer = TabControl1.TabPages.Count
-        PAGE.Text = per  '"ΥΛΙΚΑ.....   ."
-        TabControl1.TabPages.Add(PAGE)
-
-        mergates.Width = TabControl1.Width
-        mergates.Height = TabControl1.Height
-        mergates.deleteTIMPOL.Visible = True
-        mergates.Read_Only = True
-        mergates.analtimpol.Visible = True
-        mergates.ComboBox1.Visible = True
-        mergates.ComboBox1.Items.Clear()
-        For Each printer As String In Printing.PrinterSettings.InstalledPrinters
-            mergates.ComboBox1.Items.Add(printer)
-        Next printer
-        mergates.ComboBox1.Text = DefaultPrinterName()
-
-
-        TabControl1.TabPages(N).Controls.Add(mergates)
-        TabControl1.SelectTab(N)
 
     End Sub
 
@@ -2988,7 +2786,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EMAIL,EPO,AFM,DIE ,ID  FROM PEL  WHERE EIDOS='e' ORDER BY EPO "
+        frm.Label1.Text = "select EMAIL,EPO,AFM,DIE ,ID  FROM PEL    ORDER BY EPO "
 
 
 
