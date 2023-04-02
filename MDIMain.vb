@@ -1247,7 +1247,9 @@ Public Class MDIMain
     End Sub
 
     Private Sub cmdERGASIES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExcel.Click
-        test.ShowDialog()
+        Dim F As New test
+
+        F.ShowDialog()
 
 
 
@@ -1267,7 +1269,7 @@ Public Class MDIMain
 
 
 
-    
+
     End Sub
 
 

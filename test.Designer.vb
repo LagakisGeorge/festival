@@ -22,46 +22,47 @@ Partial Class test
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.DGV = New System.Windows.Forms.DataGridView
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column23 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column24 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column25 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column26 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column27 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Button3 = New System.Windows.Forms.Button
-        Me.Krarhseis = New System.Windows.Forms.Button
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.DGV = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Krarhseis = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -291,11 +292,21 @@ Partial Class test
         Me.Krarhseis.Text = "Κρατήσεις"
         Me.Krarhseis.UseVisualStyleBackColor = True
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(463, 464)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(157, 23)
+        Me.Button4.TabIndex = 6
+        Me.Button4.Text = "ΔΙΑΓΡΑΦΗ ΚΡΑΤΗΣΕΩΝ"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1136, 599)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Krarhseis)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.DGV)
@@ -349,4 +360,5 @@ Partial Class test
     Friend WithEvents Column33 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column34 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Krarhseis As System.Windows.Forms.Button
+    Friend WithEvents Button4 As Button
 End Class
