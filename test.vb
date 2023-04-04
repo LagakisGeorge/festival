@@ -46,6 +46,10 @@
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        paint_grid()
+    End Sub
+    Private Sub paint_grid()
+
         Dim HTR As New DataTable
         ' ΒΑΖΩ ΕΠΙΚΕΦΑΛΙΔΕΣ
         ExecuteSQLQuery("select MAX(DATECHECKIN) AS MAX1,MIN(DATECHECKIN) AS MIN1 from HOTROOMDAYS  ", HTR)
@@ -113,10 +117,10 @@
             Next
 
             If HTR.Rows(K)("idpel") > 0 Then
-                DGV.Rows(seira).Cells(sthlh).Value = HTR.Rows(K)("EPO") + "_" + Str(HTR.Rows(K)("id")) ' HTR.Rows(K)("idpel")
+                DGV.Rows(seira).Cells(sthlh).Value = HTR.Rows(K)("EPO") + "_                               " + Str(HTR.Rows(K)("id")) ' HTR.Rows(K)("idpel")
                 DGV.Rows(seira).Cells(sthlh).Style.BackColor = Color.Green
             Else
-                DGV.Rows(seira).Cells(sthlh).Value = "_" ' HTR.Rows(K)("IDPEL")
+                DGV.Rows(seira).Cells(sthlh).Value = "_                        " + Str(HTR.Rows(K)("id")) ' HTR.Rows(K)("IDPEL")
                 DGV.Rows(seira).Cells(sthlh).Style.BackColor = Color.Red
             End If
 
@@ -128,6 +132,7 @@
 
 
     Private Sub Krarhseis_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Krarhseis.Click
+        '------------------------------------------  bookings ----------------------------------------------------------------
         Dim PEL As New DataTable
         ' ΦΟΡΤΩΝΩ ΤΟΥΣ ΠΕΛΑΤΕΣ
         Dim MDAY As String, dcin As Date, DCOUT As Date
@@ -215,7 +220,7 @@
         C = e.ColumnIndex
         If R < 0 Or C < 0 Then Exit Sub
 
-        If DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen Then  '-------------- 2o click -----------------------------------
+        If F_REM_DAYS > 0 Then '  DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen Then  '-------------- 2o click -----------------------------------
 
 
             '---------------  τσιμπαω το id του 2ου κλικ ------------------------------------------------
@@ -223,17 +228,20 @@
             Dim s As String = ""
             f2_row = R : f2_col = C
             Try
-                s = d.Split("_")(1)
+                s = d.Split("_")(0)
             Catch ex As Exception
 
             End Try
             If Len(s) > 0 Then
-                f_2idHotRoomDays = s  ' βρίσκω το id ΤΟΥ 2oy ΚΛΙΚ
+                MsgBox("Kateilhm;eno Δωμάτιο")
+                Exit Sub
 
-                DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen
+                ' f_2idHotRoomDays = s  ' βρίσκω το id ΤΟΥ 2oy ΚΛΙΚ
+
+                ' DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen
             Else
-                F_REM_DAYS = 0
-                f_idHotRoomDays = 0
+                ' F_REM_DAYS = 0
+                'f_idHotRoomDays = 0
             End If
             '----------------------------------------------  βγαζω το popup menu ---------------------------------------
             Dim currentCell As DataGridViewCell = DGV.CurrentCell
@@ -243,7 +251,7 @@
             Dim cellAbsolutePos As Point = DGV.PointToScreen(cellDisplayRect.Location)
             Dim X, Y As Long : X = cellAbsolutePos.X : Y = cellAbsolutePos.Y
             ContextMenuStrip1.Show(DGV, New Point(IIf(X - 200 > 0, X - 200, 0), IIf(Y - 300 > 0, Y - 300, 0))) '
-
+            ' F_REM_DAYS = 0
 
         Else '-------------------------------------------------- 1o click ---------------------------------------------------- 
             Dim d As String = DGV.Rows(R).Cells(C).Value()
@@ -258,9 +266,11 @@
                 f_idHotRoomDays = s  ' βρίσκω το id ΤΟΥ ΑΡΧΙΚΟΥ ΚΛΙΚ
                 F_REM_DAYS = Pelfind_right_days(s) 'ΑΠΟΜΕΝΟΥΣΕΣ ΔΙΑΝΥΚΤΕΡΕΥΣΕΙΣ
                 DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen
+                f_idpel = Str(GETn_VALUE("SELECT IDPEL FROM HOTROOMDAYS WHERE ID=" + f_idHotRoomDays))
             Else
                 F_REM_DAYS = 0
                 f_idHotRoomDays = 0
+                f_idpel = "0"
             End If
 
 
@@ -272,16 +282,16 @@
     End Sub
 
     Private Sub DGV_CellMouseUp(ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) Handles DGV.CellMouseUp
-        '-----------------  MENU ------------------------------------------------------
-        If e.Button = MouseButtons.Right Then
-            Dim currentCell As DataGridViewCell = DGV.CurrentCell
+        ''-----------------  MENU ------------------------------------------------------
+        'If e.Button = MouseButtons.Right Then
+        '    Dim currentCell As DataGridViewCell = DGV.CurrentCell
 
-            Dim cellDisplayRect As Rectangle = DGV.GetCellDisplayRectangle(currentCell.ColumnIndex, currentCell.RowIndex, False)
+        '    Dim cellDisplayRect As Rectangle = DGV.GetCellDisplayRectangle(currentCell.ColumnIndex, currentCell.RowIndex, False)
 
-            Dim cellAbsolutePos As Point = DGV.PointToScreen(cellDisplayRect.Location)
-            Dim X, Y As Long : X = cellAbsolutePos.X : Y = cellAbsolutePos.Y
-            ContextMenuStrip1.Show(DGV, New Point(IIf(X - 200 > 0, X - 200, 0), IIf(Y - 300 > 0, Y - 300, 0))) ' Button1.Height))
-        End If
+        '    Dim cellAbsolutePos As Point = DGV.PointToScreen(cellDisplayRect.Location)
+        '    Dim X, Y As Long : X = cellAbsolutePos.X : Y = cellAbsolutePos.Y
+        '    ContextMenuStrip1.Show(DGV, New Point(IIf(X - 200 > 0, X - 200, 0), IIf(Y - 300 > 0, Y - 300, 0))) ' Button1.Height))
+        'End If
 
     End Sub
 
@@ -299,7 +309,7 @@
         '
         Dim nc, n As Integer
         nc = 0
-        For n = f2_col To f2_col + F_REM_DAYS
+        For n = f2_col To f2_col + F_REM_DAYS - 1
             If DGV.Rows(f2_row).Cells(n).Style.BackColor = Color.Red Then
                 nc = nc + 1
             End If
@@ -309,26 +319,52 @@
         If nc = F_REM_DAYS Then ' εχω τος απαραιτητεσ μερες
             ' γεμιζω το νεο  antigrafontas ta palia kelia
             Dim nc1 As Integer = f1_col  ' κολονα παλιου που ισως να μην συμπιπτει με την κολανα του νεου (αν λειξει ενδιαμεσα ο πλελατης)
-            For n = f2_col To f2_col + F_REM_DAYS
-                DGV.Rows(f2_row).Cells(n) = DGV.Rows(f1_row).Cells(nc1)
+            For n = f2_col To f2_col + F_REM_DAYS - 1
+                Dim DPALIO As String = DGV.Rows(f2_row).Cells(n).Value.ToString
+                DGV.Rows(f2_row).Cells(n).Value = DGV.Rows(f1_row).Cells(nc1).Value
                 DGV.Rows(f1_row).Cells(n).Style.BackColor = Color.Green
+                Dim d As String = DGV.Rows(f1_row).Cells(nc1).Value()
+                Dim s As String = ""
+                s = DPALIO.Split("_")(1)
+                ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + f_idpel + " WHERE ID= " + s) ' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
+
                 nc1 = nc1 + 1
                 'End If
             Next
 
             ' ελευθερωνω το παλιο
             n = f1_col
-            For n = f2_col To f2_col + F_REM_DAYS
-                DGV.Rows(f1_row).Cells(n).Value = "_"
+            For n = f2_col To f2_col + F_REM_DAYS - 1
+                Dim DD As String = DGV.Rows(f1_row).Cells(n).Value.ToString
+                DGV.Rows(f1_row).Cells(n).Value = "_" + DD.Split("_")(1)
                 DGV.Rows(f1_row).Cells(n).Style.BackColor = Color.Red
+
+
+                Dim s As String = DD.Split("_")(1)
+                ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=0 WHERE ID= " + s) ' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
+
                 ' nc = nc + 1
                 'End If
             Next
+            DGV.Refresh()
+
             ' ενημερωνω την database me tis αλλαγες που εγιναν αφου γίνει επιβεβαίωση
+            'ExecuteSQLQuery("select count(*) from HOTROOMDAYS WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString, HRDAYS)
+            'If HRDAYS(0)(0) = hmeres Then  ' εχει διαθεσιμες ολες τις ημερες οποτε οκ
+            '    ExecuteSQLQuery("UPDATE PEL SET CH2='" + HTR.Rows(0)("NAME") + "',CH1=" + HTR.Rows(0)("ROOMN") + ",NUM2=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + PEL(K)("ID").ToString)
+            '    ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + PEL(K)("ID").ToString + " WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
+            '    OK = 1
+            '    Exit For
+            'End If
+
+        Else
+            MsgBox(" δεν φτανουν οι μερες")
+
 
 
         End If
-
+        F_REM_DAYS = 0
+        paint_grid()
 
         'Dim HRDAYS As New DataTable
         ''
@@ -356,7 +392,7 @@
         ' βρισκει πόσες διανυκτερεύσεις μαζί με την τρέχουσα του απομένουν TOY PELATH POY EINAI SE AYTO TO KOYTAKI
         Dim HTR As New DataTable
 
-        ExecuteSQLQuery("select  H.*,convert(date,H.DATECHECKIN) AS CHECKIND,convert(date,PEL.CHECKOUT) as CHECKOUTD from HOTROOMDAYS H INNER JOIN PEL ON H.IDPEL=PEL.ID WHERE H.ID=" + id, HTR)
+        ExecuteSQLQuery("select  H.*,convert(date,H.DATECHECKIN) AS CHECKIND,convert(date,PEL.CHECKOUT) as CHECKOUTD from HOTROOMDAYS H LEFT JOIN PEL ON H.IDPEL=PEL.ID WHERE H.ID=" + id, HTR)
         Dim hmeres As Integer = DateDiff("d", HTR(0)("CHECKIND"), HTR(0)("CHECKOUTD"))
         Pelfind_right_days = hmeres
 
@@ -364,7 +400,15 @@
 
 
 
-
+    Function GETn_VALUE(ByVal QUERY As String) As Single
+        Dim DT77 As New DataTable
+        ExecuteSQLQuery(QUERY, DT77)
+        If DT77.Rows.Count > 0 Then
+            GETn_VALUE = DT77.Rows(0)(0)
+        Else
+            GETn_VALUE = -1
+        End If
+    End Function
 
 
 
