@@ -1650,14 +1650,25 @@ Public Class ergates
             '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
             '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
 
-            FrmAddSupplier.KOD.Text = GridView1.CurrentRow.Cells(0).Value.ToString
-            FrmAddSupplier.ONO.Text = GridView1.CurrentRow.Cells(1).Value.ToString
-            FrmAddSupplier.AFM.Text = GridView1.CurrentRow.Cells(2).Value.ToString
-            FrmAddSupplier.DIE.Text = GridView1.CurrentRow.Cells(3).Value.ToString
+            FrmAddSupplier.KOD.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
+            FrmAddSupplier.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString
+            FrmAddSupplier.AFM.Text = GridView1.CurrentRow.Cells("AFM").Value.ToString
+            FrmAddSupplier.DIE.Text = GridView1.CurrentRow.Cells("DIE").Value.ToString
             FrmAddSupplier.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
-            'FrmAddSupplier.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString
+            'FrmAddSupplier.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString  
+            FrmAddSupplier.DTCheckin.Value = GridView1.CurrentRow.Cells("CHECKIN").Value.ToString
+            FrmAddSupplier.DTCheckout.Value = GridView1.CurrentRow.Cells("CHECKOUT").Value.ToString
+
+            Try
 
 
+                FrmAddSupplier.DtAirAfixi.Value = GridView1.CurrentRow.Cells("AIRAFIXI").Value.ToString
+                FrmAddSupplier.dtAirAnax.Value = GridView1.CurrentRow.Cells("AIRANAX").Value.ToString
+                FrmAddSupplier.txtTo.Visible = True
+
+            Catch ex As Exception
+
+            End Try
             FrmAddSupplier.ShowDialog()
         End If
 

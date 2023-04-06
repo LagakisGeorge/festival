@@ -1,4 +1,7 @@
-﻿Public Class test
+﻿Imports System.Data.OleDb
+Imports System.Data.SqlClient
+
+Public Class test
     Dim f1_row As Integer
     Dim f1_col As Integer
     Dim f2_row As Integer
@@ -252,7 +255,8 @@
             Dim X, Y As Long : X = cellAbsolutePos.X : Y = cellAbsolutePos.Y
             ContextMenuStrip1.Show(DGV, New Point(IIf(X - 200 > 0, X - 200, 0), IIf(Y - 300 > 0, Y - 300, 0))) '
             ' F_REM_DAYS = 0
-
+            Dim n As Integer
+            n = 0
         Else '-------------------------------------------------- 1o click ---------------------------------------------------- 
             Dim d As String = DGV.Rows(R).Cells(C).Value()
             Dim s As String = ""
@@ -265,14 +269,19 @@
             If Len(s) > 0 Then
                 f_idHotRoomDays = s  ' βρίσκω το id ΤΟΥ ΑΡΧΙΚΟΥ ΚΛΙΚ
                 F_REM_DAYS = Pelfind_right_days(s) 'ΑΠΟΜΕΝΟΥΣΕΣ ΔΙΑΝΥΚΤΕΡΕΥΣΕΙΣ
-                DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen
+
                 f_idpel = Str(GETn_VALUE("SELECT IDPEL FROM HOTROOMDAYS WHERE ID=" + f_idHotRoomDays))
+                If Val(f_idpel) = 0 Then
+                    F_REM_DAYS = 0
+                End If
             Else
                 F_REM_DAYS = 0
                 f_idHotRoomDays = 0
                 f_idpel = "0"
             End If
-
+            If F_REM_DAYS > 0 Then
+                DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen
+            End If
 
 
         End If
@@ -319,6 +328,7 @@
         If nc = F_REM_DAYS Then ' εχω τος απαραιτητεσ μερες
             ' γεμιζω το νεο  antigrafontas ta palia kelia
             Dim nc1 As Integer = f1_col  ' κολονα παλιου που ισως να μην συμπιπτει με την κολανα του νεου (αν λειξει ενδιαμεσα ο πλελατης)
+            Dim SMAX, SMIN As String ' Η ΠΡΩΤΗ ΚΑΙ Η ΤΕΛΕΥΤΑΙΑ ΗΜΕΡΟΜΗΝΙΑ 
             For n = f2_col To f2_col + F_REM_DAYS - 1
                 Dim DPALIO As String = DGV.Rows(f2_row).Cells(n).Value.ToString
                 DGV.Rows(f2_row).Cells(n).Value = DGV.Rows(f1_row).Cells(nc1).Value
@@ -326,15 +336,22 @@
                 Dim d As String = DGV.Rows(f1_row).Cells(nc1).Value()
                 Dim s As String = ""
                 s = DPALIO.Split("_")(1)
+                If n = f2_col Then SMAX = s
+                If n = f2_col + F_REM_DAYS - 1 Then SMIN = s
                 ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + f_idpel + " WHERE ID= " + s) ' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
 
                 nc1 = nc1 + 1
                 'End If
             Next
+            'ΕΝΗΜΕΡΩΝΩ ΤΟΝ ΠΕΛΑΤΗ ΜΕ ΤΙς ΝΕΕς ΗΜΕΡΟΜΗΝΙΕΣ
+            If f2_col <> f1_col Then
+                ExecuteSQLQuery("UPDATE  PEL SET CHECKOUT=DATEADD(DAY," + Str(f2_col - f1_col) + ",CHECKOUT) WHERE ID=" + f_idpel)
+                ExecuteSQLQuery("UPDATE  PEL SET CHECKIN=DATEADD(DAY," + Str(f2_col - f1_col) + ",CHECKIN) WHERE ID=" + f_idpel)
+            End If
 
             ' ελευθερωνω το παλιο
             n = f1_col
-            For n = f2_col To f2_col + F_REM_DAYS - 1
+            For n = f1_col To f1_col + F_REM_DAYS - 1
                 Dim DD As String = DGV.Rows(f1_row).Cells(n).Value.ToString
                 DGV.Rows(f1_row).Cells(n).Value = "_" + DD.Split("_")(1)
                 DGV.Rows(f1_row).Cells(n).Style.BackColor = Color.Red
@@ -389,11 +406,15 @@
 
     End Sub
     Function Pelfind_right_days(ByVal id As String) As Integer
-        ' βρισκει πόσες διανυκτερεύσεις μαζί με την τρέχουσα του απομένουν TOY PELATH POY EINAI SE AYTO TO KOYTAKI
+        ' βρισκει πόσες διανυκτερεύσεις μαζί με την τρέχουσα του απομένουν TOY PELATH POY EINAI SE AYTO TO KOYTAKI (ΑΠΟ ΤΟ ΤΡΕΧΟΝ ΚΟΥΤΑΚΙ ΜΕΧΡΙ ΤΟ ΤΕΛΟΣ ΤΗΣ ΔΙΑΜΟΝΗΣ
         Dim HTR As New DataTable
 
-        ExecuteSQLQuery("select  H.*,convert(date,H.DATECHECKIN) AS CHECKIND,convert(date,PEL.CHECKOUT) as CHECKOUTD from HOTROOMDAYS H LEFT JOIN PEL ON H.IDPEL=PEL.ID WHERE H.ID=" + id, HTR)
-        Dim hmeres As Integer = DateDiff("d", HTR(0)("CHECKIND"), HTR(0)("CHECKOUTD"))
+        ExecuteSQLQuery("select  H.*,convert(date,H.DATECHECKIN) AS CHECKIND,convert(date,PEL.CHECKOUT) as CHECKOUTD from HOTROOMDAYS H inner JOIN PEL ON H.IDPEL=PEL.ID WHERE H.ID=" + id, HTR)
+        Dim hmeres As Integer = 0 ' DateDiff("d", HTR(0)("CHECKIND"), HTR(0)("CHECKOUTD"))
+        If HTR.Rows.Count > 0 Then
+            hmeres = DateDiff("d", HTR(0)("CHECKIND"), HTR(0)("CHECKOUTD"))
+        End If
+
         Pelfind_right_days = hmeres
 
     End Function
@@ -417,4 +438,25 @@
 
 
 
+    Private Sub test_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        paint_grid()
+        Dim Q As String = "SELECT EPO FROM PEL WHERE NUM2=0 OR NUM2 IS NULL"
+
+        Try
+            Dim sqlCon As New OleDbConnection(gConnect)
+
+            Dim sqlDA As New OleDbDataAdapter(Q, sqlCon)
+
+            Dim sqlCB As New OleDbCommandBuilder(sqlDA)
+            sqlDT.Reset() ' refresh 
+            sqlDA.Fill(sqlDT)
+
+           
+            DataGridView1.ClearSelection()
+            DataGridView1.DataSource = sqlDT
+            DataGridView1.DataMember = "PEL"
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

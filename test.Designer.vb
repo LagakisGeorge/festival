@@ -76,14 +76,14 @@ Partial Class test
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(847, 447)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 553)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(498, 127)
+        Me.DataGridView1.Size = New System.Drawing.Size(498, 141)
         Me.DataGridView1.TabIndex = 0
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(219, 536)
+        Me.Button1.Location = New System.Drawing.Point(537, 656)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(201, 38)
         Me.Button1.TabIndex = 1
@@ -92,9 +92,9 @@ Partial Class test
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(485, 539)
+        Me.Button2.Location = New System.Drawing.Point(537, 553)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(150, 34)
+        Me.Button2.Size = New System.Drawing.Size(201, 34)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
@@ -337,7 +337,7 @@ Partial Class test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1343, 599)
+        Me.ClientSize = New System.Drawing.Size(1428, 780)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.Krarhseis)

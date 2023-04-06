@@ -36,7 +36,6 @@ Partial Class FrmAddSupplier
         Me.Label4 = New System.Windows.Forms.Label
         Me.TextBox3 = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
-        Me.TextBox4 = New System.Windows.Forms.TextBox
         Me.Label8 = New System.Windows.Forms.Label
         Me.DIE = New System.Windows.Forms.TextBox
         Me.Label7 = New System.Windows.Forms.Label
@@ -46,9 +45,13 @@ Partial Class FrmAddSupplier
         Me.Label3 = New System.Windows.Forms.Label
         Me.KOD = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
-        Me.txtid = New System.Windows.Forms.TextBox
         Me.cmdsave = New System.Windows.Forms.Button
         Me.cmdcancel = New System.Windows.Forms.Button
+        Me.send = New System.Windows.Forms.Button
+        Me.txtMessage = New System.Windows.Forms.TextBox
+        Me.Label11 = New System.Windows.Forms.Label
+        Me.Label12 = New System.Windows.Forms.Label
+        Me.txtTo = New System.Windows.Forms.TextBox
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -61,6 +64,11 @@ Partial Class FrmAddSupplier
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtTo)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.txtMessage)
+        Me.GroupBox1.Controls.Add(Me.send)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.dtAirAnax)
         Me.GroupBox1.Controls.Add(Me.Label9)
@@ -71,7 +79,6 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.TextBox3)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.DIE)
         Me.GroupBox1.Controls.Add(Me.Label7)
@@ -81,7 +88,6 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.KOD)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.txtid)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(421, 498)
@@ -179,17 +185,6 @@ Partial Class FrmAddSupplier
         Me.Label5.TabIndex = 108
         Me.Label5.Text = "Αεροδρόμιο :"
         '
-        'TextBox4
-        '
-        Me.TextBox4.BackColor = System.Drawing.Color.PapayaWhip
-        Me.TextBox4.CausesValidation = False
-        Me.TextBox4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(86, 93)
-        Me.TextBox4.MaxLength = 50
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(325, 21)
-        Me.TextBox4.TabIndex = 103
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -263,7 +258,7 @@ Partial Class FrmAddSupplier
         Me.KOD.BackColor = System.Drawing.Color.PapayaWhip
         Me.KOD.CausesValidation = False
         Me.KOD.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.KOD.Location = New System.Drawing.Point(87, 240)
+        Me.KOD.Location = New System.Drawing.Point(87, 95)
         Me.KOD.MaxLength = 50
         Me.KOD.Name = "KOD"
         Me.KOD.Size = New System.Drawing.Size(325, 21)
@@ -278,17 +273,6 @@ Partial Class FrmAddSupplier
         Me.Label2.Size = New System.Drawing.Size(31, 13)
         Me.Label2.TabIndex = 15
         Me.Label2.Text = "Email"
-        '
-        'txtid
-        '
-        Me.txtid.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtid.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtid.Location = New System.Drawing.Point(86, 267)
-        Me.txtid.Name = "txtid"
-        Me.txtid.ReadOnly = True
-        Me.txtid.Size = New System.Drawing.Size(78, 21)
-        Me.txtid.TabIndex = 100
-        Me.txtid.Visible = False
         '
         'cmdsave
         '
@@ -309,6 +293,48 @@ Partial Class FrmAddSupplier
         Me.cmdcancel.TabIndex = 9
         Me.cmdcancel.Text = "Ακυρο"
         Me.cmdcancel.UseVisualStyleBackColor = True
+        '
+        'send
+        '
+        Me.send.Location = New System.Drawing.Point(9, 457)
+        Me.send.Name = "send"
+        Me.send.Size = New System.Drawing.Size(68, 26)
+        Me.send.TabIndex = 117
+        Me.send.Text = "Αποστολή"
+        Me.send.UseVisualStyleBackColor = True
+        '
+        'txtMessage
+        '
+        Me.txtMessage.Location = New System.Drawing.Point(236, 296)
+        Me.txtMessage.Multiline = True
+        Me.txtMessage.Name = "txtMessage"
+        Me.txtMessage.Size = New System.Drawing.Size(175, 143)
+        Me.txtMessage.TabIndex = 118
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(145, 269)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(62, 13)
+        Me.Label11.TabIndex = 119
+        Me.Label11.Text = "Πρός(email)"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(145, 296)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(79, 13)
+        Me.Label12.TabIndex = 120
+        Me.Label12.Text = "Κείμενο (email)"
+        '
+        'txtTo
+        '
+        Me.txtTo.Location = New System.Drawing.Point(236, 269)
+        Me.txtTo.Name = "txtTo"
+        Me.txtTo.Size = New System.Drawing.Size(176, 20)
+        Me.txtTo.TabIndex = 121
         '
         'FrmAddSupplier
         '
@@ -336,7 +362,6 @@ Partial Class FrmAddSupplier
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents KOD As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents txtid As System.Windows.Forms.TextBox
     Friend WithEvents cmdsave As System.Windows.Forms.Button
     Friend WithEvents cmdcancel As System.Windows.Forms.Button
     Friend WithEvents AFM As System.Windows.Forms.TextBox
@@ -347,7 +372,6 @@ Partial Class FrmAddSupplier
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents DTCheckout As System.Windows.Forms.DateTimePicker
     Friend WithEvents DTCheckin As System.Windows.Forms.DateTimePicker
@@ -355,4 +379,9 @@ Partial Class FrmAddSupplier
     Friend WithEvents DtAirAfixi As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtAirAnax As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents send As System.Windows.Forms.Button
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents txtMessage As System.Windows.Forms.TextBox
+    Friend WithEvents txtTo As System.Windows.Forms.TextBox
 End Class

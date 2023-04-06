@@ -2788,8 +2788,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EMAIL,EPO,AFM,DIE ,ID  FROM PEL    ORDER BY EPO "
-
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,AFM,DIE  ,AIRAFIXI,AIRANAX,CH1,CH2,ID FROM PEL    ORDER BY EPO "
 
 
 
@@ -2804,7 +2803,7 @@ Public Class MDIMain
         '' ergates.MdiParent = Me
         ' frm.WindowState = FormWindowState.Maximized
         frm.STHLHONOMATOS_ID = 1
-        frm.STHLHTOY_ID = 4
+        frm.STHLHTOY_ID = 10
         frm.widths(1) = 100
         frm.QUERY_AFTER = ""  'update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
         For KK As Integer = 0 To 6
