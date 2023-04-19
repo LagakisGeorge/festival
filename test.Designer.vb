@@ -68,6 +68,8 @@ Partial Class test
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem
         Me.ListBox1 = New System.Windows.Forms.ListBox
         Me.Button4 = New System.Windows.Forms.Button
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem
+        Me.ΕξοδοςToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -76,14 +78,14 @@ Partial Class test
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 553)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 627)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(498, 141)
         Me.DataGridView1.TabIndex = 0
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(537, 656)
+        Me.Button1.Location = New System.Drawing.Point(537, 730)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(201, 38)
         Me.Button1.TabIndex = 1
@@ -92,7 +94,7 @@ Partial Class test
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(537, 553)
+        Me.Button2.Location = New System.Drawing.Point(537, 690)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(201, 34)
         Me.Button2.TabIndex = 2
@@ -107,7 +109,7 @@ Partial Class test
         Me.DGV.GridColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV.Location = New System.Drawing.Point(12, 12)
         Me.DGV.Name = "DGV"
-        Me.DGV.Size = New System.Drawing.Size(1333, 432)
+        Me.DGV.Size = New System.Drawing.Size(1333, 575)
         Me.DGV.TabIndex = 3
         '
         'Column1
@@ -282,7 +284,7 @@ Partial Class test
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(12, 460)
+        Me.Button3.Location = New System.Drawing.Point(12, 593)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(118, 28)
         Me.Button3.TabIndex = 4
@@ -291,63 +293,76 @@ Partial Class test
         '
         'Krarhseis
         '
-        Me.Krarhseis.Location = New System.Drawing.Point(154, 460)
+        Me.Krarhseis.Location = New System.Drawing.Point(151, 593)
         Me.Krarhseis.Name = "Krarhseis"
-        Me.Krarhseis.Size = New System.Drawing.Size(195, 28)
+        Me.Krarhseis.Size = New System.Drawing.Size(157, 28)
         Me.Krarhseis.TabIndex = 5
         Me.Krarhseis.Text = "Κρατήσεις"
         Me.Krarhseis.UseVisualStyleBackColor = True
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem4, Me.ΕξοδοςToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(140, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(185, 92)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(184, 22)
         Me.ToolStripMenuItem1.Text = "Μετακίνηση"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(139, 22)
-        Me.ToolStripMenuItem2.Text = "Ακυρο"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(184, 22)
+        Me.ToolStripMenuItem2.Text = "Ακύρωση Κράτησης"
         '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(537, 453)
+        Me.ListBox1.Location = New System.Drawing.Point(537, 605)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(304, 69)
         Me.ListBox1.TabIndex = 7
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(355, 460)
+        Me.Button4.Location = New System.Drawing.Point(353, 593)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(157, 23)
         Me.Button4.TabIndex = 8
         Me.Button4.Text = "ΔΙΑΓΡΑΦΗ ΚΡΑΤΗΣΕΩΝ"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(184, 22)
+        Me.ToolStripMenuItem4.Text = "...."
+        '
+        'ΕξοδοςToolStripMenuItem
+        '
+        Me.ΕξοδοςToolStripMenuItem.Name = "ΕξοδοςToolStripMenuItem"
+        Me.ΕξοδοςToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.ΕξοδοςToolStripMenuItem.Text = "Εξοδος"
+        '
         'test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1428, 780)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Krarhseis)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.DGV)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.DataGridView1)
         Me.Name = "test"
         Me.Text = "Form3"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
@@ -399,4 +414,6 @@ Partial Class test
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ΕξοδοςToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

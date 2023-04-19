@@ -6,7 +6,8 @@ Public Class test
     Dim f1_col As Integer
     Dim f2_row As Integer
     Dim f2_col As Integer
-
+    Dim f_CanMoveLeft As Integer '' αν προκειται να κοψω στα 2 την κράτηση να μην μπορει να παει αριστερότερα
+    ' γιατι την ιδια μερα θα κοιμαται σε 2 ξενοδοχεια
 
     Dim f_idpel As String
     Dim f_idHotRoomDays As String
@@ -139,7 +140,7 @@ Public Class test
         Dim PEL As New DataTable
         ' ΦΟΡΤΩΝΩ ΤΟΥΣ ΠΕΛΑΤΕΣ
         Dim MDAY As String, dcin As Date, DCOUT As Date
-        ExecuteSQLQuery("select convert(date,CHECKOUT) as CHECKOUTD,convert(date,CHECKIN) as CHECKIND,* from PEL WHERE NUM2=0 OR NUM2 IS NULL ", PEL)
+        ExecuteSQLQuery("select convert(date,CHECKOUT) as CHECKOUTD,convert(date,CHECKIN) as CHECKIND,* from PEL WHERE HOTELID=0 OR HOTELID IS NULL ", PEL)
         ListBox1.Items.Add("ΑΠΕΤΥΧΑΝ ΝΑ ΚΑΝΟΥΝ ΚΡΑΡΗΣΗ:")
         For K As Integer = 0 To PEL.Rows.Count - 1
             MDAY = Format(PEL.Rows(K)("CHECKIN"), "dd/MM/yyyy") ' βρηκα την ημερα checkin
@@ -181,7 +182,7 @@ Public Class test
 
                     ExecuteSQLQuery("select count(*) from HOTROOMDAYS WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString, HRDAYS)
                     If HRDAYS(0)(0) = hmeres Then  ' εχει διαθεσιμες ολες τις ημερες οποτε οκ
-                        ExecuteSQLQuery("UPDATE PEL SET CH2='" + HTR.Rows(0)("NAME") + "',CH1=" + HTR.Rows(0)("ROOMN") + ",NUM2=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + PEL(K)("ID").ToString)
+                        ExecuteSQLQuery("UPDATE PEL SET CH2='" + HTR.Rows(0)("NAME") + "',CH1=" + HTR.Rows(0)("ROOMN") + ",HOTELID=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + PEL(K)("ID").ToString)
                         ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + PEL(K)("ID").ToString + " WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
                         OK = 1
                         Exit For
@@ -221,8 +222,11 @@ Public Class test
         Dim R, C As Integer
         R = e.RowIndex
         C = e.ColumnIndex
-        If R < 0 Or C < 0 Then Exit Sub
+        If R < 1 Or C < 1 Then Exit Sub
 
+
+
+        '----------- 2o KLIK ----------------------------------------
         If F_REM_DAYS > 0 Then '  DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen Then  '-------------- 2o click -----------------------------------
 
 
@@ -230,6 +234,16 @@ Public Class test
             Dim d As String = DGV.Rows(R).Cells(C).Value()
             Dim s As String = ""
             f2_row = R : f2_col = C
+
+            If f_CanMoveLeft = 0 Then
+                If f2_col < f1_col Then
+                    MsgBox("δεν μπορεί να ειναι σε 2 δωμάτια την ιδια μέρα")
+                    Exit Sub
+                End If
+
+            End If
+
+
             Try
                 s = d.Split("_")(0)
             Catch ex As Exception
@@ -253,7 +267,7 @@ Public Class test
 
             Dim cellAbsolutePos As Point = DGV.PointToScreen(cellDisplayRect.Location)
             Dim X, Y As Long : X = cellAbsolutePos.X : Y = cellAbsolutePos.Y
-            ContextMenuStrip1.Show(DGV, New Point(IIf(X - 200 > 0, X - 200, 0), IIf(Y - 300 > 0, Y - 300, 0))) '
+            ContextMenuStrip1.Show(DGV, New Point(IIf(X - 100 > 0, X - 100, 0), IIf(Y - 200 > 0, Y - 200, 0))) '
             ' F_REM_DAYS = 0
             Dim n As Integer
             n = 0
@@ -282,6 +296,31 @@ Public Class test
             If F_REM_DAYS > 0 Then
                 DGV.Rows(R).Cells(C).Style.BackColor = Color.YellowGreen
             End If
+
+
+            'ΒΡΙΣΚΩ ΤΟ ΑΡΙΣΤΕΡΟ ΚΟΥΤΑΚΙ ΑΠΟ ΑΥΤΟ ΠΟΥ ΕΚΑΝΑ ΚΛΙΚ ΜΗΝ ΤΥΧΟΝ ΑΝΗΚΕΙ ΣΤΟΝ ΙΔΙΟ ΠΕΛΑΤΗ
+            d = DGV.Rows(R).Cells(C - 1).Value()
+            If C - 1 < 2 Then ' einai akrh
+                f_CanMoveLeft = 0
+            Else
+                s = d.Split("_")(1)
+                Dim aristID As String = Str(GETn_VALUE("SELECT IDPEL FROM HOTROOMDAYS WHERE ID=" + s))
+                ' αν προκειται να κοψω στα 2 την κράτηση να μην μπορει να παει αριστερότερα
+                ' γιατι την ιδια μερα θα κοιμαται σε 2 ξενοδοχεια
+                If Val(aristID) = Val(f_idpel) Then
+                    f_CanMoveLeft = 0
+                Else
+                    f_CanMoveLeft = 1
+
+                End If
+            End If
+
+
+
+
+
+
+
 
 
         End If
@@ -348,6 +387,8 @@ Public Class test
                 ExecuteSQLQuery("UPDATE  PEL SET CHECKOUT=DATEADD(DAY," + Str(f2_col - f1_col) + ",CHECKOUT) WHERE ID=" + f_idpel)
                 ExecuteSQLQuery("UPDATE  PEL SET CHECKIN=DATEADD(DAY," + Str(f2_col - f1_col) + ",CHECKIN) WHERE ID=" + f_idpel)
             End If
+            'ΕΝΗΜΕΡΩΝΩ ΤΟΝ ΠΕΛΑΤΗ ΜΕ ΤΟ ΝΕΟ ΞΕΝΟΔΟΧΕΙΟ
+            ExecuteSQLQuery("UPDATE  PEL SET CH2='" + Mid(DGV.Rows(f2_row).Cells(0).Value.ToString, 1, 30) + "' WHERE ID=" + f_idpel)
 
             ' ελευθερωνω το παλιο
             n = f1_col
@@ -440,23 +481,99 @@ Public Class test
 
     Private Sub test_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         paint_grid()
-        Dim Q As String = "SELECT EPO FROM PEL WHERE NUM2=0 OR NUM2 IS NULL"
+        Dim Q As String = "SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL WHERE HOTELID=0 OR HOTELID IS NULL"
 
-        Try
-            Dim sqlCon As New OleDbConnection(gConnect)
+        'Try
+        '    Dim sqlCon As New OleDbConnection(gConnect)
 
-            Dim sqlDA As New OleDbDataAdapter(Q, sqlCon)
+        '    Dim sqlDA As New OleDbDataAdapter(Q, sqlCon)
 
-            Dim sqlCB As New OleDbCommandBuilder(sqlDA)
-            sqlDT.Reset() ' refresh 
-            sqlDA.Fill(sqlDT)
+        '    Dim sqlCB As New OleDbCommandBuilder(sqlDA)
+        '    sqlDT.Reset() ' refresh 
+        '    sqlDA.Fill(sqlDT, "PEL")
 
-           
-            DataGridView1.ClearSelection()
-            DataGridView1.DataSource = sqlDT
-            DataGridView1.DataMember = "PEL"
-        Catch ex As Exception
 
-        End Try
+        'conn.Open()
+
+        'da = New SqlDataAdapter(SQLqry, conn)
+
+        ''create command builder
+        'Dim cb As SqlCommandBuilder = New SqlCommandBuilder(da)
+        'ds.Clear()
+        ''fill dataset
+        'da.Fill(ds, "PEL")
+        'GridView1.ClearSelection()
+        'GridView1.DataSource = ds
+        'GridView1.DataMember = "PEL"
+
+        ' cnString = gConSQL
+
+
+        Dim SQLqry
+        ' SQLqry = Label1.Text '"SELECT NAME,N1,ID FROM ERGATES " ' ORDER BY HME "
+        Dim conn As SqlConnection = New SqlConnection(gConSQL)
+        ' Try
+        ' Open connection
+        conn.Open()
+
+        Dim da As SqlDataAdapter = New SqlDataAdapter(Q, conn)
+
+        'create command builder
+        Dim cb As SqlCommandBuilder = New SqlCommandBuilder(da)
+        Dim ds As DataSet
+        ds = New DataSet ' ds.Clear()
+        'fill dataset
+        da.Fill(ds, "PEL")
+        DataGridView1.ClearSelection()
+        DataGridView1.DataSource = ds
+        DataGridView1.DataMember = "PEL"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        'DataGridView1.ClearSelection()
+        'DataGridView1.DataSource = sqlDT
+        'DataGridView1.Refresh()
+        ''DataGridView1.DataMember = "PEL"
+        ' Catch ex As Exception
+
+        ' End Try
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
+        ' ακυρωση κράτησης
+
+        Dim ans As Integer
+        ans = MsgBox("Να ακυρωθεί η κράτηση;", MsgBoxStyle.YesNoCancel)
+        If ans = MsgBoxResult.Yes Then
+            ExecuteSQLQuery("UPDATE  PEL SET CHECKOUT=null WHERE ID=" + f_idpel)
+            ExecuteSQLQuery("UPDATE  PEL SET CHECKIN=null WHERE ID=" + f_idpel)
+            ExecuteSQLQuery("UPDATE  PEL SET CH2=null WHERE ID=" + f_idpel) 'ΞΕΝΟΔΟΧΕΙΟ =''
+            ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=0 where IDPEL=" + f_idpel)
+            paint_grid()
+
+
+
+
+
+
+        End If
+
+
+
+
+
     End Sub
 End Class

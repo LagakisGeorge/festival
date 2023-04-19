@@ -1656,10 +1656,12 @@ Public Class ergates
             FrmAddSupplier.DIE.Text = GridView1.CurrentRow.Cells("DIE").Value.ToString
             FrmAddSupplier.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
             'FrmAddSupplier.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString  
-            FrmAddSupplier.DTCheckin.Value = GridView1.CurrentRow.Cells("CHECKIN").Value.ToString
-            FrmAddSupplier.DTCheckout.Value = GridView1.CurrentRow.Cells("CHECKOUT").Value.ToString
+
+
 
             Try
+                FrmAddSupplier.DTCheckin.Value = GridView1.CurrentRow.Cells("CHECKIN").Value.ToString
+                FrmAddSupplier.DTCheckout.Value = GridView1.CurrentRow.Cells("CHECKOUT").Value.ToString
 
 
                 FrmAddSupplier.DtAirAfixi.Value = GridView1.CurrentRow.Cells("AIRAFIXI").Value.ToString
