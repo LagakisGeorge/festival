@@ -267,7 +267,7 @@ Public Class test
 
             Dim cellAbsolutePos As Point = DGV.PointToScreen(cellDisplayRect.Location)
             Dim X, Y As Long : X = cellAbsolutePos.X : Y = cellAbsolutePos.Y
-            ContextMenuStrip1.Show(DGV, New Point(IIf(X - 100 > 0, X - 100, 0), IIf(Y - 200 > 0, Y - 200, 0))) '
+            ContextMenuStrip1.Show(DGV, New Point(IIf(X - 100 > 0, X - 100, 0), IIf(Y - 20 > 0, Y - 20, 0))) '
             ' F_REM_DAYS = 0
             Dim n As Integer
             n = 0
@@ -275,6 +275,9 @@ Public Class test
             Dim d As String = DGV.Rows(R).Cells(C).Value()
             Dim s As String = ""
             f1_row = R : f1_col = C
+            If Len(Trim(d.Split("_")(0))) = 0 Then
+                Exit Sub
+            End If
             Try
                 s = d.Split("_")(1)
             Catch ex As Exception
@@ -282,7 +285,7 @@ Public Class test
             End Try
             If Len(s) > 0 Then
                 f_idHotRoomDays = s  ' βρίσκω το id ΤΟΥ ΑΡΧΙΚΟΥ ΚΛΙΚ
-                F_REM_DAYS = Pelfind_right_days(s) 'ΑΠΟΜΕΝΟΥΣΕΣ ΔΙΑΝΥΚΤΕΡΕΥΣΕΙΣ
+                F_REM_DAYS = GRIDfind_right_days(s, f1_row, f1_col) ' Pelfind_right_days(s) 'ΑΠΟΜΕΝΟΥΣΕΣ ΔΙΑΝΥΚΤΕΡΕΥΣΕΙΣ
 
                 f_idpel = Str(GETn_VALUE("SELECT IDPEL FROM HOTROOMDAYS WHERE ID=" + f_idHotRoomDays))
                 If Val(f_idpel) = 0 Then
@@ -328,6 +331,27 @@ Public Class test
 
 
     End Sub
+    Private Function GRIDfind_right_days(ByVal IDPEL, ByVal f1_row, ByVal f1_col)
+        Dim d As String
+        For K As Integer = f1_col To DGV.Columns.Count - 1
+            d = DGV.Rows(f1_row).Cells(K).Value()
+          
+            If DGV.Rows(f1_row).Cells(K).Value() = Nothing Then
+                GRIDfind_right_days = K - f1_col
+                Exit For
+            Else
+
+                If GETn_VALUE("SELECT IDPEL FROM HOTROOMDAYS WHERE ID=" + IDPEL) = GETn_VALUE("SELECT IDPEL FROM HOTROOMDAYS WHERE ID=" + d.Split("_")(1)) Then
+                    'OK
+                Else
+                    GRIDfind_right_days = K - f1_col
+                    Exit For
+                End If
+            End If
+
+        Next
+
+    End Function
 
     Private Sub DGV_CellMouseUp(ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) Handles DGV.CellMouseUp
         ''-----------------  MENU ------------------------------------------------------
@@ -347,6 +371,16 @@ Public Class test
     Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=0")
         ExecuteSQLQuery("UPDATE PEL SET CH2='',CH1='',NUM2=0 ")
+
+        ExecuteSQLQuery("update PEL SET [CHECKIN]='05/01/2023',[CHECKOUT]='05/13/2023',[HOTELID]=0;")
+
+        ExecuteSQLQuery("update HOTROOMS SET [APO]='05/01/2023',[EOS]='05/13/2023'")
+
+
+
+
+
+
     End Sub
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
         '---------------------------------------------move booking------------------------------------------------------------------
@@ -466,7 +500,7 @@ Public Class test
         Dim DT77 As New DataTable
         ExecuteSQLQuery(QUERY, DT77)
         If DT77.Rows.Count > 0 Then
-            GETn_VALUE = DT77.Rows(0)(0)
+            GETn_VALUE = IIf(IsDBNull(DT77.Rows(0)(0)), 0, DT77.Rows(0)(0))
         Else
             GETn_VALUE = -1
         End If
@@ -562,6 +596,7 @@ Public Class test
             ExecuteSQLQuery("UPDATE  PEL SET CHECKIN=null WHERE ID=" + f_idpel)
             ExecuteSQLQuery("UPDATE  PEL SET CH2=null WHERE ID=" + f_idpel) 'ΞΕΝΟΔΟΧΕΙΟ =''
             ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=0 where IDPEL=" + f_idpel)
+            F_REM_DAYS = 0
             paint_grid()
 
 
@@ -575,5 +610,14 @@ Public Class test
 
 
 
+    End Sub
+
+    Private Sub ContextMenuStrip1_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+
+    End Sub
+
+    Private Sub ΕξοδοςToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ΕξοδοςToolStripMenuItem.Click
+        DGV.Rows(f1_row).Cells(f1_col).Style.BackColor = Color.Green
+        F_REM_DAYS = 0
     End Sub
 End Class

@@ -66,10 +66,10 @@ Partial Class test
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem
-        Me.ListBox1 = New System.Windows.Forms.ListBox
-        Me.Button4 = New System.Windows.Forms.Button
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem
         Me.ΕξοδοςToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ListBox1 = New System.Windows.Forms.ListBox
+        Me.Button4 = New System.Windows.Forms.Button
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -304,7 +304,7 @@ Partial Class test
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem4, Me.ΕξοδοςToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(185, 92)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(185, 114)
         '
         'ToolStripMenuItem1
         '
@@ -317,6 +317,18 @@ Partial Class test
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(184, 22)
         Me.ToolStripMenuItem2.Text = "Ακύρωση Κράτησης"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(184, 22)
+        Me.ToolStripMenuItem4.Text = "...."
+        '
+        'ΕξοδοςToolStripMenuItem
+        '
+        Me.ΕξοδοςToolStripMenuItem.Name = "ΕξοδοςToolStripMenuItem"
+        Me.ΕξοδοςToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.ΕξοδοςToolStripMenuItem.Text = "Εξοδος"
         '
         'ListBox1
         '
@@ -334,18 +346,6 @@ Partial Class test
         Me.Button4.TabIndex = 8
         Me.Button4.Text = "ΔΙΑΓΡΑΦΗ ΚΡΑΤΗΣΕΩΝ"
         Me.Button4.UseVisualStyleBackColor = True
-        '
-        'ToolStripMenuItem4
-        '
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(184, 22)
-        Me.ToolStripMenuItem4.Text = "...."
-        '
-        'ΕξοδοςToolStripMenuItem
-        '
-        Me.ΕξοδοςToolStripMenuItem.Name = "ΕξοδοςToolStripMenuItem"
-        Me.ΕξοδοςToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.ΕξοδοςToolStripMenuItem.Text = "Εξοδος"
         '
         'test
         '
