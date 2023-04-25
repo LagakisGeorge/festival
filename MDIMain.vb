@@ -2395,67 +2395,24 @@ Public Class MDIMain
     End Sub
 
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        'Dim per = "Λίστα Τιμολογίων Πώλησης με Παρτίδες"
-        'Dim kod = "00"
-
-        'Dim mergates As New ergates()
-        'For k = 0 To 20
-        '    mergates.widths(7) = 100
-        'Next
-        'Dim Mn1 As String
-
-        'mergates.EditDomatia.Visible = True
-
-        'Mn1 = kod    '  Split(KATHG.Text, ";")(0)
-        'mergates.Text = per '"Αρχείο Υλικών"
-        ''ak mergates.Label1.Text = "select TIMSPOL.KOD,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],TIMSPOL.ID  FROM TIMSPOL  ORDER BY HME "
-
-        'mergates.Label1.Text = "select top 400 TIMSPOL.KOD,ONO,HME,PARTIDA AS [ΠΑΡΤΙΔΑ],POSO AS [ΤΕΜΑΧ],ATIM as [ΤΙΜΟΛ.],TIMSPOL.ID  FROM TIMSPOL INNER JOIN YLIKA ON TIMSPOL.KOD=YLIKA.KOD ORDER BY HME desc "
+        Dim per = "ΠΑΡΑΜΕΤΡΟΙ"
+        Dim kod = "00"
+        Dim frm As New PARAMETROI   ' form2 
+        Dim PAGE As New TabPage
+        Dim N As Integer = TabControl1.TabPages.Count
+        PAGE.Text = per ' "Αναλώσιμα  ."
 
 
-        '' ergates.MdiParent = Me
-        ''mergates.WindowState = FormWindowState.Maximized
-        'mergates.STHLHONOMATOS_ID = 0
-        'mergates.STHLHTOY_ID = 6
-        'mergates.widths(1) = 100
-        'mergates.QUERY_AFTER = "" ' update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
-        'For KK As Integer = 0 To 6
-        '    mergates.widths(KK) = 100
-        'Next
-        'mergates.Label2.Text = per '"υλικα...."   ' KATHG.Text
-        'mergates.widths(1) = 200
-        'gMenu = 22
+        frm.TopLevel = False
+        frm.Visible = True
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Dock = DockStyle.Fill
 
 
 
-
-
-        ''Dim frm As New report
-        'mergates.TopLevel = False
-        'mergates.Visible = True
-        'mergates.FormBorderStyle = FormBorderStyle.None
-        'mergates.Dock = DockStyle.Fill
-        'Dim PAGE As New TabPage
-        'Dim N As Integer = TabControl1.TabPages.Count
-        'PAGE.Text = per  '"ΥΛΙΚΑ.....   ."
-        'TabControl1.TabPages.Add(PAGE)
-
-        'mergates.Width = TabControl1.Width
-        'mergates.Height = TabControl1.Height
-        'mergates.deleteTIMPOL.Visible = True
-        'mergates.Read_Only = True
-        'mergates.analtimpol.Visible = True
-        'mergates.ComboBox1.Visible = True
-        'mergates.ComboBox1.Items.Clear()
-        'For Each printer As String In Printing.PrinterSettings.InstalledPrinters
-        '    mergates.ComboBox1.Items.Add(printer)
-        'Next printer
-        'mergates.ComboBox1.Text = DefaultPrinterName()
-
-
-        'TabControl1.TabPages(N).Controls.Add(mergates)
-        'TabControl1.SelectTab(N)
-
+        TabControl1.TabPages.Add(PAGE)
+        TabControl1.TabPages(N).Controls.Add(frm)
+        TabControl1.SelectTab(N)
     End Sub
 
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles hotels.Click

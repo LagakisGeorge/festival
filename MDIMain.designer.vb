@@ -535,6 +535,9 @@ Partial Class MDIMain
         '
         'Button7
         '
+        Me.Button7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button7.BackColor = System.Drawing.Color.White
         Me.Button7.Enabled = False
         Me.Button7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -545,8 +548,7 @@ Partial Class MDIMain
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(166, 27)
         Me.Button7.TabIndex = 39
-        Me.Button7.Text = "       "
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button7.Text = "Παράμετροι"
         Me.Button7.UseVisualStyleBackColor = False
         '
         'Button5

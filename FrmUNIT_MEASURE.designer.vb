@@ -225,9 +225,9 @@ Partial Class ergates
         '
         'cmdCancel
         '
-        Me.cmdCancel.Location = New System.Drawing.Point(863, 30)
+        Me.cmdCancel.Location = New System.Drawing.Point(822, 24)
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(51, 33)
+        Me.cmdCancel.Size = New System.Drawing.Size(51, 36)
         Me.cmdCancel.TabIndex = 16
         Me.cmdCancel.Text = "Εξοδος"
         Me.cmdCancel.UseVisualStyleBackColor = True
@@ -236,11 +236,12 @@ Partial Class ergates
         '
         Me.cmdRefresh.ImageKey = "reload2.ico"
         Me.cmdRefresh.ImageList = Me.ImageList3
-        Me.cmdRefresh.Location = New System.Drawing.Point(822, 30)
+        Me.cmdRefresh.Location = New System.Drawing.Point(879, 37)
         Me.cmdRefresh.Name = "cmdRefresh"
-        Me.cmdRefresh.Size = New System.Drawing.Size(35, 33)
+        Me.cmdRefresh.Size = New System.Drawing.Size(35, 23)
         Me.cmdRefresh.TabIndex = 17
         Me.cmdRefresh.UseVisualStyleBackColor = True
+        Me.cmdRefresh.Visible = False
         '
         'cmdAdd
         '
