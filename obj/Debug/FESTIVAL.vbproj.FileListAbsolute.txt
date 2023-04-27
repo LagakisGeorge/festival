@@ -29,3 +29,6 @@ C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.Explorer1.resources
 C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.Fdomatia.resources
 C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.test.resources
 C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.PARAMETROI.resources
+C:\adoprog2\festival\TECHNOPLASTIKI\bin\Debug\Interop.SubclassingSink.dll
+C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\Interop.SubclassingSink.dll
+C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.FrmstatAddSupplier.resources

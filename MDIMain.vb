@@ -2277,12 +2277,18 @@ Public Class MDIMain
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        'SynoloOres.f_othonia = 3
-        ' SynoloOres.Show()
-        ' PROIONTA = 4
+        Dim frm As New FrmstatAddSupplier
 
-        ' ylika2("4", "Προϊόντα     ")
-
+        frm.TopLevel = False
+        frm.Visible = True
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Dock = DockStyle.Fill
+        Dim PAGE As New TabPage
+        Dim N As Integer = TabControl1.TabPages.Count
+        PAGE.Text = "Μαζικά emails"
+        TabControl1.TabPages.Add(PAGE)
+        TabControl1.TabPages(N).Controls.Add(frm)
+        TabControl1.SelectTab(N)
 
 
 
@@ -2290,6 +2296,8 @@ Public Class MDIMain
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+
+        
         'ylika2("2", "Εμπορεύματα     ")
 
         ' SynoloOres.f_othonia = 4
@@ -2745,7 +2753,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,AFM,DIE  ,AIRAFIXI,AIRANAX,CH1,CH2,ID FROM PEL    ORDER BY EPO "
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,AFM,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID FROM PEL    ORDER BY EPO "
 
 
 
@@ -2760,7 +2768,7 @@ Public Class MDIMain
         '' ergates.MdiParent = Me
         ' frm.WindowState = FormWindowState.Maximized
         frm.STHLHONOMATOS_ID = 1
-        frm.STHLHTOY_ID = 10
+        frm.STHLHTOY_ID = 12
         frm.widths(1) = 100
         frm.QUERY_AFTER = ""  'update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
         For KK As Integer = 0 To 6

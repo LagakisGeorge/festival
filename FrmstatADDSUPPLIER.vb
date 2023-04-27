@@ -1,5 +1,5 @@
 ﻿Imports System.Net.Mail
-Public Class FrmAddSupplier
+Public Class FrmstatAddSupplier
     Dim stockID As Integer
     Dim hOldID As Integer
     Dim M_ID As Long = 0
@@ -104,7 +104,7 @@ Public Class FrmAddSupplier
 
     End Sub
 
-  
+
     Private Sub ListBox1_DrawItem(ByVal sender As Object, ByVal e As DrawItemEventArgs)
         ''This code draws a checkbox using the DrawCheckBox method of the ControlPaint class and uses the DrawString method of the Graphics object to draw the text of the item. The if statement inside the DrawCheckBox method sets the state of the checkbox to either ButtonState.Checked or ButtonState.Normal, depending on whether the item is selected.
 
@@ -126,7 +126,7 @@ Public Class FrmAddSupplier
         'ControlPaint.DrawCheckBox(e.Graphics, checkboxRect, n) 'If(e.Index Mod 2 = 0, n, ButtonState.Normal)
         'e.Graphics.DrawString(ListBox1.Items(e.Index), Me.Font, New SolidBrush(checkboxColor), e.Bounds.X + checkboxRect.Width, e.Bounds.Y)
     End Sub
-   
+
 
     Private Sub ListBox1_Click(ByVal sender As Object, ByVal e As EventArgs)
 

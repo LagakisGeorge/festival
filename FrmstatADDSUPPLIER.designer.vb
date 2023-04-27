@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmAddSupplier
+Partial Class FrmstatAddSupplier
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,9 +23,12 @@ Partial Class FrmAddSupplier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddSupplier))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmstatAddSupplier))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.cmdcancel = New System.Windows.Forms.Button
+        Me.cmdsave = New System.Windows.Forms.Button
+        Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox
         Me.txtTo = New System.Windows.Forms.TextBox
         Me.Label12 = New System.Windows.Forms.Label
@@ -51,9 +54,7 @@ Partial Class FrmAddSupplier
         Me.Label3 = New System.Windows.Forms.Label
         Me.KOD = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
-        Me.cmdsave = New System.Windows.Forms.Button
-        Me.cmdcancel = New System.Windows.Forms.Button
-        Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox
+        Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -66,6 +67,7 @@ Partial Class FrmAddSupplier
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.cmdcancel)
         Me.GroupBox1.Controls.Add(Me.cmdsave)
         Me.GroupBox1.Controls.Add(Me.CheckedListBox2)
@@ -96,9 +98,38 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1090, 498)
+        Me.GroupBox1.Size = New System.Drawing.Size(1068, 722)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'cmdcancel
+        '
+        Me.cmdcancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdcancel.Location = New System.Drawing.Point(944, 441)
+        Me.cmdcancel.Name = "cmdcancel"
+        Me.cmdcancel.Size = New System.Drawing.Size(103, 26)
+        Me.cmdcancel.TabIndex = 9
+        Me.cmdcancel.Text = "Ακυρο"
+        Me.cmdcancel.UseVisualStyleBackColor = True
+        '
+        'cmdsave
+        '
+        Me.cmdsave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdsave.Location = New System.Drawing.Point(634, 439)
+        Me.cmdsave.Name = "cmdsave"
+        Me.cmdsave.Size = New System.Drawing.Size(100, 26)
+        Me.cmdsave.TabIndex = 8
+        Me.cmdsave.Text = "Υπολογισμός"
+        Me.cmdsave.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox2
+        '
+        Me.CheckedListBox2.FormattingEnabled = True
+        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry"})
+        Me.CheckedListBox2.Location = New System.Drawing.Point(634, 253)
+        Me.CheckedListBox2.Name = "CheckedListBox2"
+        Me.CheckedListBox2.Size = New System.Drawing.Size(413, 169)
+        Me.CheckedListBox2.TabIndex = 124
         '
         'CheckedListBox1
         '
@@ -119,7 +150,7 @@ Partial Class FrmAddSupplier
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(145, 296)
+        Me.Label12.Location = New System.Drawing.Point(9, 296)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(79, 13)
         Me.Label12.TabIndex = 120
@@ -136,17 +167,17 @@ Partial Class FrmAddSupplier
         '
         'txtMessage
         '
-        Me.txtMessage.Location = New System.Drawing.Point(236, 296)
+        Me.txtMessage.Location = New System.Drawing.Point(94, 296)
         Me.txtMessage.Multiline = True
         Me.txtMessage.Name = "txtMessage"
-        Me.txtMessage.Size = New System.Drawing.Size(175, 143)
+        Me.txtMessage.Size = New System.Drawing.Size(317, 143)
         Me.txtMessage.TabIndex = 118
         '
         'send
         '
-        Me.send.Location = New System.Drawing.Point(343, 441)
+        Me.send.Location = New System.Drawing.Point(289, 441)
         Me.send.Name = "send"
-        Me.send.Size = New System.Drawing.Size(68, 26)
+        Me.send.Size = New System.Drawing.Size(122, 26)
         Me.send.TabIndex = 117
         Me.send.Text = "Αποστολή"
         Me.send.UseVisualStyleBackColor = True
@@ -331,46 +362,26 @@ Partial Class FrmAddSupplier
         Me.Label2.TabIndex = 15
         Me.Label2.Text = "Email"
         '
-        'cmdsave
+        'Button1
         '
-        Me.cmdsave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdsave.Location = New System.Drawing.Point(835, 441)
-        Me.cmdsave.Name = "cmdsave"
-        Me.cmdsave.Size = New System.Drawing.Size(100, 26)
-        Me.cmdsave.TabIndex = 8
-        Me.cmdsave.Text = "Αποθήκευση"
-        Me.cmdsave.UseVisualStyleBackColor = True
+        Me.Button1.Location = New System.Drawing.Point(94, 439)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(122, 24)
+        Me.Button1.TabIndex = 125
+        Me.Button1.Text = "Επιλογή Συνημμένου"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'cmdcancel
-        '
-        Me.cmdcancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdcancel.Location = New System.Drawing.Point(944, 441)
-        Me.cmdcancel.Name = "cmdcancel"
-        Me.cmdcancel.Size = New System.Drawing.Size(103, 26)
-        Me.cmdcancel.TabIndex = 9
-        Me.cmdcancel.Text = "Ακυρο"
-        Me.cmdcancel.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox2
-        '
-        Me.CheckedListBox2.FormattingEnabled = True
-        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry"})
-        Me.CheckedListBox2.Location = New System.Drawing.Point(634, 253)
-        Me.CheckedListBox2.Name = "CheckedListBox2"
-        Me.CheckedListBox2.Size = New System.Drawing.Size(413, 169)
-        Me.CheckedListBox2.TabIndex = 124
-        '
-        'FrmAddSupplier
+        'FrmstatAddSupplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(1161, 602)
+        Me.ClientSize = New System.Drawing.Size(1424, 781)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FrmAddSupplier"
+        Me.Name = "FrmstatAddSupplier"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Προσκεκλημένος"
         Me.GroupBox1.ResumeLayout(False)
@@ -408,4 +419,5 @@ Partial Class FrmAddSupplier
     Friend WithEvents txtTo As System.Windows.Forms.TextBox
     Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
     Friend WithEvents CheckedListBox2 As System.Windows.Forms.CheckedListBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

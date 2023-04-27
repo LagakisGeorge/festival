@@ -82,6 +82,9 @@ Module ModCon
     Public i_Print As Integer
     Public gMHNAS As String
 
+    Public gEnarxi As Date
+    Public gLixi As Date
+
     Public Function toTeleia(ByVal c As String) As String
         toTeleia = Replace(c, ",", ".")
     End Function

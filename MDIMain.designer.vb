@@ -72,28 +72,28 @@ Partial Class MDIMain
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.PanelSales = New System.Windows.Forms.Panel
         Me.Button9 = New System.Windows.Forms.Button
-        Me.hotels = New System.Windows.Forms.Button
-        Me.ImageList4 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button7 = New System.Windows.Forms.Button
+        Me.ImageList4 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button5 = New System.Windows.Forms.Button
         Me.ImageList5 = New System.Windows.Forms.ImageList(Me.components)
+        Me.Button6 = New System.Windows.Forms.Button
+        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button4 = New System.Windows.Forms.Button
+        Me.excelanal = New System.Windows.Forms.Button
         Me.Button3 = New System.Windows.Forms.Button
         Me.ImageList6 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button2 = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
         Me.cmdSTATISTICS = New System.Windows.Forms.LinkLabel
         Me.cmdSalesReceipt = New System.Windows.Forms.Button
-        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
-        Me.cmdExcel = New System.Windows.Forms.Button
         Me.cmdCustomerOrder = New System.Windows.Forms.Button
         Me.PanelMaintain = New System.Windows.Forms.Panel
         Me.ListaErgasion = New System.Windows.Forms.Button
+        Me.hotels = New System.Windows.Forms.Button
         Me.cmdBusInfo = New System.Windows.Forms.Button
-        Me.Button6 = New System.Windows.Forms.Button
-        Me.excelanal = New System.Windows.Forms.Button
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.LinkMaintain = New System.Windows.Forms.LinkLabel
+        Me.cmdExcel = New System.Windows.Forms.Button
+        Me.Button1 = New System.Windows.Forms.Button
         Me.PanelPurchasing = New System.Windows.Forms.Panel
         Me.cmdPhysical = New System.Windows.Forms.Button
         Me.cmdDefective = New System.Windows.Forms.Button
@@ -477,16 +477,15 @@ Partial Class MDIMain
         '
         Me.PanelSales.BackColor = System.Drawing.Color.WhiteSmoke
         Me.PanelSales.Controls.Add(Me.Button9)
-        Me.PanelSales.Controls.Add(Me.hotels)
         Me.PanelSales.Controls.Add(Me.Button7)
         Me.PanelSales.Controls.Add(Me.Button5)
+        Me.PanelSales.Controls.Add(Me.Button6)
         Me.PanelSales.Controls.Add(Me.Button4)
+        Me.PanelSales.Controls.Add(Me.excelanal)
         Me.PanelSales.Controls.Add(Me.Button3)
         Me.PanelSales.Controls.Add(Me.Button2)
-        Me.PanelSales.Controls.Add(Me.Button1)
         Me.PanelSales.Controls.Add(Me.cmdSTATISTICS)
         Me.PanelSales.Controls.Add(Me.cmdSalesReceipt)
-        Me.PanelSales.Controls.Add(Me.cmdExcel)
         Me.PanelSales.Controls.Add(Me.cmdCustomerOrder)
         Me.PanelSales.Location = New System.Drawing.Point(1, 171)
         Me.PanelSales.Name = "PanelSales"
@@ -496,28 +495,30 @@ Partial Class MDIMain
         'Button9
         '
         Me.Button9.Enabled = False
-        Me.Button9.Location = New System.Drawing.Point(2, 349)
+        Me.Button9.Location = New System.Drawing.Point(3, 58)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(163, 21)
         Me.Button9.TabIndex = 41
         Me.Button9.Text = "ΠΕΛΑΤΕΣ"
         Me.Button9.UseVisualStyleBackColor = True
         '
-        'hotels
+        'Button7
         '
-        Me.hotels.BackColor = System.Drawing.Color.White
-        Me.hotels.Enabled = False
-        Me.hotels.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.hotels.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.hotels.ImageKey = "print_64.png"
-        Me.hotels.ImageList = Me.ImageList4
-        Me.hotels.Location = New System.Drawing.Point(4, 293)
-        Me.hotels.Name = "hotels"
-        Me.hotels.Size = New System.Drawing.Size(162, 27)
-        Me.hotels.TabIndex = 40
-        Me.hotels.Text = "Λίστα Ξενοδοχείων"
-        Me.hotels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.hotels.UseVisualStyleBackColor = False
+        Me.Button7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button7.BackColor = System.Drawing.Color.White
+        Me.Button7.Enabled = False
+        Me.Button7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button7.ImageKey = "print_64.png"
+        Me.Button7.ImageList = Me.ImageList4
+        Me.Button7.Location = New System.Drawing.Point(2, 7)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(166, 27)
+        Me.Button7.TabIndex = 39
+        Me.Button7.Text = "Παράμετροι"
+        Me.Button7.UseVisualStyleBackColor = False
         '
         'ImageList4
         '
@@ -532,24 +533,6 @@ Partial Class MDIMain
         Me.ImageList4.Images.SetKeyName(6, "lock_48.png")
         Me.ImageList4.Images.SetKeyName(7, "home.ico")
         Me.ImageList4.Images.SetKeyName(8, "home_64.png")
-        '
-        'Button7
-        '
-        Me.Button7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button7.BackColor = System.Drawing.Color.White
-        Me.Button7.Enabled = False
-        Me.Button7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.ImageKey = "print_64.png"
-        Me.Button7.ImageList = Me.ImageList4
-        Me.Button7.Location = New System.Drawing.Point(2, 208)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(166, 27)
-        Me.Button7.TabIndex = 39
-        Me.Button7.Text = "Παράμετροι"
-        Me.Button7.UseVisualStyleBackColor = False
         '
         'Button5
         '
@@ -574,6 +557,48 @@ Partial Class MDIMain
         Me.ImageList5.Images.SetKeyName(2, "document_pencil_32.png")
         Me.ImageList5.Images.SetKeyName(3, "business_contact.png")
         '
+        'Button6
+        '
+        Me.Button6.BackColor = System.Drawing.Color.White
+        Me.Button6.Enabled = False
+        Me.Button6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.ImageKey = "billing.png"
+        Me.Button6.ImageList = Me.ImageList2
+        Me.Button6.Location = New System.Drawing.Point(1, 241)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(166, 27)
+        Me.Button6.TabIndex = 38
+        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.UseVisualStyleBackColor = False
+        '
+        'ImageList2
+        '
+        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList2.Images.SetKeyName(0, "cubes.ico")
+        Me.ImageList2.Images.SetKeyName(1, "shared.ico")
+        Me.ImageList2.Images.SetKeyName(2, "conference.ico")
+        Me.ImageList2.Images.SetKeyName(3, "people.ico")
+        Me.ImageList2.Images.SetKeyName(4, "download.ico")
+        Me.ImageList2.Images.SetKeyName(5, "cal.ico")
+        Me.ImageList2.Images.SetKeyName(6, "statics-2.ico")
+        Me.ImageList2.Images.SetKeyName(7, "chart.ico")
+        Me.ImageList2.Images.SetKeyName(8, "connect.ico")
+        Me.ImageList2.Images.SetKeyName(9, "payment.ico")
+        Me.ImageList2.Images.SetKeyName(10, "shopping-basket.ico")
+        Me.ImageList2.Images.SetKeyName(11, "stats.ico")
+        Me.ImageList2.Images.SetKeyName(12, "get_info.ico")
+        Me.ImageList2.Images.SetKeyName(13, "info_32.png")
+        Me.ImageList2.Images.SetKeyName(14, "pie_chart_48.png")
+        Me.ImageList2.Images.SetKeyName(15, "paste.ico")
+        Me.ImageList2.Images.SetKeyName(16, "user group.ico")
+        Me.ImageList2.Images.SetKeyName(17, "archives.png")
+        Me.ImageList2.Images.SetKeyName(18, "diagram_32.png")
+        Me.ImageList2.Images.SetKeyName(19, "billing.png")
+        Me.ImageList2.Images.SetKeyName(20, "box_32.png")
+        Me.ImageList2.Images.SetKeyName(21, "money_32.png")
+        '
         'Button4
         '
         Me.Button4.Enabled = False
@@ -583,6 +608,22 @@ Partial Class MDIMain
         Me.Button4.TabIndex = 36
         Me.Button4.Text = "Database Explorer"
         Me.Button4.UseVisualStyleBackColor = True
+        '
+        'excelanal
+        '
+        Me.excelanal.BackColor = System.Drawing.Color.White
+        Me.excelanal.Enabled = False
+        Me.excelanal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.excelanal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.excelanal.ImageKey = "billing.png"
+        Me.excelanal.ImageList = Me.ImageList2
+        Me.excelanal.Location = New System.Drawing.Point(1, 281)
+        Me.excelanal.Name = "excelanal"
+        Me.excelanal.Size = New System.Drawing.Size(166, 27)
+        Me.excelanal.TabIndex = 30
+        Me.excelanal.Text = "            "
+        Me.excelanal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.excelanal.UseVisualStyleBackColor = False
         '
         'Button3
         '
@@ -616,21 +657,8 @@ Partial Class MDIMain
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(166, 27)
         Me.Button2.TabIndex = 34
+        Me.Button2.Text = "Μαζικά email σε πρόσωπα"
         Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Enabled = False
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.ImageKey = "buy_32.png"
-        Me.Button1.ImageList = Me.ImageList6
-        Me.Button1.Location = New System.Drawing.Point(0, 62)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(166, 27)
-        Me.Button1.TabIndex = 33
-        Me.Button1.UseVisualStyleBackColor = False
         '
         'cmdSTATISTICS
         '
@@ -659,48 +687,6 @@ Partial Class MDIMain
         Me.cmdSalesReceipt.Text = "Μηδενισμός Βάσης       .."
         Me.cmdSalesReceipt.UseVisualStyleBackColor = False
         '
-        'ImageList2
-        '
-        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "cubes.ico")
-        Me.ImageList2.Images.SetKeyName(1, "shared.ico")
-        Me.ImageList2.Images.SetKeyName(2, "conference.ico")
-        Me.ImageList2.Images.SetKeyName(3, "people.ico")
-        Me.ImageList2.Images.SetKeyName(4, "download.ico")
-        Me.ImageList2.Images.SetKeyName(5, "cal.ico")
-        Me.ImageList2.Images.SetKeyName(6, "statics-2.ico")
-        Me.ImageList2.Images.SetKeyName(7, "chart.ico")
-        Me.ImageList2.Images.SetKeyName(8, "connect.ico")
-        Me.ImageList2.Images.SetKeyName(9, "payment.ico")
-        Me.ImageList2.Images.SetKeyName(10, "shopping-basket.ico")
-        Me.ImageList2.Images.SetKeyName(11, "stats.ico")
-        Me.ImageList2.Images.SetKeyName(12, "get_info.ico")
-        Me.ImageList2.Images.SetKeyName(13, "info_32.png")
-        Me.ImageList2.Images.SetKeyName(14, "pie_chart_48.png")
-        Me.ImageList2.Images.SetKeyName(15, "paste.ico")
-        Me.ImageList2.Images.SetKeyName(16, "user group.ico")
-        Me.ImageList2.Images.SetKeyName(17, "archives.png")
-        Me.ImageList2.Images.SetKeyName(18, "diagram_32.png")
-        Me.ImageList2.Images.SetKeyName(19, "billing.png")
-        Me.ImageList2.Images.SetKeyName(20, "box_32.png")
-        Me.ImageList2.Images.SetKeyName(21, "money_32.png")
-        '
-        'cmdExcel
-        '
-        Me.cmdExcel.BackColor = System.Drawing.Color.White
-        Me.cmdExcel.Enabled = False
-        Me.cmdExcel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdExcel.ImageKey = "user group.ico"
-        Me.cmdExcel.ImageList = Me.ImageList2
-        Me.cmdExcel.Location = New System.Drawing.Point(2, 241)
-        Me.cmdExcel.Name = "cmdExcel"
-        Me.cmdExcel.Size = New System.Drawing.Size(166, 34)
-        Me.cmdExcel.TabIndex = 3
-        Me.cmdExcel.Text = "test"
-        Me.cmdExcel.UseVisualStyleBackColor = False
-        '
         'cmdCustomerOrder
         '
         Me.cmdCustomerOrder.BackColor = System.Drawing.Color.White
@@ -709,7 +695,7 @@ Partial Class MDIMain
         Me.cmdCustomerOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdCustomerOrder.ImageKey = "buy_32.png"
         Me.cmdCustomerOrder.ImageList = Me.ImageList6
-        Me.cmdCustomerOrder.Location = New System.Drawing.Point(1, 22)
+        Me.cmdCustomerOrder.Location = New System.Drawing.Point(1, 208)
         Me.cmdCustomerOrder.Name = "cmdCustomerOrder"
         Me.cmdCustomerOrder.Size = New System.Drawing.Size(166, 27)
         Me.cmdCustomerOrder.TabIndex = 29
@@ -719,10 +705,11 @@ Partial Class MDIMain
         '
         Me.PanelMaintain.BackColor = System.Drawing.Color.WhiteSmoke
         Me.PanelMaintain.Controls.Add(Me.ListaErgasion)
+        Me.PanelMaintain.Controls.Add(Me.hotels)
         Me.PanelMaintain.Controls.Add(Me.cmdBusInfo)
-        Me.PanelMaintain.Controls.Add(Me.Button6)
-        Me.PanelMaintain.Controls.Add(Me.excelanal)
         Me.PanelMaintain.Controls.Add(Me.Panel2)
+        Me.PanelMaintain.Controls.Add(Me.cmdExcel)
+        Me.PanelMaintain.Controls.Add(Me.Button1)
         Me.PanelMaintain.Location = New System.Drawing.Point(3, 13)
         Me.PanelMaintain.Name = "PanelMaintain"
         Me.PanelMaintain.Size = New System.Drawing.Size(171, 170)
@@ -736,12 +723,28 @@ Partial Class MDIMain
         Me.ListaErgasion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ListaErgasion.ImageKey = "document_pencil_32.png"
         Me.ListaErgasion.ImageList = Me.ImageList5
-        Me.ListaErgasion.Location = New System.Drawing.Point(4, 56)
+        Me.ListaErgasion.Location = New System.Drawing.Point(2, 26)
         Me.ListaErgasion.Name = "ListaErgasion"
         Me.ListaErgasion.Size = New System.Drawing.Size(166, 27)
         Me.ListaErgasion.TabIndex = 51
         Me.ListaErgasion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ListaErgasion.UseVisualStyleBackColor = False
+        '
+        'hotels
+        '
+        Me.hotels.BackColor = System.Drawing.Color.White
+        Me.hotels.Enabled = False
+        Me.hotels.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.hotels.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.hotels.ImageKey = "print_64.png"
+        Me.hotels.ImageList = Me.ImageList4
+        Me.hotels.Location = New System.Drawing.Point(4, 59)
+        Me.hotels.Name = "hotels"
+        Me.hotels.Size = New System.Drawing.Size(162, 27)
+        Me.hotels.TabIndex = 40
+        Me.hotels.Text = "Λίστα Ξενοδοχείων"
+        Me.hotels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.hotels.UseVisualStyleBackColor = False
         '
         'cmdBusInfo
         '
@@ -756,37 +759,6 @@ Partial Class MDIMain
         Me.cmdBusInfo.TabIndex = 6
         Me.cmdBusInfo.Text = "          Παράμετροι"
         Me.cmdBusInfo.UseVisualStyleBackColor = False
-        '
-        'Button6
-        '
-        Me.Button6.BackColor = System.Drawing.Color.White
-        Me.Button6.Enabled = False
-        Me.Button6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.ImageKey = "billing.png"
-        Me.Button6.ImageList = Me.ImageList2
-        Me.Button6.Location = New System.Drawing.Point(4, 125)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(166, 27)
-        Me.Button6.TabIndex = 38
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.UseVisualStyleBackColor = False
-        '
-        'excelanal
-        '
-        Me.excelanal.BackColor = System.Drawing.Color.White
-        Me.excelanal.Enabled = False
-        Me.excelanal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.excelanal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.excelanal.ImageKey = "billing.png"
-        Me.excelanal.ImageList = Me.ImageList2
-        Me.excelanal.Location = New System.Drawing.Point(5, 89)
-        Me.excelanal.Name = "excelanal"
-        Me.excelanal.Size = New System.Drawing.Size(166, 27)
-        Me.excelanal.TabIndex = 30
-        Me.excelanal.Text = "            "
-        Me.excelanal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.excelanal.UseVisualStyleBackColor = False
         '
         'Panel2
         '
@@ -808,6 +780,35 @@ Partial Class MDIMain
         Me.LinkMaintain.TabIndex = 1
         Me.LinkMaintain.TabStop = True
         Me.LinkMaintain.Text = "Αρχεία"
+        '
+        'cmdExcel
+        '
+        Me.cmdExcel.BackColor = System.Drawing.Color.White
+        Me.cmdExcel.Enabled = False
+        Me.cmdExcel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdExcel.ImageKey = "user group.ico"
+        Me.cmdExcel.ImageList = Me.ImageList2
+        Me.cmdExcel.Location = New System.Drawing.Point(2, 92)
+        Me.cmdExcel.Name = "cmdExcel"
+        Me.cmdExcel.Size = New System.Drawing.Size(166, 34)
+        Me.cmdExcel.TabIndex = 3
+        Me.cmdExcel.Text = "test"
+        Me.cmdExcel.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.White
+        Me.Button1.Enabled = False
+        Me.Button1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.ImageKey = "buy_32.png"
+        Me.Button1.ImageList = Me.ImageList6
+        Me.Button1.Location = New System.Drawing.Point(1, 132)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(166, 27)
+        Me.Button1.TabIndex = 33
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'PanelPurchasing
         '
