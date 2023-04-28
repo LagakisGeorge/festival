@@ -1,9 +1,31 @@
 ﻿Imports System.Net.Mail
+Imports System.Data.OleDb
+Imports System.Data.SqlClient
 Public Class FrmstatAddSupplier
     Dim stockID As Integer
     Dim hOldID As Integer
     Dim M_ID As Long = 0
     Dim mIsNew As Boolean = False
+
+
+    '  Dim GDB As New ADODB.Connection
+
+
+    'Create connection
+    Dim conn As OleDbConnection
+
+    'create data adapter
+    Dim da As OleDbDataAdapter
+
+    'create dataset
+    Dim ds As DataSet = New DataSet
+
+    Dim dt As New DataTable
+
+
+
+
+
 
     Public Property IsNew() As Integer
         Get
@@ -35,72 +57,45 @@ Public Class FrmstatAddSupplier
 
 
     Private Sub cmdsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdsave.Click
-        Dim SQL As String
-        Dim mMON As String = Str(Val(AFM.Text))
-
-        Dim mb As String = DIE.Text
-        mb = Str(Val(mb))
-        If Len(KOD.Text) = 0 Then
-            'MsgBox("ΔΕΝ ΒΑΛΑΤΕ email")
-            'Exit Sub
-        End If
-        If Len(ONO.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΕΠΩΝΥΜΙΑ")
-            Exit Sub
-        End If
-        If Len(AFM.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΔΙΕΥΘΥΝΣΗ")
-            Exit Sub
-        End If
-        Dim cc As String = ""
-        For l As Integer = 0 To CheckedListBox1.Items.Count - 1
-            If CheckedListBox1.GetItemChecked(l) = True Then
-                cc = cc + "1"
-            Else
-                cc = cc + "0"
-            End If
-        Next
-
-
-        Dim cc4 As String = ""
-        For l = 0 To CheckedListBox2.Items.Count - 1
-            If CheckedListBox2.GetItemChecked(l) = True Then
-                cc4 = cc4 + "1"
-            Else
-                cc4 = cc4 + "0"
-            End If
-        Next
-
-        Dim mkod As String = KOD.Text
-        Dim mono As String = ONO.Text
-        Dim m_mon As String = AFM.Text
-
-        Dim mBaros As String = DIE.Text
-        Dim ff As String = "MM/dd/yyyy HH:mm"
-        Dim ci As String = Format(DTCheckin.Value, ff)
-        Dim co As String = Format(DTCheckout.Value, ff)
-        Dim aaf As String = Format(DtAirAfixi.Value, ff)
-        Dim aan As String = Format(dtAirAnax.Value, ff)
-
-        If IsNew Then
-
-            SQL = "insert into PEL (CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,AFM,DIE) VALUES ('" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + KOD.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + AFM.Text + "','" + mBaros + "')"
-
-        Else
-            SQL = "UPDATE PEL SET CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',AFM='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
-
-
-        End If
+        Dim conn As New OleDbConnection
+        conn.ConnectionString = gConnect
+        conn.Open()
 
 
 
         Try
-            ExecuteSQLQuery(SQL)
-        Catch ex As Exception
-            MsgBox("ΔΕΝ ΚΑΤΕΧΩΡΗΘΗ " + Err.Description)
-        End Try
 
-        Me.Close()
+            da = New OleDbDataAdapter(sql.Text, conn)
+
+            'create command builder
+            ' Dim cb As OleDbCommandBuilder = New OleDbCommandBuilder(da)
+            ds.Clear()
+            'fill dataset
+            'Exit Sub
+            Try
+                da.Fill(ds, "PEL")
+                DataGridView1.ClearSelection()
+                DataGridView1.DataSource = ds
+                DataGridView1.DataMember = "PEL"
+
+
+
+            Catch ex As Exception
+                MsgBox(Err.Description + Chr(13) + sql.Text)
+
+            End Try
+
+            ' Exit Sub
+
+            'GridView1.Columns(STHLHTOY_ID).Width = 0
+            ' DataGridView1.Columns(STHLHTOY_ID).Visible = False
+
+        Catch ex As SqlException
+            MsgBox(ex.ToString)
+        Finally
+            ' Close connection
+            conn.Close()
+        End Try
 
     End Sub
 
@@ -183,8 +178,7 @@ Public Class FrmstatAddSupplier
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "mailgate.otenet.gr"
 
-            e_mail = New MailMessage()
-            e_mail.From = New MailAddress(Trim(KOD.Text))
+          
 
             Dim attachment As System.Net.Mail.Attachment
             attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\reports.mdb")
@@ -260,6 +254,33 @@ Public Class FrmstatAddSupplier
 
 
     Private Sub ListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub SQLBuild_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SQLBuild.Click
+        Dim CH3 As String = ""
+        For l As Integer = 0 To CheckedListBox1.Items.Count - 1
+            If CheckedListBox1.GetItemChecked(l) = True Then
+                CH3 = IIf(Len(CH3) > 0, CH3 + " or ", "") + " SUBSTRING(CH3," + Format(l + 1, "0") + ",1)='1' "
+            Else
+                '
+            End If
+        Next
+
+
+        Dim CH4 As String = IIf(Len(CH3) > 0, CH3, "")
+        For l = 0 To CheckedListBox2.Items.Count - 1
+            If CheckedListBox2.GetItemChecked(l) = True Then
+                CH4 = IIf(Len(CH4) > 0, CH4 + " or ", "") + " SUBSTRING(CH4," + Format(l + 1, "0") + ",1)='1' "
+            Else
+                'cc4 = cc4 + "0"
+            End If
+        Next
+        CH4 = IIf(Len(CH4) > 0, " WHERE " + CH4, "")
+        sql.Text = "select EPO,CH3,CH4 FROM PEL  " + CH4
+
+
+
 
     End Sub
 End Class

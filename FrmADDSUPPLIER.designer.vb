@@ -26,6 +26,9 @@ Partial Class FrmAddSupplier
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddSupplier))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.cmdcancel = New System.Windows.Forms.Button
+        Me.cmdsave = New System.Windows.Forms.Button
+        Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox
         Me.txtTo = New System.Windows.Forms.TextBox
         Me.Label12 = New System.Windows.Forms.Label
@@ -51,9 +54,6 @@ Partial Class FrmAddSupplier
         Me.Label3 = New System.Windows.Forms.Label
         Me.KOD = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
-        Me.cmdsave = New System.Windows.Forms.Button
-        Me.cmdcancel = New System.Windows.Forms.Button
-        Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -99,6 +99,35 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.Size = New System.Drawing.Size(1090, 498)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'cmdcancel
+        '
+        Me.cmdcancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdcancel.Location = New System.Drawing.Point(944, 441)
+        Me.cmdcancel.Name = "cmdcancel"
+        Me.cmdcancel.Size = New System.Drawing.Size(103, 26)
+        Me.cmdcancel.TabIndex = 9
+        Me.cmdcancel.Text = "Ακυρο"
+        Me.cmdcancel.UseVisualStyleBackColor = True
+        '
+        'cmdsave
+        '
+        Me.cmdsave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdsave.Location = New System.Drawing.Point(835, 441)
+        Me.cmdsave.Name = "cmdsave"
+        Me.cmdsave.Size = New System.Drawing.Size(100, 26)
+        Me.cmdsave.TabIndex = 8
+        Me.cmdsave.Text = "Αποθήκευση"
+        Me.cmdsave.UseVisualStyleBackColor = True
+        '
+        'CheckedListBox2
+        '
+        Me.CheckedListBox2.FormattingEnabled = True
+        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry"})
+        Me.CheckedListBox2.Location = New System.Drawing.Point(634, 253)
+        Me.CheckedListBox2.Name = "CheckedListBox2"
+        Me.CheckedListBox2.Size = New System.Drawing.Size(413, 169)
+        Me.CheckedListBox2.TabIndex = 124
         '
         'CheckedListBox1
         '
@@ -287,9 +316,9 @@ Partial Class FrmAddSupplier
         Me.Label6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(1, 39)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(49, 13)
+        Me.Label6.Size = New System.Drawing.Size(79, 13)
         Me.Label6.TabIndex = 101
-        Me.Label6.Text = "Α.Φ.Μ. :"
+        Me.Label6.Text = "Προσφώνηση :"
         '
         'ONO
         '
@@ -330,35 +359,6 @@ Partial Class FrmAddSupplier
         Me.Label2.Size = New System.Drawing.Size(31, 13)
         Me.Label2.TabIndex = 15
         Me.Label2.Text = "Email"
-        '
-        'cmdsave
-        '
-        Me.cmdsave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdsave.Location = New System.Drawing.Point(835, 441)
-        Me.cmdsave.Name = "cmdsave"
-        Me.cmdsave.Size = New System.Drawing.Size(100, 26)
-        Me.cmdsave.TabIndex = 8
-        Me.cmdsave.Text = "Αποθήκευση"
-        Me.cmdsave.UseVisualStyleBackColor = True
-        '
-        'cmdcancel
-        '
-        Me.cmdcancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdcancel.Location = New System.Drawing.Point(944, 441)
-        Me.cmdcancel.Name = "cmdcancel"
-        Me.cmdcancel.Size = New System.Drawing.Size(103, 26)
-        Me.cmdcancel.TabIndex = 9
-        Me.cmdcancel.Text = "Ακυρο"
-        Me.cmdcancel.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox2
-        '
-        Me.CheckedListBox2.FormattingEnabled = True
-        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry"})
-        Me.CheckedListBox2.Location = New System.Drawing.Point(634, 253)
-        Me.CheckedListBox2.Name = "CheckedListBox2"
-        Me.CheckedListBox2.Size = New System.Drawing.Size(413, 169)
-        Me.CheckedListBox2.TabIndex = 124
         '
         'FrmAddSupplier
         '

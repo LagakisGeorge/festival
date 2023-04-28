@@ -1626,43 +1626,44 @@ Public Class ergates
     Private Sub Button3_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dior_pel.Click
         If Me.Text = "Ξενοδοχεία" Then
             Dim M_ID As String = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString()
-
-            FrmADDSUPPLIER_ITEM.IsNew = False
-            FrmADDSUPPLIER_ITEM.ID = M_ID
-            FrmADDSUPPLIER_ITEM.N1.Text = M_ID
-            FrmADDSUPPLIER_ITEM.txtDie.Text = GridView1.CurrentRow.Cells(4).Value.ToString
+            Dim frmPEL_ITEM As New FrmADDSUPPLIER_ITEM
+            frmPEL_ITEM.IsNew = False
+            frmPEL_ITEM.ID = M_ID
+            frmPEL_ITEM.N1.Text = M_ID
+            frmPEL_ITEM.txtDie.Text = GridView1.CurrentRow.Cells(4).Value.ToString
             ' "select NAME,CATEGORY,EMAIL,THL,DIE,ID  FROM HOTELS "txtcategory
-            FrmADDSUPPLIER_ITEM.txtTHL.Text = GridView1.CurrentRow.Cells(3).Value.ToString
-            FrmADDSUPPLIER_ITEM.txtEmail.Text = GridView1.CurrentRow.Cells(2).Value.ToString
-            FrmADDSUPPLIER_ITEM.txtName.Text = GridView1.CurrentRow.Cells(0).Value.ToString
-            FrmADDSUPPLIER_ITEM.txtcategory.Text = GridView1.CurrentRow.Cells(1).Value.ToString
+            frmPEL_ITEM.txtTHL.Text = GridView1.CurrentRow.Cells(3).Value.ToString
+            frmPEL_ITEM.txtEmail.Text = GridView1.CurrentRow.Cells(2).Value.ToString
+            frmPEL_ITEM.txtName.Text = GridView1.CurrentRow.Cells(0).Value.ToString
+            frmPEL_ITEM.txtcategory.Text = GridView1.CurrentRow.Cells(1).Value.ToString
 
 
 
 
-            FrmADDSUPPLIER_ITEM.ShowDialog()
+            frmPEL_ITEM.ShowDialog()
         Else
 
+            Dim frmPEL As New FrmAddSupplier
 
-            'FrmAddSupplier.n1.Text = n1.Text
-            FrmstatAddSupplier.IsNew = False
+            'frmPEL.n1.Text = n1.Text
+            frmPEL.IsNew = False
 
             '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
             '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
 
-            FrmstatAddSupplier.KOD.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
-            FrmstatAddSupplier.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString
-            FrmstatAddSupplier.AFM.Text = GridView1.CurrentRow.Cells("AFM").Value.ToString
-            FrmstatAddSupplier.DIE.Text = GridView1.CurrentRow.Cells("DIE").Value.ToString
-            FrmstatAddSupplier.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
-            'FrmAddSupplier.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString  
+            frmPEL.KOD.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
+            frmPEL.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString
+            frmPEL.AFM.Text = GridView1.CurrentRow.Cells("AFM").Value.ToString
+            frmPEL.DIE.Text = GridView1.CurrentRow.Cells("DIE").Value.ToString
+            frmPEL.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
+            'frmPEL.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString  
             Dim C3 As String
             C3 = GridView1.CurrentRow.Cells("CH3").Value.ToString
             For L3 As Integer = 1 To 7
                 If Mid(C3, L3, 1) = "1" Then
-                    FrmstatAddSupplier.CheckedListBox1.SetItemChecked(L3 - 1, True)
+                    frmPEL.CheckedListBox1.SetItemChecked(L3 - 1, True)
                 Else
-                    FrmstatAddSupplier.CheckedListBox1.SetItemChecked(L3 - 1, False)
+                    frmPEL.CheckedListBox1.SetItemChecked(L3 - 1, False)
                 End If
             Next
             Dim C4 As String
@@ -1676,18 +1677,18 @@ Public Class ergates
             Next
 
             Try
-                FrmstatAddSupplier.DTCheckin.Value = GridView1.CurrentRow.Cells("CHECKIN").Value.ToString
-                FrmstatAddSupplier.DTCheckout.Value = GridView1.CurrentRow.Cells("CHECKOUT").Value.ToString
+                frmPEL.DTCheckin.Value = GridView1.CurrentRow.Cells("CHECKIN").Value.ToString
+                frmPEL.DTCheckout.Value = GridView1.CurrentRow.Cells("CHECKOUT").Value.ToString
 
 
-                FrmstatAddSupplier.DtAirAfixi.Value = GridView1.CurrentRow.Cells("AIRAFIXI").Value.ToString
-                FrmstatAddSupplier.dtAirAnax.Value = GridView1.CurrentRow.Cells("AIRANAX").Value.ToString
-                FrmstatAddSupplier.txtTo.Visible = True
+                frmPEL.DtAirAfixi.Value = GridView1.CurrentRow.Cells("AIRAFIXI").Value.ToString
+                frmPEL.dtAirAnax.Value = GridView1.CurrentRow.Cells("AIRANAX").Value.ToString
+                frmPEL.txtTo.Visible = True
 
             Catch ex As Exception
 
             End Try
-            FrmstatAddSupplier.ShowDialog()
+            frmPEL.ShowDialog()
         End If
 
         paint_ergasies()
@@ -1718,10 +1719,10 @@ Public Class ergates
         Else
 
 
-            FrmstatAddSupplier.KOD.Text = ""  'GridView1.CurrentRow.Cells(0).Value.ToString
-            FrmstatAddSupplier.ONO.Text = ""  'GridView1.CurrentRow.Cells(1).Value.ToString
-            FrmstatAddSupplier.AFM.Text = "" ' GridView1.CurrentRow.Cells(2).Value.ToString
-            FrmstatAddSupplier.DIE.Text = ""  'GridView1.CurrentRow.Cells(3).Value.ToString
+            FrmAddSupplier.KOD.Text = ""  'GridView1.CurrentRow.Cells(0).Value.ToString
+            FrmAddSupplier.ONO.Text = ""  'GridView1.CurrentRow.Cells(1).Value.ToString
+            FrmAddSupplier.AFM.Text = "" ' GridView1.CurrentRow.Cells(2).Value.ToString
+            FrmAddSupplier.DIE.Text = ""  'GridView1.CurrentRow.Cells(3).Value.ToString
 
 
 

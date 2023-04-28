@@ -793,7 +793,7 @@ Partial Class MDIMain
         Me.cmdExcel.Name = "cmdExcel"
         Me.cmdExcel.Size = New System.Drawing.Size(166, 34)
         Me.cmdExcel.TabIndex = 3
-        Me.cmdExcel.Text = "test"
+        Me.cmdExcel.Text = "Booking"
         Me.cmdExcel.UseVisualStyleBackColor = False
         '
         'Button1

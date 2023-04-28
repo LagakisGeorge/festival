@@ -2278,7 +2278,8 @@ Public Class MDIMain
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Dim frm As New FrmstatAddSupplier
-
+        ' Make it a child of this MDI form before showing it.
+        frm.MdiParent = Me
         frm.TopLevel = False
         frm.Visible = True
         frm.FormBorderStyle = FormBorderStyle.None
@@ -2962,5 +2963,20 @@ Public Class MDIMain
         TabControl1.TabPages(N).Controls.Add(frm)
         TabControl1.SelectTab(N)
 
+    End Sub
+
+    Private Sub cmdSTATISTICS_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles cmdSTATISTICS.LinkClicked
+
+    End Sub
+
+    Private Sub TabControl1_SelectedIndexChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabControl1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub MDIMain_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        Dim n As Long
+        n = Me.Height
+        TabControl1.Width = Me.Width - Panel1.Width
+        TabControl1.Height = n ' - TSHoldButtons.Height '- MenuStrip1.Height
     End Sub
 End Class

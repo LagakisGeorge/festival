@@ -1001,6 +1001,66 @@ Public Class utilities
    
     Private Sub SQL_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SQL.Click
 
+        'a2 tropos
+
+        'Dim da As New OleDbDataAdapter
+        'DataGridView1.ClearSelection()
+        'DataGridView1.Columns.Clear()
+        '' ExecuteSQLQuery(SQLqry, mds)
+        'ExecuteSQLQuery(TextBox1.Text, dt, da)
+
+        'DataGridView1.DataSource = ds
+        'DataGridView1.Refresh()
+        'mds = Nothing
+
+
+
+
+
+        ' b tropos  ============================================
+
+        Dim conn As New OleDbConnection
+        conn.ConnectionString = gConnect
+        conn.Open()
+
+
+
+        Try
+
+            da = New OleDbDataAdapter(TextBox1.Text, conn)
+
+            'create command builder
+            ' Dim cb As OleDbCommandBuilder = New OleDbCommandBuilder(da)
+            ds.Clear()
+            'fill dataset
+            'Exit Sub
+            Try
+                da.Fill(ds, "PEL")
+                DataGridView1.ClearSelection()
+                DataGridView1.DataSource = ds
+                DataGridView1.DataMember = "PEL"
+
+
+
+            Catch ex As Exception
+                MsgBox(Err.Description + Chr(13) + TextBox1.Text)
+
+            End Try
+
+            ' Exit Sub
+
+            'GridView1.Columns(STHLHTOY_ID).Width = 0
+            ' DataGridView1.Columns(STHLHTOY_ID).Visible = False
+
+        Catch ex As SqlException
+            MsgBox(ex.ToString)
+        Finally
+            ' Close connection
+            conn.Close()
+        End Try
+
+
+
     End Sub
 
     Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
