@@ -2754,7 +2754,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,AFM,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID FROM PEL    ORDER BY EPO "
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID FROM PEL    ORDER BY EPO "
 
 
 

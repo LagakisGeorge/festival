@@ -36,11 +36,11 @@ Public Class FrmAddSupplier
 
     Private Sub cmdsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdsave.Click
         Dim SQL As String
-        Dim mMON As String = Str(Val(AFM.Text))
+        Dim mMON As String = Str(Val(onoProsf.Text))
 
         Dim mb As String = DIE.Text
         mb = Str(Val(mb))
-        If Len(KOD.Text) = 0 Then
+        If Len(email.Text) = 0 Then
             'MsgBox("ΔΕΝ ΒΑΛΑΤΕ email")
             'Exit Sub
         End If
@@ -48,8 +48,8 @@ Public Class FrmAddSupplier
             MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΕΠΩΝΥΜΙΑ")
             Exit Sub
         End If
-        If Len(AFM.Text) = 0 Then
-            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΔΙΕΥΘΥΝΣΗ")
+        If Len(onoProsf.Text) = 0 Then
+            MsgBox("ΔΕΝ ΒΑΛΑΤΕ ΠΡΟΣΦΩΝΗΣΗ")
             Exit Sub
         End If
         Dim cc As String = ""
@@ -71,9 +71,9 @@ Public Class FrmAddSupplier
             End If
         Next
 
-        Dim mkod As String = KOD.Text
+        Dim mkod As String = email.Text
         Dim mono As String = ONO.Text
-        Dim m_mon As String = AFM.Text
+        Dim m_mon As String = onoProsf.Text
 
         Dim mBaros As String = DIE.Text
         Dim ff As String = "MM/dd/yyyy HH:mm"
@@ -82,12 +82,35 @@ Public Class FrmAddSupplier
         Dim aaf As String = Format(DtAirAfixi.Value, ff)
         Dim aan As String = Format(dtAirAnax.Value, ff)
 
+        If DTCheckin.Value > DTCheckout.Value Then
+            MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT ΜΙΚΡΟΤΕΡΗ ΤΟΥ CHECKIN")
+            Exit Sub
+
+        End If
+
+        If DTCheckin.Value < gHMEARX Or DTCheckin.Value > gHMETEL Then
+            MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKIN EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
+            Exit Sub
+        End If
+        If DTCheckout.Value < gHMEARX Or DTCheckout.Value > gHMETEL Then
+            MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
+            Exit Sub
+        End If
+
+
+
+        '  gHMETEL = DT2.Rows(0)("HMETEL")
+
+
+
+
+
         If IsNew Then
 
-            SQL = "insert into PEL (CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,AFM,DIE) VALUES ('" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + KOD.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + AFM.Text + "','" + mBaros + "')"
+            SQL = "insert into PEL (CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,ONO,DIE) VALUES ('" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + email.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + onoProsf.Text + "','" + mBaros + "')"
 
         Else
-            SQL = "UPDATE PEL SET CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',AFM='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
+            SQL = "UPDATE PEL SET CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',ONO='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
 
 
         End If
@@ -104,7 +127,7 @@ Public Class FrmAddSupplier
 
     End Sub
 
-  
+
     Private Sub ListBox1_DrawItem(ByVal sender As Object, ByVal e As DrawItemEventArgs)
         ''This code draws a checkbox using the DrawCheckBox method of the ControlPaint class and uses the DrawString method of the Graphics object to draw the text of the item. The if statement inside the DrawCheckBox method sets the state of the checkbox to either ButtonState.Checked or ButtonState.Normal, depending on whether the item is selected.
 
@@ -126,7 +149,7 @@ Public Class FrmAddSupplier
         'ControlPaint.DrawCheckBox(e.Graphics, checkboxRect, n) 'If(e.Index Mod 2 = 0, n, ButtonState.Normal)
         'e.Graphics.DrawString(ListBox1.Items(e.Index), Me.Font, New SolidBrush(checkboxColor), e.Bounds.X + checkboxRect.Width, e.Bounds.Y)
     End Sub
-   
+
 
     Private Sub ListBox1_Click(ByVal sender As Object, ByVal e As EventArgs)
 
@@ -174,28 +197,44 @@ Public Class FrmAddSupplier
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles send.Click
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
         Try
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("lagakis@otenet.gr", "a8417!")
+            Smtp_Server.Credentials = New Net.NetworkCredential(gC1EMAIL, gC2PWD)
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
-            Smtp_Server.Host = "mailgate.otenet.gr"
+            Smtp_Server.Host = gC3HOST
 
             e_mail = New MailMessage()
-            e_mail.From = New MailAddress(Trim(KOD.Text))
+            e_mail.From = New MailAddress(Trim(email.Text))
+            If mAttachment.Text.Length > 1 Then
+                Dim attachment As System.Net.Mail.Attachment
+                attachment = New System.Net.Mail.Attachment(mAttachment.Text)
+                e_mail.Attachments.Add(attachment)
+            End If
 
-            Dim attachment As System.Net.Mail.Attachment
-            attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\reports.mdb")
-            e_mail.Attachments.Add(attachment)
 
-
-            e_mail.To.Add(txtTo.Text)
+            e_mail.To.Add(email.Text)
             'Dim item As System.Net.Mail.Attachment
             'e_mail.Attachments.Add(item)
 
-            e_mail.Subject = "Email Sending"
+            e_mail.Subject = Subject.Text '"Email Sending"
             e_mail.IsBodyHtml = False
             e_mail.Body = txtMessage.Text
             Smtp_Server.Send(e_mail)
@@ -260,6 +299,16 @@ Public Class FrmAddSupplier
 
 
     Private Sub ListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        OpenFileDialog1.ShowDialog()
+        mAttachment.Text = OpenFileDialog1.FileName
+    End Sub
+
+    Private Sub cmdcancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdcancel.Click
+        Me.Close()
 
     End Sub
 End Class

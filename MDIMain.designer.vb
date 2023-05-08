@@ -499,7 +499,7 @@ Partial Class MDIMain
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(163, 21)
         Me.Button9.TabIndex = 41
-        Me.Button9.Text = "ΠΕΛΑΤΕΣ"
+        Me.Button9.Text = "Προσκεκλημένοι"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'Button7

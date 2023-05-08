@@ -25,18 +25,18 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.txtid = New System.Windows.Forms.TextBox
         Me.txtEmail = New System.Windows.Forms.TextBox
         Me.cmdsave = New System.Windows.Forms.Button
         Me.cmdcancel = New System.Windows.Forms.Button
         Me.Label4 = New System.Windows.Forms.Label
-        Me.txtcategory = New System.Windows.Forms.TextBox
         Me.txtDie = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
         Me.N1 = New System.Windows.Forms.Label
         Me.txtName = New System.Windows.Forms.TextBox
         Me.txtTHL = New System.Windows.Forms.TextBox
+        Me.RANK = New System.Windows.Forms.TextBox
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.SuspendLayout()
         '
         'Label1
@@ -44,9 +44,9 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 35)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(38, 13)
+        Me.Label1.Size = New System.Drawing.Size(85, 13)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Rank :"
+        Me.Label1.Text = "Προτεραιότητα :"
         '
         'Label2
         '
@@ -65,15 +65,6 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.Label3.Size = New System.Drawing.Size(38, 13)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Email :"
-        '
-        'txtid
-        '
-        Me.txtid.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtid.Location = New System.Drawing.Point(126, 34)
-        Me.txtid.Name = "txtid"
-        Me.txtid.ReadOnly = True
-        Me.txtid.Size = New System.Drawing.Size(63, 21)
-        Me.txtid.TabIndex = 8
         '
         'txtEmail
         '
@@ -109,15 +100,6 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.Label4.Size = New System.Drawing.Size(73, 13)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Category ID :"
-        '
-        'txtcategory
-        '
-        Me.txtcategory.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtcategory.Location = New System.Drawing.Point(126, 11)
-        Me.txtcategory.Name = "txtcategory"
-        Me.txtcategory.ReadOnly = True
-        Me.txtcategory.Size = New System.Drawing.Size(60, 21)
-        Me.txtcategory.TabIndex = 11
         '
         'txtDie
         '
@@ -171,24 +153,41 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.txtTHL.Size = New System.Drawing.Size(293, 21)
         Me.txtTHL.TabIndex = 18
         '
+        'RANK
+        '
+        Me.RANK.Location = New System.Drawing.Point(125, 32)
+        Me.RANK.MaxLength = 50
+        Me.RANK.Name = "RANK"
+        Me.RANK.Size = New System.Drawing.Size(293, 21)
+        Me.RANK.TabIndex = 20
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"2 ΑΣΤΕΡΩΝ", "3 ΑΣΤΕΡΩΝ", "4 ΑΣΤΕΡΩΝ", "5 ΑΣΤΕΡΩΝ"})
+        Me.ComboBox1.Location = New System.Drawing.Point(125, 9)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox1.TabIndex = 21
+        '
         'FrmADDSUPPLIER_ITEM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(456, 334)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.RANK)
         Me.Controls.Add(Me.txtTHL)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.N1)
         Me.Controls.Add(Me.txtDie)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.txtcategory)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.cmdcancel)
         Me.Controls.Add(Me.cmdsave)
         Me.Controls.Add(Me.txtEmail)
-        Me.Controls.Add(Me.txtid)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -204,16 +203,16 @@ Partial Class FrmADDSUPPLIER_ITEM
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txtid As System.Windows.Forms.TextBox
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents cmdsave As System.Windows.Forms.Button
     Friend WithEvents cmdcancel As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents txtcategory As System.Windows.Forms.TextBox
     Friend WithEvents txtDie As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents N1 As System.Windows.Forms.Label
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents txtTHL As System.Windows.Forms.TextBox
+    Friend WithEvents RANK As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
 End Class

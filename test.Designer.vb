@@ -304,7 +304,7 @@ Partial Class test
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem4, Me.ΕξοδοςToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(185, 114)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(185, 92)
         '
         'ToolStripMenuItem1
         '
@@ -342,7 +342,7 @@ Partial Class test
         '
         Me.Button4.Location = New System.Drawing.Point(353, 593)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(157, 23)
+        Me.Button4.Size = New System.Drawing.Size(157, 28)
         Me.Button4.TabIndex = 8
         Me.Button4.Text = "ΔΙΑΓΡΑΦΗ ΚΡΑΤΗΣΕΩΝ"
         Me.Button4.UseVisualStyleBackColor = True

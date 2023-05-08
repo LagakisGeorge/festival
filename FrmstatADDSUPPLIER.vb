@@ -1,4 +1,5 @@
-﻿Imports System.Net.Mail
+﻿Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Net.Mail
 Imports System.Data.OleDb
 Imports System.Data.SqlClient
 Public Class FrmstatAddSupplier
@@ -168,7 +169,10 @@ Public Class FrmstatAddSupplier
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles send.Click
+    
+    Private Sub sendEmail(ByVal ToEmail As String, ByVal PROSF As String)
+
+
         Try
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
@@ -178,26 +182,63 @@ Public Class FrmstatAddSupplier
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "mailgate.otenet.gr"
 
-          
+            e_mail = New MailMessage()
+            e_mail.From = New MailAddress(Trim(ToEmail))
 
             Dim attachment As System.Net.Mail.Attachment
-            attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\reports.mdb")
+            attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\timol1.csv")
             e_mail.Attachments.Add(attachment)
 
 
-            e_mail.To.Add(txtTo.Text)
+            e_mail.To.Add(ToEmail) ' txtTo.Text)
             'Dim item As System.Net.Mail.Attachment
             'e_mail.Attachments.Add(item)
 
-            e_mail.Subject = "Email Sending"
+            e_mail.Subject = Subject.Text + " " + ToEmail
             e_mail.IsBodyHtml = False
-            e_mail.Body = txtMessage.Text
+            e_mail.Body = PROSF + Chr(13) + txtMessage.Text
             Smtp_Server.Send(e_mail)
-            MsgBox("Mail Sent")
+            'MsgBox("Mail Sent")
 
         Catch error_t As Exception
             MsgBox(error_t.ToString)
         End Try
+
+
+
+
+
+
+
+        'Try
+        '    Dim Smtp_Server As New SmtpClient
+        '    Dim e_mail As New MailMessage()
+        '    Smtp_Server.UseDefaultCredentials = False
+        '    Smtp_Server.Credentials = New Net.NetworkCredential("lagakis@otenet.gr", "a8417!")
+        '    Smtp_Server.Port = 587
+        '    Smtp_Server.EnableSsl = True
+        '    Smtp_Server.Host = "mailgate.otenet.gr"
+
+
+
+        '    Dim attachment As System.Net.Mail.Attachment
+        '    attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\timol1.csv")
+        '    e_mail.Attachments.Add(attachment)
+
+        '    txtTo.Text = ToEmail
+        '    e_mail.To.Add(txtTo.Text)
+        '    'Dim item As System.Net.Mail.Attachment
+        '    'e_mail.Attachments.Add(item)
+
+        '    e_mail.Subject = Subject.Text '"Email Sending"
+        '    e_mail.IsBodyHtml = False
+        '    e_mail.Body = txtMessage.Text  'PROSF + Chr(13) +
+        '    Smtp_Server.Send(e_mail)
+        '    MsgBox("Mail Sent")
+
+        'Catch error_t As Exception
+        '    MsgBox(error_t.ToString)
+        'End Try
 
 
         'Try
@@ -277,10 +318,94 @@ Public Class FrmstatAddSupplier
             End If
         Next
         CH4 = IIf(Len(CH4) > 0, " WHERE " + CH4, "")
-        sql.Text = "select EPO,CH3,CH4 FROM PEL  " + CH4
+        sql.Text = "select EPO,CH3,CH4,isnull(EMAIL,'') as EMAIL,ISNULL(ONO,'') AS ONO FROM PEL  " + CH4
 
 
 
+
+    End Sub
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        OpenFileDialog1.ShowDialog()
+        attachment.Text = OpenFileDialog1.FileName
+    End Sub
+
+    Private Sub send_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles send.Click
+
+        Dim SQLDT4 As New DataTable
+        SQLDT4 = ExecuteSQLQuery(sql.Text)
+
+
+
+        For k As Integer = 0 To SQLDT4.Rows.Count - 1 'DataGridView1.Rows.Count - 1
+            Dim mEmail As String = SQLDT4.Rows(k)("email").ToString()
+            Dim PROSF As String = SQLDT4.Rows(k)("ONO").ToString()
+            If Len(mEmail) > 0 Then
+                Application.DoEvents()
+                Me.Text = mEmail
+                sendEmail(mEmail, PROSF)
+                txtTo.Text = mEmail
+            End If
+        Next
+    End Sub
+
+   
+   
+    Private Sub toexcel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles toexcel.Click
+        Dim filename As String = "c:\mercvb\ektyp.xlsx"
+        Dim sheetname As String = "Φύλλο1"
+        Dim xlApp As Excel.Application
+        Dim xlWorkBook As Excel.Workbook
+        Dim xl As Excel.Worksheet
+        xlApp = New Excel.ApplicationClass
+        xlWorkBook = xlApp.Workbooks.Add 'αν ηθελα να το ανοιξω αντι για add -> Open(filename)
+        xlWorkBook.Worksheets.Add()  '(1)
+        xl = xlWorkBook.Worksheets(1) ' .Add
+        xlApp.Visible = True  'ΜΠΟΡΩ ΝΑ ΤΟ ΒΛΕΠΩ
+        xl.Name = "fest"
+        Dim WS(30) As Microsoft.Office.Interop.Excel.Worksheet
+
+        Dim dt As New DataTable
+        Dim k As Integer
+        Dim mn1 As String = "1"
+        Dim sql2 As String '= "SELECT ONO AS [Ονομα ],KOD AS [ΚΩΔ],N1 AS [ΚΑΤΗΓ],BAROS AS [ΒΑΡΟΣ],C1,C2,ID  FROM YLIKA WHERE N1=" + mn1 + " ORDER BY KOD "
+
+
+
+        sql2 = sql.Text
+
+
+        ExecuteSQLQuery(sql2, dt) 'D.PATIENTID,CHMEEIS desc
+
+        xl.Cells(1, 2).value = "Προσκεκλημένοι"  '"ΕΠΙΚΕΦΑΛΙΔΑ" + "EIS"
+
+        Dim sken As Single = 0
+        Dim seopy As Single = 0
+
+        Dim mSeir As Integer = 2
+
+        Dim L As Integer
+
+        For L = 0 To dt.Columns.Count - 1
+            xl.Cells(mSeir, L + 1).value = dt.Columns(L).Caption 'a
+        Next
+
+
+
+0:
+        mSeir = 2
+        For k = 0 To dt.Rows.Count - 1
+            mSeir = mSeir + 1
+            For L = 0 To dt.Columns.Count - 1
+                xl.Cells(mSeir, L + 1).value = dt.Rows(k)(L)  'aa
+            Next
+        Next
+
+        xl.Columns.AutoFit()
+        xlApp.Visible = True
+        mreleaseObject(xlApp)
+        mreleaseObject(xlWorkBook)
+        mreleaseObject(xl)
 
     End Sub
 End Class

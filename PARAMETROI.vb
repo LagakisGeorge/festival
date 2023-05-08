@@ -18,6 +18,30 @@
         ExecuteSQLQuery("update MEM SET C2='" + C2PWD.Text + "' WHERE ID=1 ")
         ExecuteSQLQuery("update MEM SET C3='" + C3HOST.Text + "' WHERE ID=1 ")
 
+        Dim DT2 As New DataTable
+        DT2 = Execute2SQLQuery("SELECT ISNULL(HMEARX,GETDATE()) AS HMEARX,ISNULL(HMETEL,GETDATE()) AS HMETEL,ISNULL(C1,'') AS C1,ISNULL(C2,'') AS C2,ISNULL(C3,'') AS C3 FROM MEM WHERE ID=1")
+        DateTimePicker1.Value = DT2.Rows(0)("HMEARX")
+        DateTimePicker2.Value = DT2.Rows(0)("HMETEL")
+        C1EMAIL.Text = DT2.Rows(0)("C1")
+        C2PWD.Text = DT2.Rows(0)("C2")
+        C3HOST.Text = DT2.Rows(0)("C3")
+
+        gHMEARX = DT2.Rows(0)("HMEARX")
+        gHMETEL = DT2.Rows(0)("HMETEL")
+        gC1EMAIL = DT2.Rows(0)("C1")
+        gC2PWD = DT2.Rows(0)("C2")
+        gC3HOST = DT2.Rows(0)("C3")
+
+        
+
+        
+
+
+
+
+
+
+
     End Sub
 
     Private Sub PARAMETROI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -28,6 +52,17 @@
         C1EMAIL.Text = DT2.Rows(0)("C1")
         C2PWD.Text = DT2.Rows(0)("C2")
         C3HOST.Text = DT2.Rows(0)("C3")
+
+        gHMEARX = DT2.Rows(0)("HMEARX")
+        gHMETEL = DT2.Rows(0)("HMETEL")
+        gC1EMAIL = DT2.Rows(0)("C1")
+        gC2PWD = DT2.Rows(0)("C2")
+        gC3HOST = DT2.Rows(0)("C3")
+
+
+
+
+
 
     End Sub
 End Class

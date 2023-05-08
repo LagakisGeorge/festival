@@ -67,6 +67,26 @@
 
             timex = TimeOfDay
 
+
+
+            Dim DT2 As New DataTable
+            DT2 = Execute2SQLQuery("SELECT ISNULL(HMEARX,GETDATE()) AS HMEARX,ISNULL(HMETEL,GETDATE()) AS HMETEL,ISNULL(C1,'') AS C1,ISNULL(C2,'') AS C2,ISNULL(C3,'') AS C3 FROM MEM WHERE ID=1")
+            
+
+            gHMEARX = DT2.Rows(0)("HMEARX")
+            gHMETEL = DT2.Rows(0)("HMETEL")
+            gC1EMAIL = DT2.Rows(0)("C1")
+            gC2PWD = DT2.Rows(0)("C2")
+            gC3HOST = DT2.Rows(0)("C3")
+
+
+
+
+
+
+
+
+
             '  _USER.Value = sqlDT.Rows(0)("lastname") & ", " & sqlDT.Rows(0)("firstname") & " " & sqlDT.Rows(0)("middlename")
 
             'sqlSTR = "INSERT INTO TBL_Audit_Log (User_ID, LOGIN) VALUES(" & xUser_ID & ", '" & timex & "')"

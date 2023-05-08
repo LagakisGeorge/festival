@@ -85,6 +85,19 @@ Module ModCon
     Public gEnarxi As Date
     Public gLixi As Date
 
+    Public gHMEARX As Date '.Value = DT2.Rows(0)("HMEARX")
+    Public gHMETEL As Date '.Value = DT2.Rows(0)("HMETEL")
+    Public gC1EMAIL As String '.Text = DT2.Rows(0)("C1")
+    Public gC2PWD As String ' .Text = DT2.Rows(0)("C2")
+    Public gC3HOST As String ' .Text = DT2.Rows(0)("C3")
+
+
+
+
+
+
+
+
     Public Function toTeleia(ByVal c As String) As String
         toTeleia = Replace(c, ",", ".")
     End Function

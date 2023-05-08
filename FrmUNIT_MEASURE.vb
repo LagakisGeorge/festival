@@ -1635,7 +1635,7 @@ Public Class ergates
             frmPEL_ITEM.txtTHL.Text = GridView1.CurrentRow.Cells(3).Value.ToString
             frmPEL_ITEM.txtEmail.Text = GridView1.CurrentRow.Cells(2).Value.ToString
             frmPEL_ITEM.txtName.Text = GridView1.CurrentRow.Cells(0).Value.ToString
-            frmPEL_ITEM.txtcategory.Text = GridView1.CurrentRow.Cells(1).Value.ToString
+            'frmPEL_ITEM.txtcategory.Text = GridView1.CurrentRow.Cells(1).Value.ToString
 
 
 
@@ -1651,9 +1651,9 @@ Public Class ergates
             '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
             '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
 
-            frmPEL.KOD.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
+            frmPEL.email.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
             frmPEL.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString
-            frmPEL.AFM.Text = GridView1.CurrentRow.Cells("AFM").Value.ToString
+            frmPEL.onoProsf.Text = GridView1.CurrentRow.Cells("ONO").Value.ToString
             frmPEL.DIE.Text = GridView1.CurrentRow.Cells("DIE").Value.ToString
             frmPEL.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
             'frmPEL.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString  
@@ -1670,9 +1670,9 @@ Public Class ergates
             C4 = GridView1.CurrentRow.Cells("CH4").Value.ToString
             For L3 = 1 To 9
                 If Mid(C4, L3, 1) = "1" Then
-                    FrmstatAddSupplier.CheckedListBox2.SetItemChecked(L3 - 1, True)
+                    frmPEL.CheckedListBox2.SetItemChecked(L3 - 1, True)
                 Else
-                    FrmstatAddSupplier.CheckedListBox2.SetItemChecked(L3 - 1, False)
+                    frmPEL.CheckedListBox2.SetItemChecked(L3 - 1, False)
                 End If
             Next
 
@@ -1706,7 +1706,7 @@ Public Class ergates
             FrmADDSUPPLIER_ITEM.txtTHL.Text = ""
             FrmADDSUPPLIER_ITEM.txtEmail.Text = ""
             FrmADDSUPPLIER_ITEM.txtName.Text = ""
-            FrmADDSUPPLIER_ITEM.txtcategory.Text = ""
+            ' FrmADDSUPPLIER_ITEM.txtcategory.Text = ""
 
 
             FrmADDSUPPLIER_ITEM.IsNew = True
@@ -1719,17 +1719,17 @@ Public Class ergates
         Else
 
 
-            FrmAddSupplier.KOD.Text = ""  'GridView1.CurrentRow.Cells(0).Value.ToString
+            FrmAddSupplier.email.Text = ""  'GridView1.CurrentRow.Cells(0).Value.ToString
             FrmAddSupplier.ONO.Text = ""  'GridView1.CurrentRow.Cells(1).Value.ToString
-            FrmAddSupplier.AFM.Text = "" ' GridView1.CurrentRow.Cells(2).Value.ToString
+            FrmAddSupplier.onoProsf.Text = "" ' GridView1.CurrentRow.Cells(2).Value.ToString
             FrmAddSupplier.DIE.Text = ""  'GridView1.CurrentRow.Cells(3).Value.ToString
 
 
 
 
             ' FrmAddSupplier.n1.Text = n1.Text
-            FrmstatAddSupplier.IsNew = True
-            FrmstatAddSupplier.ShowDialog()
+            FrmAddSupplier.IsNew = True
+            FrmAddSupplier.ShowDialog()
         End If
 
         paint_ergasies()

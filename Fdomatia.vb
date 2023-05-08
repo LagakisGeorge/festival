@@ -30,6 +30,35 @@
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
 
+
+
+
+        If D1.Value > D2.Value Then
+            MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT ΜΙΚΡΟΤΕΡΗ ΤΟΥ CHECKIN")
+            Exit Sub
+
+        End If
+
+        If D1.Value < gHMEARX Or D1.Value > gHMETEL Then
+            MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKIN EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
+            Exit Sub
+        End If
+        If D2.Value < gHMEARX Or D2.Value > gHMETEL Then
+            MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
+            Exit Sub
+        End If
+
+
+
+
+
+
+
+
+
+
+
+
         Dim SQL As String = "INSERT INTO HOTROOMS (ROOMN,HOTELID,KREBATIA,APO,EOS,CATEGORY) VALUES(" + domatio.Text + "," + Str(ID) + "," + kreb.Text + ",'" + Format(D1.Value, "MM/dd/yyyy") + "','" + Format(D2.Value, "MM/dd/yyyy") + "'," + cat.Text + ")"
         ExecuteSQLQuery(Sql)
         PAINTROOMS()
