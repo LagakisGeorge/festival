@@ -372,9 +372,9 @@ Public Class test
         ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=0")
         ExecuteSQLQuery("UPDATE PEL SET CH2='',CH1='',NUM2=0 ")
 
-        ExecuteSQLQuery("update PEL SET [CHECKIN]='05/01/2023',[CHECKOUT]='05/13/2023',[HOTELID]=0;")
+        ' ExecuteSQLQuery("update PEL SET [CHECKIN]='05/01/2023',[CHECKOUT]='05/13/2023',[HOTELID]=0;")
 
-        ExecuteSQLQuery("update HOTROOMS SET [APO]='05/01/2023',[EOS]='05/13/2023'")
+        ' ExecuteSQLQuery("update HOTROOMS SET [APO]='05/01/2023',[EOS]='05/13/2023'")
 
 
 

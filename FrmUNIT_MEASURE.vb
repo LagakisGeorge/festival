@@ -1635,6 +1635,11 @@ Public Class ergates
             frmPEL_ITEM.txtTHL.Text = GridView1.CurrentRow.Cells(3).Value.ToString
             frmPEL_ITEM.txtEmail.Text = GridView1.CurrentRow.Cells(2).Value.ToString
             frmPEL_ITEM.txtName.Text = GridView1.CurrentRow.Cells(0).Value.ToString
+
+
+            frmPEL_ITEM.RANK.Text = GridView1.CurrentRow.Cells("RANK").Value.ToString
+            frmPEL_ITEM.ComboCAT.Text = GridView1.CurrentRow.Cells("CATEGORY").Value.ToString
+
             'frmPEL_ITEM.txtcategory.Text = GridView1.CurrentRow.Cells(1).Value.ToString
 
 
@@ -1651,9 +1656,16 @@ Public Class ergates
             '        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
             '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
 
+
+
+            frmPEL.CH1.Text = GridView1.CurrentRow.Cells("CH1").Value.ToString
+            frmPEL.CH2.Text = GridView1.CurrentRow.Cells("CH2").Value.ToString
+
+
             frmPEL.email.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
             frmPEL.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString
             frmPEL.onoProsf.Text = GridView1.CurrentRow.Cells("ONO").Value.ToString
+            frmPEL.Synodos.Text = GridView1.CurrentRow.Cells("SYNODOS").Value.ToString
             frmPEL.DIE.Text = GridView1.CurrentRow.Cells("DIE").Value.ToString
             frmPEL.ID = GridView1.CurrentRow.Cells(STHLHTOY_ID).Value.ToString
             'frmPEL.ID = GridView1.CurrentRow.Cells("BAROS").Value.ToString  

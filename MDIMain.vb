@@ -2103,18 +2103,42 @@ Public Class MDIMain
 
 
         Dim ans As Integer
-        ans = MsgBox("Να διαγραφούν οι βάσεις;", MsgBoxStyle.YesNo)
+        ans = MsgBox("Να μηδενιστούν οι βάσεις;", MsgBoxStyle.YesNo)
 
         If ans = MsgBoxResult.Yes Then
 
             Dim YES As String = InputBox("ΔΩΣΕ ΚΩΔΙΚΟ ")
             If YES = "0000" Then
 
-                ExecuteSQLQuery("delete FROM TIMS")
-                ExecuteSQLQuery("delete FROM TIMSPOL")
-                ExecuteSQLQuery("delete FROM TIMSANAL")
-                ExecuteSQLQuery("delete FROM PARTIDES")
-                MsgBox("ΟΚ ΣΒΗΣΤΗΚΑΝ")
+
+                Try
+
+
+
+                    Dim C As String = "FEST.bak"
+
+100:                C = InputBox("ΔΩΣΕ ΟΝΟΜΑ BACKUP ΤΗΣ ΒΑΣΗΣ FESTIVAL Π.Χ. ΣΤΟ  FEST.bak", , C)
+110:                Dim n As Integer = ExecuteError("BACKUP DATABASE [TECHNOPLASTIKI] TO  DISK ='" + C + "' WITH NOFORMAT, NOINIT, SKIP, NOREWIND, NOUNLOAD,  STATS = 10")
+
+                    If n = 0 Then
+
+120:                    MsgBox("ΟΛΟΚΛΗΡΩΘΗΚΕ")
+                    Else
+                        MsgBox("ΔΕΝ ΟΛΟΚΛΗΡΩΘΗΚΕ το BACKUP.ΑΚΥΡΩΝΕΤΑΙ Ο ΜΗΔΕΝΙΣΜΟΣ")
+                        Exit Sub
+                    End If
+
+
+                    ExecuteSQLQuery("delete FROM PEL")
+                    ExecuteSQLQuery("delete FROM HOTROOMDAYS")
+                    ExecuteSQLQuery("delete FROM HOTROOMS")
+                    ExecuteSQLQuery("delete FROM HOTELS")
+                    MsgBox("ΟΚ ΣΒΗΣΤΗΚΑΝ")
+                Catch
+                    MsgBox("ΔΕΝ ΟΛΟΚΛΗΡΩΘΗΚΕ")
+
+                End Try
+
             End If
 
 
@@ -2433,7 +2457,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select NAME,CATEGORY,EMAIL,THL,DIE,ID  FROM HOTELS "
+        frm.Label1.Text = "select NAME,CATEGORY,EMAIL,THL,DIE,ID,RANK  FROM HOTELS "
 
         frm.EditDomatia.Visible = True
 
@@ -2754,7 +2778,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID FROM PEL    ORDER BY EPO "
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID FROM PEL    ORDER BY EPO "
 
 
 
@@ -2769,7 +2793,7 @@ Public Class MDIMain
         '' ergates.MdiParent = Me
         ' frm.WindowState = FormWindowState.Maximized
         frm.STHLHONOMATOS_ID = 1
-        frm.STHLHTOY_ID = 12
+        frm.STHLHTOY_ID = 13
         frm.widths(1) = 100
         frm.QUERY_AFTER = ""  'update YLIKA SET N1=" + Mn1 + " WHERE N1 IS NULL"
         For KK As Integer = 0 To 6

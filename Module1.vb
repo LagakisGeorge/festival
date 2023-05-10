@@ -250,6 +250,38 @@ Module ModCon
         End Try
         Return sqlDT
     End Function
+
+    Public Function ExecuteError(ByVal SQLQuery As String) As Integer
+        Try
+            Dim sqlCon As New OleDbConnection(gConnect)
+
+            Dim sqlDA As New OleDbDataAdapter(SQLQuery, sqlCon)
+
+            Dim sqlCB As New OleDbCommandBuilder(sqlDA)
+            sqlDT.Reset() ' refresh 
+            sqlDA.Fill(sqlDT)
+            'Dim rowsAffected As Integer = sqlDT.Rows.Count
+            ' sqlDA.Fill(sqlDaTaSet, "PEL")
+            Return 0
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.ToString)
+            If Err.Number = 5 Then
+                MsgBox("Invalid Database, Configure TCP/IP", MsgBoxStyle.Exclamation, "Sales and Inventory")
+                ' End
+
+            Else
+                MsgBox("Error : " & ex.Message)
+            End If
+            ' MsgBox("Error No. " & Err.Number & " Invalid database or no database found !! Adjust settings first", MsgBoxStyle.Critical, "Sales And Inventory")
+            'MsgBox(SQLQuery)
+            Return 1
+        End Try
+
+    End Function
+
+
+
     Public Sub ExecuteSQLQuery(ByVal SQLQuery As String, ByRef SQLDT As DataTable)
         'αν χρησιμοποιώ  byref  tote prepei να δηλωθεί   
         'Dim DTI As New DataTable

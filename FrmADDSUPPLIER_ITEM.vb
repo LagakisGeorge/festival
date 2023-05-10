@@ -49,12 +49,19 @@
         '[DIE] NVARCHAR(35),
         '[NAME] [varchar](50) NULL)
         Dim SQL As String = ""
+        Dim CAT2 As String = Mid(ComboCAT.Text, 1, 1)
+        Dim RANK2 As String = RANK.Text
+
+
+
+
+
         If IsNew Then
 
-            Sql = "insert into HOTELS (EMAIL,NAME,THL,DIE) VALUES ('" + txtemail.Text + "','" + Replace(txtname.Text, "'", "`") + "','" + TxtTHL.Text + "','" + TxtTHL.Text + "')"
+            SQL = "insert into HOTELS (CATEGORY,RANK,EMAIL,NAME,THL,DIE) VALUES (" + CAT2 + "," + RANK2 + ",'" + txtEmail.Text + "','" + Replace(txtName.Text, "'", "`") + "','" + txtTHL.Text + "','" + txtTHL.Text + "')"
 
         Else
-            Sql = "UPDATE HOTELS SET EMAIL='" + txtemail.Text + "',NAME='" + txtname.Text + "',THL='" + TxtTHL.Text + "',DIE='" + txtDie.Text + "'  WHERE ID=" + Str(ID)
+            SQL = "UPDATE HOTELS SET CATEGORY=" + CAT2 + ",RANK=" + RANK2 + ",EMAIL='" + txtEmail.Text + "',NAME='" + txtName.Text + "',THL='" + txtTHL.Text + "',DIE='" + txtDie.Text + "'  WHERE ID=" + Str(ID)
 
 
         End If

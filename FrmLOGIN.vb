@@ -50,10 +50,10 @@
             'MDIMain.Show()
             For i = 0 To sqlDT.Rows.Count - 1
                 If sqlDT.Rows(i)("username") <> txtuser.Text Or sqlDT.Rows(i)("userpass") <> txtpassword.Text Then
-                    MsgBox("Access denied username and password !!!", MsgBoxStyle.Information, "Sales and Inventory")
+                    MsgBox("Απαγόρευση εισόδου στον χρήστη και στον κωδικό !!!", MsgBoxStyle.Information, "Φεστιβάλ Δράμας")
                     xcountx = xcountx + 1
                     If xcountx >= 3 Then
-                        MsgBox("You have reach the maximum time of login !!", MsgBoxStyle.Exclamation, "Sales and Inventory")
+                        MsgBox("Υπέρβαση ορίου δοκιμών εισόδου !!", MsgBoxStyle.Exclamation, "Φεστιβάλ Δράμας")
                         End
                     End If
                     Exit Sub
@@ -122,9 +122,33 @@
                 MDIMain.cmdSalesReceipt.Enabled = True
 
             Else
-                MDIMain.SystemFileToolStripMenuItem.Enabled = False
+               
                 MDIMain.ListaErgasion.Enabled = True
+                MDIMain.excelanal.Enabled = True
+                '   MDIMain.cmdERGATES.Enabled = True
+                MDIMain.cmdCustomerOrder.Enabled = True
+                MDIMain.Button1.Enabled = True
+                MDIMain.Button2.Enabled = True
+                MDIMain.Button3.Enabled = True
+                MDIMain.cmdExcel.Enabled = True
+                MDIMain.Button5.Enabled = True
+                MDIMain.cmdSalesReceipt.Enabled = True
 
+                MDIMain.cmdCustomerOrder.Enabled = True
+                MDIMain.Button6.Enabled = True
+                MDIMain.Button7.Enabled = True
+                MDIMain.hotels.Enabled = True
+                MDIMain.Button4.Enabled = True
+                MDIMain.Button9.Enabled = True
+
+
+                MDIMain.SystemFileToolStripMenuItem.Enabled = False
+
+                MDIMain.cmdExcel.Visible = False
+
+                MDIMain.cmdSalesReceipt.Visible = False
+
+                MDIMain.Button7.Visible = False
 
             End If
 

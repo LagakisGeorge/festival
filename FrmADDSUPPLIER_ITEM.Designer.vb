@@ -36,7 +36,7 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.txtName = New System.Windows.Forms.TextBox
         Me.txtTHL = New System.Windows.Forms.TextBox
         Me.RANK = New System.Windows.Forms.TextBox
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.ComboCAT = New System.Windows.Forms.ComboBox
         Me.SuspendLayout()
         '
         'Label1
@@ -161,14 +161,14 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.RANK.Size = New System.Drawing.Size(293, 21)
         Me.RANK.TabIndex = 20
         '
-        'ComboBox1
+        'ComboCAT
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"2 ΑΣΤΕΡΩΝ", "3 ΑΣΤΕΡΩΝ", "4 ΑΣΤΕΡΩΝ", "5 ΑΣΤΕΡΩΝ"})
-        Me.ComboBox1.Location = New System.Drawing.Point(125, 9)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 21
+        Me.ComboCAT.FormattingEnabled = True
+        Me.ComboCAT.Items.AddRange(New Object() {"2 ΑΣΤΕΡΩΝ", "3 ΑΣΤΕΡΩΝ", "4 ΑΣΤΕΡΩΝ", "5 ΑΣΤΕΡΩΝ"})
+        Me.ComboCAT.Location = New System.Drawing.Point(125, 9)
+        Me.ComboCAT.Name = "ComboCAT"
+        Me.ComboCAT.Size = New System.Drawing.Size(121, 21)
+        Me.ComboCAT.TabIndex = 21
         '
         'FrmADDSUPPLIER_ITEM
         '
@@ -176,7 +176,7 @@ Partial Class FrmADDSUPPLIER_ITEM
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(456, 334)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.ComboCAT)
         Me.Controls.Add(Me.RANK)
         Me.Controls.Add(Me.txtTHL)
         Me.Controls.Add(Me.txtName)
@@ -214,5 +214,5 @@ Partial Class FrmADDSUPPLIER_ITEM
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents txtTHL As System.Windows.Forms.TextBox
     Friend WithEvents RANK As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents ComboCAT As System.Windows.Forms.ComboBox
 End Class

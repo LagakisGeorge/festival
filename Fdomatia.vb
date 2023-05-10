@@ -47,7 +47,10 @@
             MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
             Exit Sub
         End If
-
+        If cat.Text.Length = 0 Then
+            MsgBox("ΔΕΝ ΕΧΕΤΕ ΒΑΛΕΙ ΚΑΤΗΓΟΡΙΑ")
+            Exit Sub
+        End If
 
 
 

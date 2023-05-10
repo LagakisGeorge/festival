@@ -26,6 +26,12 @@ Partial Class FrmAddSupplier
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddSupplier))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.Label15 = New System.Windows.Forms.Label
+        Me.Synodos = New System.Windows.Forms.TextBox
+        Me.mAttachment = New System.Windows.Forms.Label
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Subject = New System.Windows.Forms.TextBox
         Me.Label13 = New System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.HotelRoom = New System.Windows.Forms.Label
@@ -59,11 +65,9 @@ Partial Class FrmAddSupplier
         Me.ONO = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.email = New System.Windows.Forms.TextBox
-        Me.Subject = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Button1 = New System.Windows.Forms.Button
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-        Me.mAttachment = New System.Windows.Forms.Label
+        Me.CH2 = New System.Windows.Forms.Label
+        Me.CH1 = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -77,6 +81,8 @@ Partial Class FrmAddSupplier
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label15)
+        Me.GroupBox1.Controls.Add(Me.Synodos)
         Me.GroupBox1.Controls.Add(Me.mAttachment)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -116,6 +122,60 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(1, 125)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(48, 13)
+        Me.Label15.TabIndex = 133
+        Me.Label15.Text = "Συνοδός"
+        '
+        'Synodos
+        '
+        Me.Synodos.BackColor = System.Drawing.Color.PapayaWhip
+        Me.Synodos.CausesValidation = False
+        Me.Synodos.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Synodos.Location = New System.Drawing.Point(87, 122)
+        Me.Synodos.MaxLength = 50
+        Me.Synodos.Name = "Synodos"
+        Me.Synodos.Size = New System.Drawing.Size(325, 21)
+        Me.Synodos.TabIndex = 132
+        '
+        'mAttachment
+        '
+        Me.mAttachment.AutoSize = True
+        Me.mAttachment.Location = New System.Drawing.Point(168, 451)
+        Me.mAttachment.Name = "mAttachment"
+        Me.mAttachment.Size = New System.Drawing.Size(0, 13)
+        Me.mAttachment.TabIndex = 131
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(87, 441)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 130
+        Me.Button1.Text = "Συνημμένο"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 273)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(33, 13)
+        Me.Label2.TabIndex = 129
+        Me.Label2.Text = "Θέμα"
+        '
+        'Subject
+        '
+        Me.Subject.Location = New System.Drawing.Point(86, 270)
+        Me.Subject.Name = "Subject"
+        Me.Subject.Size = New System.Drawing.Size(325, 20)
+        Me.Subject.TabIndex = 128
+        '
         'Label13
         '
         Me.Label13.AutoSize = True
@@ -128,11 +188,13 @@ Partial Class FrmAddSupplier
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.CH1)
+        Me.Panel1.Controls.Add(Me.CH2)
         Me.Panel1.Controls.Add(Me.HotelRoom)
         Me.Panel1.Controls.Add(Me.Label17)
         Me.Panel1.Controls.Add(Me.HotelName)
         Me.Panel1.Controls.Add(Me.Label14)
-        Me.Panel1.Location = New System.Drawing.Point(9, 492)
+        Me.Panel1.Location = New System.Drawing.Point(8, 498)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(403, 92)
         Me.Panel1.TabIndex = 126
@@ -175,9 +237,9 @@ Partial Class FrmAddSupplier
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Θεσσαλονίκης", "Καβάλας", "Αλεξανδρούπολης", "Αμυγδαλεώνα"})
-        Me.ComboBox1.Location = New System.Drawing.Point(263, 122)
+        Me.ComboBox1.Location = New System.Drawing.Point(290, 244)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(148, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 125
         '
         'cmdcancel
@@ -220,10 +282,11 @@ Partial Class FrmAddSupplier
         '
         'txtTo
         '
-        Me.txtTo.Location = New System.Drawing.Point(86, 244)
+        Me.txtTo.Location = New System.Drawing.Point(689, 564)
         Me.txtTo.Name = "txtTo"
-        Me.txtTo.Size = New System.Drawing.Size(176, 20)
+        Me.txtTo.Size = New System.Drawing.Size(128, 20)
         Me.txtTo.TabIndex = 121
+        Me.txtTo.Visible = False
         '
         'Label12
         '
@@ -237,11 +300,12 @@ Partial Class FrmAddSupplier
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(6, 244)
+        Me.Label11.Location = New System.Drawing.Point(609, 564)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(62, 13)
         Me.Label11.TabIndex = 119
         Me.Label11.Text = "Πρός(email)"
+        Me.Label11.Visible = False
         '
         'txtMessage
         '
@@ -336,7 +400,7 @@ Partial Class FrmAddSupplier
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(164, 125)
+        Me.Label5.Location = New System.Drawing.Point(214, 247)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 13)
         Me.Label5.TabIndex = 108
@@ -397,7 +461,7 @@ Partial Class FrmAddSupplier
         Me.ONO.Location = New System.Drawing.Point(87, 12)
         Me.ONO.MaxLength = 100
         Me.ONO.Name = "ONO"
-        Me.ONO.Size = New System.Drawing.Size(325, 21)
+        Me.ONO.Size = New System.Drawing.Size(324, 21)
         Me.ONO.TabIndex = 2
         '
         'Label3
@@ -421,42 +485,29 @@ Partial Class FrmAddSupplier
         Me.email.Size = New System.Drawing.Size(325, 21)
         Me.email.TabIndex = 1
         '
-        'Subject
-        '
-        Me.Subject.Location = New System.Drawing.Point(86, 270)
-        Me.Subject.Name = "Subject"
-        Me.Subject.Size = New System.Drawing.Size(325, 20)
-        Me.Subject.TabIndex = 128
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 273)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(33, 13)
-        Me.Label2.TabIndex = 129
-        Me.Label2.Text = "Θέμα"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(87, 441)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 130
-        Me.Button1.Text = "Συνημμένο"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'mAttachment
+        'CH2
         '
-        Me.mAttachment.AutoSize = True
-        Me.mAttachment.Location = New System.Drawing.Point(168, 451)
-        Me.mAttachment.Name = "mAttachment"
-        Me.mAttachment.Size = New System.Drawing.Size(0, 13)
-        Me.mAttachment.TabIndex = 131
+        Me.CH2.AutoSize = True
+        Me.CH2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CH2.Location = New System.Drawing.Point(93, 19)
+        Me.CH2.Name = "CH2"
+        Me.CH2.Size = New System.Drawing.Size(10, 13)
+        Me.CH2.TabIndex = 4
+        Me.CH2.Text = " "
+        '
+        'CH1
+        '
+        Me.CH1.AutoSize = True
+        Me.CH1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CH1.Location = New System.Drawing.Point(93, 62)
+        Me.CH1.Name = "CH1"
+        Me.CH1.Size = New System.Drawing.Size(10, 13)
+        Me.CH1.TabIndex = 5
+        Me.CH1.Text = " "
         '
         'FrmAddSupplier
         '
@@ -518,4 +569,8 @@ Partial Class FrmAddSupplier
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents mAttachment As System.Windows.Forms.Label
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Synodos As System.Windows.Forms.TextBox
+    Friend WithEvents CH1 As System.Windows.Forms.Label
+    Friend WithEvents CH2 As System.Windows.Forms.Label
 End Class
