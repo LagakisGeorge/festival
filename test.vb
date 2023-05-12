@@ -142,68 +142,85 @@ Public Class test
         Dim MDAY As String, dcin As Date, DCOUT As Date
         ExecuteSQLQuery("select convert(date,CHECKOUT) as CHECKOUTD,convert(date,CHECKIN) as CHECKIND,* from PEL WHERE HOTELID=0 OR HOTELID IS NULL ", PEL)
         ListBox1.Items.Add("ΑΠΕΤΥΧΑΝ ΝΑ ΚΑΝΟΥΝ ΚΡΑΡΗΣΗ:")
+        Dim ISOK As Boolean = True
+
+
         For K As Integer = 0 To PEL.Rows.Count - 1
-            MDAY = Format(PEL.Rows(K)("CHECKIN"), "dd/MM/yyyy") ' βρηκα την ημερα checkin
-            dcin = PEL.Rows(K)("CHECKIN") ' βρηκα την ημερα checkin  PROSOXH EXEI KAI TIME
-            DCOUT = PEL.Rows(K)("CHECKOUT")
-            Dim DCIND As Date = PEL.Rows(K)("CHECKIND")
-            Dim DCOUTD As Date = PEL.Rows(K)("CHECKOUTD")
-            'Dim DCINDAYONLY As String = Format(PEL.Rows(K)("CHECKIN"), "MM/dd/yyyy")
-            'Dim dcin2d As DateTime = Convert.ToDateTime(DCINDAYONLY)
+            ISOK = True
+            If IsDBNull(PEL.Rows(K)("CHECKIN")) Or IsDBNull(PEL.Rows(K)("CHECKOUT")) Then
+                MsgBox("ΔΕΝ ΕΧΕΙ ΗΜΕΡΟΜΗΝΙΕΣ CHECKIN-CHECOUT O/H" + PEL.Rows(K)("EPO"))
+                ISOK = False
+            End If
+            If IsDBNull(PEL.Rows(K)("rank")) Then
+                MsgBox("ΔΕΝ ΕΧΕΙ RANK O/H" + PEL.Rows(K)("EPO"))
+                ISOK = False
+            End If
 
-            'Dim DCoutDAYONLY As String = Format(PEL.Rows(K)("CHECKout"), "MM/dd/yyyy")
-            'Dim dcout2d As DateTime = Convert.ToDateTime(DCoutDAYONLY)
-
-
-
-            Dim hmeres As Integer = DateDiff("d", DCIND, DCOUTD)
-            ' α τροπος κρατησεις με database    ( b me pinaka datagridview)
-            Dim HTR As New DataTable
-            'ΒΡΙΣΚΩ ΤΑ ΚΕΝΑ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΣΤΗΜΑ
-
-            'ΕΛΕΥΘΕΡΕΣ ΟΛΕΣ ΟΙ ΗΜΕΡΕΣ
-
-            Dim A As String = PEL.Rows(K)("EPO").ToString()
+            If ISOK Then
 
 
+                MDAY = Format(PEL.Rows(K)("CHECKIN"), "dd/MM/yyyy") ' βρηκα την ημερα checkin
+                dcin = PEL.Rows(K)("CHECKIN") ' βρηκα την ημερα checkin  PROSOXH EXEI KAI TIME
+                DCOUT = PEL.Rows(K)("CHECKOUT")
+                Dim DCIND As Date = PEL.Rows(K)("CHECKIND")
+                Dim DCOUTD As Date = PEL.Rows(K)("CHECKOUTD")
+                'Dim DCINDAYONLY As String = Format(PEL.Rows(K)("CHECKIN"), "MM/dd/yyyy")
+                'Dim dcin2d As DateTime = Convert.ToDateTime(DCINDAYONLY)
 
-            'Dim Sql As String = "DATECHECKIN>=" + MDAY + "' AND DATECKECKOUT AND (IDPEL IS NULL OR IDPEL=0) ORDER BY RANK "
-            'ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE " + Sql, HTR)
-
-            ' ΑΚΡΙΒΩΣ ΓΙΑ ΤΗΝ ΗΜΕΡΑ ΤΟΥ CHECKIN ΒΛΕΠΩ ΤΑ ΔΙΑΘΕΣΙΜΑ ΔΩΜΑΤΙΑ
-            ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL,IDROOM,H.NAME,D.ROOMN AS ROOMN from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE CONVERT(CHAR(10),DATECHECKIN,103)='" + MDAY + "' AND (IDPEL IS NULL OR IDPEL=0) ORDER BY RANK ", HTR)
-            For L As Integer = 0 To HTR.Rows.Count - 1 ' ΟΛΑ ΤΑ ΔΙΑΘΕΣΙΜΑ
-                ' ΠΡΕΠΕΙ ΝΑ ΕΛΕΓΞΩ ΤΙΣ ΜΕΡΕΣ ΔΙΑΜΟΝΗΣ ΤΟΥ ΠΡΟΣΚΕΚΛΗΜΕΝΟΥ ΑΝ ΕΙΝΑΙ ΔΙΑΘΕΣΙΜΕΣ ΣΤΟ ΙΔΙΟ ΔΩΜΑΤΙΟ IDROOM
-                Dim HRDAYS As New DataTable
-                '
-                Dim OK As Integer = 0
-                Try
+                'Dim DCoutDAYONLY As String = Format(PEL.Rows(K)("CHECKout"), "MM/dd/yyyy")
+                'Dim dcout2d As DateTime = Convert.ToDateTime(DCoutDAYONLY)
 
 
-                    ExecuteSQLQuery("select count(*) from HOTROOMDAYS WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString, HRDAYS)
-                    If HRDAYS(0)(0) = hmeres Then  ' εχει διαθεσιμες ολες τις ημερες οποτε οκ
-                        ExecuteSQLQuery("UPDATE PEL SET CH2='" + HTR.Rows(0)("NAME") + "',CH1=" + HTR.Rows(0)("ROOMN") + ",HOTELID=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + PEL(K)("ID").ToString)
-                        ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + PEL(K)("ID").ToString + " WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
-                        OK = 1
-                        Exit For
+
+                Dim hmeres As Integer = DateDiff("d", DCIND, DCOUTD)
+                ' α τροπος κρατησεις με database    ( b me pinaka datagridview)
+                Dim HTR As New DataTable
+                'ΒΡΙΣΚΩ ΤΑ ΚΕΝΑ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΣΤΗΜΑ
+
+                'ΕΛΕΥΘΕΡΕΣ ΟΛΕΣ ΟΙ ΗΜΕΡΕΣ
+
+                Dim A As String = PEL.Rows(K)("EPO").ToString()
+
+
+
+                'Dim Sql As String = "DATECHECKIN>=" + MDAY + "' AND DATECKECKOUT AND (IDPEL IS NULL OR IDPEL=0) ORDER BY RANK "
+                'ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE " + Sql, HTR)
+
+                ' ΑΚΡΙΒΩΣ ΓΙΑ ΤΗΝ ΗΜΕΡΑ ΤΟΥ CHECKIN ΒΛΕΠΩ ΤΑ ΔΙΑΘΕΣΙΜΑ ΔΩΜΑΤΙΑ
+                ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL,IDROOM,H.NAME,D.ROOMN AS ROOMN from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE CONVERT(CHAR(10),DATECHECKIN,103)='" + MDAY + "' AND (IDPEL IS NULL OR IDPEL=0) ORDER BY RANK ", HTR)
+                For L As Integer = 0 To HTR.Rows.Count - 1 ' ΟΛΑ ΤΑ ΔΙΑΘΕΣΙΜΑ
+                    ' ΠΡΕΠΕΙ ΝΑ ΕΛΕΓΞΩ ΤΙΣ ΜΕΡΕΣ ΔΙΑΜΟΝΗΣ ΤΟΥ ΠΡΟΣΚΕΚΛΗΜΕΝΟΥ ΑΝ ΕΙΝΑΙ ΔΙΑΘΕΣΙΜΕΣ ΣΤΟ ΙΔΙΟ ΔΩΜΑΤΙΟ IDROOM
+                    Dim HRDAYS As New DataTable
+                    '
+                    Dim OK As Integer = 0
+                    Try
+
+
+                        ExecuteSQLQuery("select count(*) from HOTROOMDAYS WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString, HRDAYS)
+                        If HRDAYS(0)(0) = hmeres Then  ' εχει διαθεσιμες ολες τις ημερες οποτε οκ
+                            ExecuteSQLQuery("UPDATE PEL SET CH2='" + HTR.Rows(0)("NAME") + "',CH1=" + HTR.Rows(0)("ROOMN") + ",HOTELID=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + PEL(K)("ID").ToString)
+                            ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + PEL(K)("ID").ToString + " WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
+                            OK = 1
+                            Exit For
+                        End If
+                    Catch ex As Exception
+
+                    End Try
+                    If OK = 0 Then
+                        ListBox1.Items.Add(PEL(0)("EPO"))
                     End If
-                Catch ex As Exception
-
-                End Try
-                If OK = 0 Then
-                    ListBox1.Items.Add(PEL(0)("EPO"))
-                End If
 
 
-                'ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=" + PEL(K)("ID").ToString + " WHERE ID=" + HTR(0)("ID").ToString)
+                    'ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=" + PEL(K)("ID").ToString + " WHERE ID=" + HTR(0)("ID").ToString)
 
-            Next
+                Next
 
 
 
-
+            End If
 
         Next
+        PAINTGRID1()
         'UPDATE HOTROOMDAYS SET IDPEL=0
         MsgBox("OK")
     End Sub
@@ -369,12 +386,20 @@ Public Class test
 
 
     Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=0")
-        ExecuteSQLQuery("UPDATE PEL SET CH2='',CH1='',NUM2=0 ")
 
-        ' ExecuteSQLQuery("update PEL SET [CHECKIN]='05/01/2023',[CHECKOUT]='05/13/2023',[HOTELID]=0;")
+        Dim ANS As Integer
+        ANS = MsgBox("ΠΡΟΣΟΧΗ ΘΑ ΔΙΑΓΡΑΦΟΥΝ ΟΙ ΚΡΑΤΗΣΕΙΣ", MsgBoxStyle.YesNo)
+        If ANS = vbYes Then
 
-        ' ExecuteSQLQuery("update HOTROOMS SET [APO]='05/01/2023',[EOS]='05/13/2023'")
+            ExecuteSQLQuery("UPDATE HOTROOMDAYS SET IDPEL=0")
+            ExecuteSQLQuery("UPDATE PEL SET CH2='',CH1='',NUM2=0 ")
+            ExecuteSQLQuery("update PEL SET [HOTELID]=0;")
+
+
+            ' ExecuteSQLQuery("update PEL SET [CHECKIN]='05/01/2023',[CHECKOUT]='05/13/2023',[HOTELID]=0;")
+
+            ' ExecuteSQLQuery("update HOTROOMS SET [APO]='05/01/2023',[EOS]='05/13/2023'")
+        End If
 
 
 
@@ -515,7 +540,8 @@ Public Class test
 
     Private Sub test_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         paint_grid()
-        Dim Q As String = "SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL WHERE HOTELID=0 OR HOTELID IS NULL"
+        PAINTGRID1()
+        '  Dim Q As String = "SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL WHERE HOTELID=0 OR HOTELID IS NULL"
 
         'Try
         '    Dim sqlCon As New OleDbConnection(gConnect)
@@ -543,24 +569,24 @@ Public Class test
         ' cnString = gConSQL
 
 
-        Dim SQLqry
-        ' SQLqry = Label1.Text '"SELECT NAME,N1,ID FROM ERGATES " ' ORDER BY HME "
-        Dim conn As SqlConnection = New SqlConnection(gConSQL)
-        ' Try
-        ' Open connection
-        conn.Open()
+        'Dim SQLqry
+        '' SQLqry = Label1.Text '"SELECT NAME,N1,ID FROM ERGATES " ' ORDER BY HME "
+        'Dim conn As SqlConnection = New SqlConnection(gConSQL)
+        '' Try
+        '' Open connection
+        'conn.Open()
 
-        Dim da As SqlDataAdapter = New SqlDataAdapter(Q, conn)
+        'Dim da As SqlDataAdapter = New SqlDataAdapter(Q, conn)
 
-        'create command builder
-        Dim cb As SqlCommandBuilder = New SqlCommandBuilder(da)
-        Dim ds As DataSet
-        ds = New DataSet ' ds.Clear()
-        'fill dataset
-        da.Fill(ds, "PEL")
-        DataGridView1.ClearSelection()
-        DataGridView1.DataSource = ds
-        DataGridView1.DataMember = "PEL"
+        ''create command builder
+        'Dim cb As SqlCommandBuilder = New SqlCommandBuilder(da)
+        'Dim ds As DataSet
+        'ds = New DataSet ' ds.Clear()
+        ''fill dataset
+        'da.Fill(ds, "PEL")
+        'DataGridView1.ClearSelection()
+        'DataGridView1.DataSource = ds
+        'DataGridView1.DataMember = "PEL"
 
 
 
@@ -586,18 +612,45 @@ Public Class test
         ' End Try
     End Sub
 
+
+
+
+    Private Sub PAINTGRID1()
+        Dim Q As String = "SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL WHERE HOTELID=0 OR HOTELID IS NULL"
+        Dim SQLqry
+        ' SQLqry = Label1.Text '"SELECT NAME,N1,ID FROM ERGATES " ' ORDER BY HME "
+        Dim conn As SqlConnection = New SqlConnection(gConSQL)
+        ' Try
+        ' Open connection
+        conn.Open()
+
+        Dim da As SqlDataAdapter = New SqlDataAdapter(Q, conn)
+
+        'create command builder
+        Dim cb As SqlCommandBuilder = New SqlCommandBuilder(da)
+        Dim ds As DataSet
+        ds = New DataSet ' ds.Clear()
+        'fill dataset
+        da.Fill(ds, "PEL")
+        DataGridView1.ClearSelection()
+        DataGridView1.DataSource = ds
+        DataGridView1.DataMember = "PEL"
+
+    End Sub
+
     Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
         ' ακυρωση κράτησης
 
         Dim ans As Integer
         ans = MsgBox("Να ακυρωθεί η κράτηση;", MsgBoxStyle.YesNoCancel)
         If ans = MsgBoxResult.Yes Then
-            ExecuteSQLQuery("UPDATE  PEL SET CHECKOUT=null WHERE ID=" + f_idpel)
+            ExecuteSQLQuery("UPDATE  PEL SET CHECKOUT=null,HOTELID=0 WHERE ID=" + f_idpel)
             ExecuteSQLQuery("UPDATE  PEL SET CHECKIN=null WHERE ID=" + f_idpel)
             ExecuteSQLQuery("UPDATE  PEL SET CH2=null WHERE ID=" + f_idpel) 'ΞΕΝΟΔΟΧΕΙΟ =''
             ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=0 where IDPEL=" + f_idpel)
             F_REM_DAYS = 0
             paint_grid()
+            PAINTGRID1()
 
 
 

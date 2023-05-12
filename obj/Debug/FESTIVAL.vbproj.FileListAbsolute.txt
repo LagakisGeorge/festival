@@ -32,3 +32,4 @@ C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.PARAMETROI.resource
 C:\adoprog2\festival\TECHNOPLASTIKI\bin\Debug\Interop.SubclassingSink.dll
 C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\Interop.SubclassingSink.dll
 C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.FrmstatAddSupplier.resources
+C:\adoprog2\festival\TECHNOPLASTIKI\obj\Debug\TECHNOPLASTIKI.TIMOLOGIA.resources

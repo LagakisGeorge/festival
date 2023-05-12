@@ -126,6 +126,7 @@ Partial Class MDIMain
         Me.tmr_Print = New System.Windows.Forms.Timer(Me.components)
         Me.TabPage1 = New System.Windows.Forms.TabPage
         Me.TabControl1 = New TECHNOPLASTIKI.TabControlEx
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
         Me.MenuStrip1.SuspendLayout()
         Me.TSHoldLeft.SuspendLayout()
         Me.MainPanel.SuspendLayout()
@@ -621,7 +622,7 @@ Partial Class MDIMain
         Me.excelanal.Name = "excelanal"
         Me.excelanal.Size = New System.Drawing.Size(166, 27)
         Me.excelanal.TabIndex = 30
-        Me.excelanal.Text = "            "
+        Me.excelanal.Text = "Εισαγωγή από Excel"
         Me.excelanal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.excelanal.UseVisualStyleBackColor = False
         '
@@ -1168,6 +1169,10 @@ Partial Class MDIMain
         Me.TabControl1.Size = New System.Drawing.Size(1031, 787)
         Me.TabControl1.TabIndex = 55
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
@@ -1317,5 +1322,6 @@ Partial Class MDIMain
     Friend WithEvents hotels As System.Windows.Forms.Button
     Friend WithEvents TabControl1 As TECHNOPLASTIKI.TabControlEx
     Friend WithEvents Button9 As System.Windows.Forms.Button
+    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
 
 End Class

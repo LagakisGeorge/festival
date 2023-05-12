@@ -186,7 +186,7 @@ Partial Class ergates
         Me.delete_label.Name = "delete_label"
         Me.delete_label.Size = New System.Drawing.Size(80, 39)
         Me.delete_label.TabIndex = 6
-        Me.delete_label.Text = "Διαγραφή ετικέττας"
+        Me.delete_label.Text = "Διαγραφή "
         Me.delete_label.UseVisualStyleBackColor = False
         Me.delete_label.Visible = False
         '

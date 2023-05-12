@@ -96,7 +96,7 @@ Public Class FrmAddSupplier
             MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
             Exit Sub
         End If
-
+        If rank.Text.Length = 0 Then rank.Text = "0"
 
 
         '  gHMETEL = DT2.Rows(0)("HMETEL")
@@ -107,10 +107,10 @@ Public Class FrmAddSupplier
 
         If IsNew Then
 
-            SQL = "insert into PEL (SYNODOS,CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,ONO,DIE) VALUES ('" + Synodos.Text + "','" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + email.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + onoProsf.Text + "','" + mBaros + "')"
+            SQL = "insert into PEL (CH5,RANK,SYNODOS,CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,ONO,DIE) VALUES ('" + PTHSHC5.Text + "'," + rank.Text + ",'" + Synodos.Text + "','" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + email.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + onoProsf.Text + "','" + mBaros + "')"
 
         Else
-            SQL = "UPDATE PEL SET SYNODOS='" + Synodos.Text + "',CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',ONO='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
+            SQL = "UPDATE PEL SET CH5='" + PTHSHC5.Text + "',RANK=" + rank.Text + ",SYNODOS='" + Synodos.Text + "',CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',ONO='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
 
 
         End If

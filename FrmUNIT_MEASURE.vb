@@ -961,134 +961,10 @@ Public Class ergates
 
     Private Sub delete_label_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles delete_label.Click
 
-        ' ο κωδικος του προιοντος που διαλεξα
-        Dim mkod As String = Mid(Label2.Text, 1, 6)
-
-        ' Dim m_ID As String = GridView1.CurrentRow.Cells("IDTIMS").Value.ToString
-        Dim mpos As String '= GridView1.CurrentRow.Cells("IDTIMS").Value.ToString
-        Dim mpART As String = GridView1.CurrentRow.Cells("N2").Value.ToString
-        Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
-        mpos = GridView1.CurrentRow.Cells("ΠΟΣΟΤΗΤΑ").Value.ToString
-        'SELECT A.CH1 AS [ΚΩΔ.ΥΛΙΚΟΥ],A.HME AS [HM.ΠΑΡΑΓ],CH2 AS [ΩΡΑ ΠΑΡΑΓ] ,A.POSO AS [ΠΟΣΟΤΗΤΑ],T.ATIM AS [ΑΡ.ΤΙΜΟΛ],T.HME AS [ΗΜ.ΤΙΜΟΛ],T.PROM AS [ΠΡΟΜΗΘ],A.ID,A.IDTIMS,N2 ,IDPART FROM TIMSANAL A INNER JOIN TIMS T ON A.IDTIMS=T.ID  where A.N2=" + GridView1.CurrentRow.Cells(0).Value.ToString    '"IDPART=" + mk + ""
-        Dim mYpol As String = Split(Label2.Text, ";")(1)
-
-        'παιρνω ολες τις σειρες που εχουν την ιδια ωρα
-        'αυξανω στο tims ΤΟ ΥΠΟΛΟΙΠΟ   ( ΜΕ ΤΗΝ ΒΟΗΘΕΙΑ ΤΟΥ Α.IDTIMS )
-
-
-        Dim R As New DataTable
-        ExecuteSQLQuery("SELECT BAROS FROM YLIKA WHERE KOD='" + mkod + "'", R)
-        Dim MBAROS As Double = R(0)(0)
-
-        ExecuteSQLQuery("SELECT * FROM TIMSANAL WHERE N2=" + mpART + " AND CH2='" + mORA + "'", R)
-        GDB.BeginTrans()
-        Dim sPoso As Double = 0
-        Dim mTemax As String = ""
-        Try
-
-
-            For N As Integer = 0 To R.Rows.Count - 1
-                If IsDBNull(R(N)("TEMAX")) Then
-                    mTemax = "0"
-                Else
-                    mTemax = R.Rows(N)("TEMAX").ToString
-                End If
-
-                Dim poso As String = R.Rows(N)("poso").ToString
-                poso = Replace(poso, ",", ".")
-                Dim idT As String = R.Rows(N)("IDTIMS").ToString
-                Dim id As String = R.Rows(N)("ID").ToString
-                Dim idPART As String = R.Rows(N)("IDPART").ToString
-                ' ΣΕ ΠΡΟΦΟΡΜΕΣ
-                'IDTIMS -> ΒΑΖΩ ΤΟ ID THΣ ΠΑΤΡΙΚΗΣ PARTIDAS    N2=ΑΡΙΘΜΟΣ ΠΑΡΤΙΔΑΣ ΠΑΡΑΧΘΕΙΣΑΣ IDPART=-1
-                ' ΣΕ ΚΑΝΟΝΙΚΕΣ ΠΑΡΤΙΔΟΠΟΙΗΣΕΙΣ ( ΤΙΜΟΛΟΓΙΑ )
-                'IDTIMS -> ΒΑΖΩ ΤΟ ID TOY ΠΑΤΡΙΚOY TIMOLOGIOY  N2=ΑΡΙΘΜΟΣ ΠΑΡΤΙΔΑΣ ΠΑΡΑΧΘΕΙΣΑΣ IDPART=0
-
-                'ENHMERVNV PATRIKES EGGRAFES
-                If idPART = -1 Then  ' ΑΠΟ ΠΡΟΦΟΡΜΕΣ
-
-                    If Val(poso) > Val(mYpol) Then
-                        MsgBox("αδυνατη η διαγραφή. Εχει χρησιμοποιηθεί η παρτίδα")
-                        GDB.RollbackTrans()
-                        Exit Sub
-
-
-                    End If
-
-
-
-
-
-
-                    GDB.Execute("UPDATE PARTIDES SET YPOL=YPOL+" + poso + " WHERE ID=" + idT)
-                    'ΕΝΗΜΕΡΩΝΩ ΠΑΡΑΧΘΕΙΣΕΣ ΠΑΡΤΙΔΕΣ
-                    GDB.Execute("UPDATE PARTIDES SET YPOL=YPOL-" + poso + " WHERE PARTIDA=" + mpART)
-                Else
-                    sPoso = sPoso + poso
-
-
-                    If Val(poso) / (MBAROS) > Val(mYpol) Then
-                        MsgBox("αδυνατη η διαγραφή. Εχει χρησιμοποιηθεί η παρτίδα")
-                        GDB.RollbackTrans()
-                        Exit Sub
-
-
-                    End If
-
-
-                    GDB.Execute("UPDATE TIMS SET YPOL=YPOL+" + Replace(poso, ",", ".") + " WHERE ID=" + idT)
-                End If
-
-
-
-                GDB.Execute("UPDATE TIMSANAL SET POSO=0,CH2=LEFT(CH2,9)+" + "'ΔΙΕΓΡΑΦΗ'" + " WHERE ID=" + id)
-
-            Next
-
-
-
-
-
-            If sPoso > 0 And MBAROS > 0 Then
-                ' αν  ειναι απο υλικά πρέπει να υπολογίσω τα κομμάτια που παρήχθησαν
-                'ΕΝΗΜΕΡΩΝΩ ΠΑΡΑΧΘΕΙΣΕΣ ΠΑΡΤΙΔΕΣ   Dim mTemax As String
-                If Val(mTemax) = 0 Then
-                    mTemax = Replace(Str(Int(sPoso / MBAROS)), ",", ".")
-
-                End If
-                GDB.Execute("UPDATE PARTIDES SET YPOL=YPOL-" + Replace(mTemax, ",", ".") + " WHERE PARTIDA=" + mpART)
-
-                'End If
-            End If
-
-
-
-            GDB.CommitTrans()
-
-        Catch ex As Exception
-
-            GDB.RollbackTrans()
-            MsgBox("ΔΕΝ ΔΙΕΓΡΑΦΗ " + Chr(13) + Err.Description)
-            Exit Sub
-
-        End Try
-
-        MsgBox("ΔΙΕΓΡΆΦΗ")
-        Me.Close()
-
-        'UPDATEALL()
-        'ExecuteSQLQuery("SELECT * FROM TIMSANAL WHERE N2=" + mpART + " AND CH2='" + mORA + "'", R)
-
-
-
-
-
-
-
-
+        Dim mpART As String = GridView1.CurrentRow.Cells("ID").Value.ToString
+        ' Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
+        ExecuteSQLQuery("delete from PEL WHERE ID=" + mpART + " AND (HOTELID=0 OR HOTELID IS NULL)")
         paint_ergasies()
-
-
 
     End Sub
 
@@ -1660,7 +1536,9 @@ Public Class ergates
 
             frmPEL.CH1.Text = GridView1.CurrentRow.Cells("CH1").Value.ToString
             frmPEL.CH2.Text = GridView1.CurrentRow.Cells("CH2").Value.ToString
+            frmPEL.PTHSHC5.Text = GridView1.CurrentRow.Cells("CH5").Value.ToString
 
+            frmPEL.rank.Text = GridView1.CurrentRow.Cells("RANK").Value.ToString
 
             frmPEL.email.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
             frmPEL.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString

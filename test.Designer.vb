@@ -91,6 +91,7 @@ Partial Class test
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Button2
         '
@@ -100,6 +101,7 @@ Partial Class test
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
         '
         'DGV
         '
@@ -337,6 +339,7 @@ Partial Class test
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(304, 69)
         Me.ListBox1.TabIndex = 7
+        Me.ListBox1.Visible = False
         '
         'Button4
         '

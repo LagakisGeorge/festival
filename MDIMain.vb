@@ -1249,45 +1249,8 @@ Public Class MDIMain
     Private Sub cmdERGASIES_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExcel.Click
 
         Dim f As New test
-        f.ShowDialog()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+        f.ShowDialog()    
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     'ergates.Text = "Χρήστες"
     'ergates.Label1.Text = "SELECT [Username],[UserPass],User_ID FROM TBL_Users" ' "SELECT NAME AS [Περιγραφή],ENERGOS AS [ΕΝΕΡΓΗ],SEIRES AS [ΕΧΕΙ ΣΕΙΡΕΣ],ID FROM CERGASIES " ' ORDER BY HME "
@@ -1827,97 +1790,102 @@ Public Class MDIMain
 
     Private Sub cmdCashiering_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles excelanal.Click
 
+        Dim ANS As Integer
+        Dim r As New ADODB.Recordset
 
-        'Forms are controls and you can easily add them to other controls:
-        'Dim page = New TabPage()
-        'page.Controls.Add(New Form With {.TopMost = False, .TopLevel = False, .FormBorderStyle = FormBorderStyle.None, .Dock = DockStyle.Fill})
-        'TabControl.TabPages.Add(page)
-        'Ideally you should refactor and move the content of the form into a UserControl and then apply the control to both the form and the tabs, but changing few properties on the form you can achieve the same result.
-
-        'Dim frm As New TIMOLOGIA()
-        'frm.TopLevel = False
-        'frm.Visible = True
-        'frm.FormBorderStyle = FormBorderStyle.None
-        'frm.Dock = DockStyle.Fill
-        'Dim PAGE As New TabPage
-        'Dim N As Integer = TabControl1.TabPages.Count
-        'PAGE.Text = "τιμολόγια    ."
-        'TabControl1.TabPages.Add(PAGE)
-        'TabControl1.TabPages(N).Controls.Add(frm)
-        'TabControl1.SelectTab(N)
+        Dim line As String
+        Dim line2 As String
+        Dim cPel As String
+        Dim cEID As String
+        Dim mHME As String
+        Dim mAtim As String
 
 
+        OpenFileDialog1.ShowDialog()
+        Dim xlApp As Excel.Application
+        Dim xlWorkBook As Excel.Workbook
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim file As String = OpenFileDialog1.FileName
+        If file.Length < 2 Then
+            MsgBox("Δεν επιλέχθηκε αρχειο")
+            Exit Sub
+        End If
+        xlApp = New Excel.ApplicationClass
+        xlWorkBook = xlApp.Workbooks.Open(file)
+        xlWorkSheet = xlWorkBook.Worksheets(1)
+        'display the cells value B2
+        '    MsgBox(xlWorkSheet.Cells(6, 1).value)
+        'edit the cell with new value
 
-        'For index As Integer = 9 To TextBox1.Text + 1 Step -1
+        'xlWorkSheet.Cells(7, 2) = onomaProion
+        'xlWorkSheet.Cells(8, 1) = "ΠΟΣΟΤΗΤΑ: " + Str(minTem)
+        'xlWorkSheet.Cells(15, 1) = TELBARCODE
+        'xlWorkSheet.Cells(18, 2) = kodPROION
+        ''Globals.xlworkSheet.PrintOut(From:=1, To:=1, Copies:=2, Preview:=True)
 
-        '    Me.TabControl1.TabPages.Remove(Me.TabControl1.TabPages(index))
-        'Next
-
-
-
-
-
-        'TabControl1.TabPages.Remove(TabControl1.SelectedTab)
-
-
-        'σουμα ωρων ανα εργαζομενο και ημερα
-        'Dim filename As String = "c:\mercvb\ektyp4.xlsx"
-        'Dim row, column As Integer
-        'Dim sheetname As String = "Φύλλο1"
-
-
-        'Dim xlApp As Excel.Application
-        'Dim xlWorkBook As Excel.Workbook
-        'Dim xl As Excel.Worksheet
-
-        'xlApp = New Excel.ApplicationClass
-        'xlWorkBook = xlApp.Workbooks.Add   'Open(filename)
-
-        ''xlWorkBook.Worksheets.Add()  '(1)
-        'xl = xlWorkBook.Worksheets(1) ' .Add
+        Dim N As Integer = 11
+        Dim D As String
+        Dim flagPel As Integer
+        Dim flagEID As Integer
+        Dim merror As Integer = 0
 
 
 
+        Dim mon As String
 
 
-        'Dim jt As New DataTable
+        '*********************** LOOP EXCEL ***************************************************
+        For k As Integer = 1 To xlWorkSheet.UsedRange.Rows.Count
 
-        ''ελεγχω αν υπάρχει το TEMP
-        'ExecuteSQLQuery("IF OBJECT_ID('dbo.TEMP', 'U') IS NOT NULL  DROP TABLE dbo.TEMP")
-        ' ''ΑΠΟΘΗΚΕΥΩ ΤΙΣ ΣΟΥΜΕΣ ΣΤΟ ΤΕΜΡ GROUP BY IDERGATH,APO,ERGATES.NAME,IDERGASIAS"
-        'ExecuteSQLQuery("select APO,ERGATES.NAME,ROUND(SUM(ORES),2) AS [ΩΡΕΣ] ,IDERGATH from JOBDETAIL INNER JOIN ERGATES ON ERGATES.ID=JOBDETAIL.IDERGATH GROUP BY IDERGATH,APO,ERGATES.NAME ORDER BY APO DESC,ERGATES.NAME", jt)
-        ''        ExecuteSQLQuery("DECLARE @cols AS NVARCHAR(MAX);DECLARE @query AS NVARCHAR(MAX); SELECT @cols = STUFF((SELECT distinct  ',' + QUOTENAME(NAME) FROM ERGATES WHERE ENERGOS=1 FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)') ,1,1,'');SET @query =  'SELECT * FROM (  SELECT  ( CASE WHEN SORES > 0 THEN SORES ELSE 0   END) AS Expr1,NAME,APO FROM TEMP ) t  PIVOT (SUM(Expr1) FOR NAME  IN('+  @cols+'  ) ) p;';Execute(@query);")
+            ' line = xlWorkSheet.Cells(N, 1).VALUE.ToString
+
+            If N > xlWorkSheet.UsedRange.Rows.Count Then
+
+                If xlWorkSheet.Cells(N, 4).VALUE = Nothing Then
+                    Exit For
+                End If
+
+            End If
+            'εμαιλ exei ok
+            If InStr(xlWorkSheet.Cells(k, 5).VALUE, "@") > 0 Then
+                Dim epo As String = xlWorkSheet.Cells(k, 2).VALUE
+                Dim email As String = xlWorkSheet.Cells(k, 5).VALUE
+                Dim apo As Date = xlWorkSheet.Cells(k, 6).VALUE
+                Dim eos As Date = xlWorkSheet.Cells(k, 7).VALUE
+                Dim Capo As String = Format(apo, "MM/dd/yyyy")
+                Dim Ceos As String = Format(eos, "MM/dd/yyyy")
+                Dim sql As String = "insert into PEL (EPO,EMAIL,CHECKIN,CHECKOUT) VALUES ('" + epo + "','" + email + "','" + Capo + "','" + Ceos + "')"
+                If ExecuteError(sql) > 0 Then
+                    Dim ANS2 As Integer = MsgBox("ΛΑΘΟΣ ΣΤΟΝ " + epo + ". ΣΥΝΕΧΙΖΩ N/O", MsgBoxStyle.YesNo)
+                    If ANS2 = vbNo Then
+                        Exit For
+                    End If
+                End If
+
+            End If
+
+            'If xlWorkSheet.Cells(N, 4).VALUE = Nothing Then
+            '    Exit Do
+            'End If
+            Dim YPARXEI_HDH As Boolean = False
+
+            'ΨΑΧΝΩ ΝΑ ΔΡΩ ΤΟΝ ΚΩΔΙΚΟ ΤΟΥ ΠΡΟΜΗΘΕΥΤΗ
+            flagPel = 0
+        Next
 
 
 
 
+        xlWorkBook.Close()
+        xlApp.Quit()
 
-        'xlApp.Visible = True
-
-
-
-
-
-        ''ExecuteSQLQuery("select SUM(ORES) AS [ΣΥΝ.ΩΡΕΣ],SUM(METRA) AS [ΣΥΝ.ΜΕΤ],IDERGATH,DAY(HME),MONTH(HME),ERGATES.NAME from JOBDETAIL INNER JOIN ERGATES ON ERGATES.ID=JOBDETAIL.IDERGATH GROUP BY IDERGATH,DAY(HME),MONTH(HME),ERGATES.NAME", dt)
-        'Dim COLS As Integer
+        releaseObject(xlApp)
+        releaseObject(xlWorkBook)
+        releaseObject(xlWorkSheet)
 
 
-        ''  Dim WS(30) As Microsoft.Office.Interop.Excel.Worksheet
-        'Dim n As Integer
-        'xl.Cells(1, 1).value = "ΗΜΕΡ/ΝΙΑ"
-        'xl.Cells(1, 2).value = "ΟΝΟΜΑ"
-        'xl.Cells(1, 3).value = "ΩΡΕΣ"
 
-        'For k = 1 To jt.Rows.Count - 1
-        '    For n = 0 To jt.Columns.Count - 2
-        '        Try
-        '            xl.Cells(k + 1, n + 1).value = jt.Rows(k - 1)(n)
-        '        Catch ex As Exception
 
-        '        End Try
-
-        '    Next
-        '    Me.Text = k
 
         'Next
         'jt = Nothing
@@ -2778,7 +2746,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID FROM PEL    ORDER BY EPO "
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5 FROM PEL    ORDER BY EPO "
 
 
 
@@ -2789,7 +2757,7 @@ Public Class MDIMain
 
         frm.Text = per '"Αρχείο Υλικών"
 
-
+        frm.delete_label.Visible = True
         '' ergates.MdiParent = Me
         ' frm.WindowState = FormWindowState.Maximized
         frm.STHLHONOMATOS_ID = 1

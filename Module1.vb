@@ -267,7 +267,7 @@ Module ModCon
         Catch ex As Exception
             MsgBox("Error: " & ex.ToString)
             If Err.Number = 5 Then
-                MsgBox("Invalid Database, Configure TCP/IP", MsgBoxStyle.Exclamation, "Sales and Inventory")
+                MsgBox("Invalid Database, Configure TCP/IP", MsgBoxStyle.Exclamation, "ΦΕΣΤΙΒΑΛ")
                 ' End
 
             Else

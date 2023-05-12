@@ -26,6 +26,8 @@ Partial Class FrmAddSupplier
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddSupplier))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.rank = New System.Windows.Forms.TextBox
+        Me.Label16 = New System.Windows.Forms.Label
         Me.Label15 = New System.Windows.Forms.Label
         Me.Synodos = New System.Windows.Forms.TextBox
         Me.mAttachment = New System.Windows.Forms.Label
@@ -34,6 +36,8 @@ Partial Class FrmAddSupplier
         Me.Subject = New System.Windows.Forms.TextBox
         Me.Label13 = New System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel
+        Me.CH1 = New System.Windows.Forms.Label
+        Me.CH2 = New System.Windows.Forms.Label
         Me.HotelRoom = New System.Windows.Forms.Label
         Me.Label17 = New System.Windows.Forms.Label
         Me.HotelName = New System.Windows.Forms.Label
@@ -66,8 +70,8 @@ Partial Class FrmAddSupplier
         Me.Label3 = New System.Windows.Forms.Label
         Me.email = New System.Windows.Forms.TextBox
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-        Me.CH2 = New System.Windows.Forms.Label
-        Me.CH1 = New System.Windows.Forms.Label
+        Me.Label18 = New System.Windows.Forms.Label
+        Me.PTHSHC5 = New System.Windows.Forms.TextBox
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -81,6 +85,10 @@ Partial Class FrmAddSupplier
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.PTHSHC5)
+        Me.GroupBox1.Controls.Add(Me.Label18)
+        Me.GroupBox1.Controls.Add(Me.rank)
+        Me.GroupBox1.Controls.Add(Me.Label16)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.Synodos)
         Me.GroupBox1.Controls.Add(Me.mAttachment)
@@ -121,6 +129,22 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.Size = New System.Drawing.Size(1090, 590)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'rank
+        '
+        Me.rank.Location = New System.Drawing.Point(368, 92)
+        Me.rank.Name = "rank"
+        Me.rank.Size = New System.Drawing.Size(44, 20)
+        Me.rank.TabIndex = 135
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(311, 96)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(54, 13)
+        Me.Label16.TabIndex = 134
+        Me.Label16.Text = "Rank1-10"
         '
         'Label15
         '
@@ -198,6 +222,26 @@ Partial Class FrmAddSupplier
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(403, 92)
         Me.Panel1.TabIndex = 126
+        '
+        'CH1
+        '
+        Me.CH1.AutoSize = True
+        Me.CH1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CH1.Location = New System.Drawing.Point(93, 62)
+        Me.CH1.Name = "CH1"
+        Me.CH1.Size = New System.Drawing.Size(10, 13)
+        Me.CH1.TabIndex = 5
+        Me.CH1.Text = " "
+        '
+        'CH2
+        '
+        Me.CH2.AutoSize = True
+        Me.CH2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CH2.Location = New System.Drawing.Point(93, 19)
+        Me.CH2.Name = "CH2"
+        Me.CH2.Size = New System.Drawing.Size(10, 13)
+        Me.CH2.TabIndex = 4
+        Me.CH2.Text = " "
         '
         'HotelRoom
         '
@@ -482,32 +526,28 @@ Partial Class FrmAddSupplier
         Me.email.Location = New System.Drawing.Point(87, 95)
         Me.email.MaxLength = 50
         Me.email.Name = "email"
-        Me.email.Size = New System.Drawing.Size(325, 21)
+        Me.email.Size = New System.Drawing.Size(209, 21)
         Me.email.TabIndex = 1
         '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'CH2
+        'Label18
         '
-        Me.CH2.AutoSize = True
-        Me.CH2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.CH2.Location = New System.Drawing.Point(93, 19)
-        Me.CH2.Name = "CH2"
-        Me.CH2.Size = New System.Drawing.Size(10, 13)
-        Me.CH2.TabIndex = 4
-        Me.CH2.Text = " "
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(9, 244)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(73, 13)
+        Me.Label18.TabIndex = 136
+        Me.Label18.Text = "Αριθ. Πτήσης"
         '
-        'CH1
+        'PTHSHC5
         '
-        Me.CH1.AutoSize = True
-        Me.CH1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.CH1.Location = New System.Drawing.Point(93, 62)
-        Me.CH1.Name = "CH1"
-        Me.CH1.Size = New System.Drawing.Size(10, 13)
-        Me.CH1.TabIndex = 5
-        Me.CH1.Text = " "
+        Me.PTHSHC5.Location = New System.Drawing.Point(88, 244)
+        Me.PTHSHC5.Name = "PTHSHC5"
+        Me.PTHSHC5.Size = New System.Drawing.Size(100, 20)
+        Me.PTHSHC5.TabIndex = 137
         '
         'FrmAddSupplier
         '
@@ -573,4 +613,8 @@ Partial Class FrmAddSupplier
     Friend WithEvents Synodos As System.Windows.Forms.TextBox
     Friend WithEvents CH1 As System.Windows.Forms.Label
     Friend WithEvents CH2 As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents rank As System.Windows.Forms.TextBox
+    Friend WithEvents PTHSHC5 As System.Windows.Forms.TextBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
 End Class
