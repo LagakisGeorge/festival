@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmstatAddSupplier
+Partial Class Airport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,9 +23,8 @@ Partial Class FrmstatAddSupplier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmstatAddSupplier))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Airport))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
@@ -46,15 +45,18 @@ Partial Class FrmstatAddSupplier
         Me.cmdcancel = New System.Windows.Forms.Button
         Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.PTHSHAN = New System.Windows.Forms.TextBox
+        Me.PTHSHAF = New System.Windows.Forms.TextBox
+        Me.cAirport = New System.Windows.Forms.ComboBox
         Me.toexcel = New System.Windows.Forms.Button
         Me.Subject = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.attachment = New System.Windows.Forms.Label
         Me.SQLBuild = New System.Windows.Forms.Button
-        Me.sql = New System.Windows.Forms.TextBox
+        Me.sqlText = New System.Windows.Forms.TextBox
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -66,21 +68,11 @@ Partial Class FrmstatAddSupplier
         Me.ImageList1.Images.SetKeyName(0, "+.ico")
         Me.ImageList1.Images.SetKeyName(1, "-.ico")
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(67, 129)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(31, 13)
-        Me.Label2.TabIndex = 15
-        Me.Label2.Text = "Email"
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(233, 22)
+        Me.Label5.Location = New System.Drawing.Point(219, 20)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 13)
         Me.Label5.TabIndex = 108
@@ -90,7 +82,7 @@ Partial Class FrmstatAddSupplier
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(72, 60)
+        Me.Label4.Location = New System.Drawing.Point(3, 60)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(42, 13)
         Me.Label4.TabIndex = 109
@@ -100,7 +92,7 @@ Partial Class FrmstatAddSupplier
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(72, 103)
+        Me.Label1.Location = New System.Drawing.Point(3, 103)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(71, 13)
         Me.Label1.TabIndex = 110
@@ -108,33 +100,39 @@ Partial Class FrmstatAddSupplier
         '
         'DTCheckin
         '
+        Me.DTCheckin.Checked = False
         Me.DTCheckin.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTCheckin.Location = New System.Drawing.Point(152, 59)
+        Me.DTCheckin.Location = New System.Drawing.Point(83, 59)
         Me.DTCheckin.Name = "DTCheckin"
+        Me.DTCheckin.ShowCheckBox = True
         Me.DTCheckin.Size = New System.Drawing.Size(160, 20)
         Me.DTCheckin.TabIndex = 111
         '
         'DTCheckout
         '
+        Me.DTCheckout.Checked = False
         Me.DTCheckout.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTCheckout.Location = New System.Drawing.Point(153, 103)
+        Me.DTCheckout.Location = New System.Drawing.Point(84, 103)
         Me.DTCheckout.Name = "DTCheckout"
+        Me.DTCheckout.ShowCheckBox = True
         Me.DTCheckout.Size = New System.Drawing.Size(160, 20)
         Me.DTCheckout.TabIndex = 112
         '
         'DtAirAfixi
         '
+        Me.DtAirAfixi.Checked = False
         Me.DtAirAfixi.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DtAirAfixi.Location = New System.Drawing.Point(318, 60)
+        Me.DtAirAfixi.Location = New System.Drawing.Point(249, 60)
         Me.DtAirAfixi.Name = "DtAirAfixi"
-        Me.DtAirAfixi.Size = New System.Drawing.Size(151, 20)
+        Me.DtAirAfixi.ShowCheckBox = True
+        Me.DtAirAfixi.Size = New System.Drawing.Size(105, 20)
         Me.DtAirAfixi.TabIndex = 113
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(318, 44)
+        Me.Label9.Location = New System.Drawing.Point(246, 44)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(108, 13)
         Me.Label9.TabIndex = 114
@@ -142,17 +140,19 @@ Partial Class FrmstatAddSupplier
         '
         'dtAirAnax
         '
+        Me.dtAirAnax.Checked = False
         Me.dtAirAnax.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtAirAnax.Location = New System.Drawing.Point(319, 103)
+        Me.dtAirAnax.Location = New System.Drawing.Point(250, 103)
         Me.dtAirAnax.Name = "dtAirAnax"
-        Me.dtAirAnax.Size = New System.Drawing.Size(151, 20)
+        Me.dtAirAnax.ShowCheckBox = True
+        Me.dtAirAnax.Size = New System.Drawing.Size(104, 20)
         Me.dtAirAnax.TabIndex = 115
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(316, 87)
+        Me.Label10.Location = New System.Drawing.Point(246, 87)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(144, 13)
         Me.Label10.TabIndex = 116
@@ -178,11 +178,12 @@ Partial Class FrmstatAddSupplier
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(81, 155)
+        Me.Label11.Location = New System.Drawing.Point(96, 652)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(62, 13)
         Me.Label11.TabIndex = 119
         Me.Label11.Text = "Πρός(email)"
+        Me.Label11.Visible = False
         '
         'Label12
         '
@@ -195,10 +196,11 @@ Partial Class FrmstatAddSupplier
         '
         'txtTo
         '
-        Me.txtTo.Location = New System.Drawing.Point(235, 152)
+        Me.txtTo.Location = New System.Drawing.Point(250, 649)
         Me.txtTo.Name = "txtTo"
         Me.txtTo.Size = New System.Drawing.Size(176, 20)
         Me.txtTo.TabIndex = 121
+        Me.txtTo.Visible = False
         '
         'CheckedListBox1
         '
@@ -206,16 +208,16 @@ Partial Class FrmstatAddSupplier
         Me.CheckedListBox1.Items.AddRange(New Object() {"Εθνικό", "Διεθνές", "Εθνικό Σπουδαστικό", "Διεθνές Σπουδαστικό", "Short & Green", "KIDDO", "Animation"})
         Me.CheckedListBox1.Location = New System.Drawing.Point(494, 19)
         Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(194, 169)
+        Me.CheckedListBox1.Size = New System.Drawing.Size(194, 244)
         Me.CheckedListBox1.TabIndex = 123
         '
         'CheckedListBox2
         '
         Me.CheckedListBox2.FormattingEnabled = True
-        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry"})
+        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry", "Κριτική Εθνικό", "Κριτική Διεθνές", "Κριτική Εθνικό Σπουδαστικό", "Κριτική Διεθνές Σπουδαστικό", "Κριτική Short & Green", "Κριτική KIDDO", "Κριτική Animation"})
         Me.CheckedListBox2.Location = New System.Drawing.Point(694, 19)
         Me.CheckedListBox2.Name = "CheckedListBox2"
-        Me.CheckedListBox2.Size = New System.Drawing.Size(333, 169)
+        Me.CheckedListBox2.Size = New System.Drawing.Size(333, 244)
         Me.CheckedListBox2.TabIndex = 124
         '
         'cmdsave
@@ -249,13 +251,16 @@ Partial Class FrmstatAddSupplier
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.PTHSHAN)
+        Me.GroupBox1.Controls.Add(Me.PTHSHAF)
+        Me.GroupBox1.Controls.Add(Me.cAirport)
         Me.GroupBox1.Controls.Add(Me.toexcel)
         Me.GroupBox1.Controls.Add(Me.Subject)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.attachment)
         Me.GroupBox1.Controls.Add(Me.SQLBuild)
-        Me.GroupBox1.Controls.Add(Me.sql)
+        Me.GroupBox1.Controls.Add(Me.sqlText)
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.cmdcancel)
@@ -276,12 +281,44 @@ Partial Class FrmstatAddSupplier
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1068, 722)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(385, 44)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(67, 13)
+        Me.Label2.TabIndex = 136
+        Me.Label2.Text = "Αριθ,Πτήσης"
+        '
+        'PTHSHAN
+        '
+        Me.PTHSHAN.Location = New System.Drawing.Point(370, 103)
+        Me.PTHSHAN.Name = "PTHSHAN"
+        Me.PTHSHAN.Size = New System.Drawing.Size(100, 20)
+        Me.PTHSHAN.TabIndex = 135
+        '
+        'PTHSHAF
+        '
+        Me.PTHSHAF.Location = New System.Drawing.Point(370, 57)
+        Me.PTHSHAF.Name = "PTHSHAF"
+        Me.PTHSHAF.Size = New System.Drawing.Size(100, 20)
+        Me.PTHSHAF.TabIndex = 134
+        '
+        'cAirport
+        '
+        Me.cAirport.FormattingEnabled = True
+        Me.cAirport.Items.AddRange(New Object() {"Θεσσαλονίκης", "Καβάλας", "Αλεξανδρούπολης", "Αμυγδαλεώνα"})
+        Me.cAirport.Location = New System.Drawing.Point(319, 20)
+        Me.cAirport.Name = "cAirport"
+        Me.cAirport.Size = New System.Drawing.Size(151, 21)
+        Me.cAirport.TabIndex = 133
         '
         'toexcel
         '
@@ -294,7 +331,7 @@ Partial Class FrmstatAddSupplier
         '
         'Subject
         '
-        Me.Subject.Location = New System.Drawing.Point(236, 178)
+        Me.Subject.Location = New System.Drawing.Point(235, 155)
         Me.Subject.Name = "Subject"
         Me.Subject.Size = New System.Drawing.Size(176, 20)
         Me.Subject.TabIndex = 131
@@ -302,7 +339,7 @@ Partial Class FrmstatAddSupplier
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(91, 175)
+        Me.Label3.Location = New System.Drawing.Point(91, 158)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(36, 13)
         Me.Label3.TabIndex = 130
@@ -319,20 +356,20 @@ Partial Class FrmstatAddSupplier
         '
         'SQLBuild
         '
-        Me.SQLBuild.Location = New System.Drawing.Point(494, 299)
+        Me.SQLBuild.Location = New System.Drawing.Point(494, 392)
         Me.SQLBuild.Name = "SQLBuild"
-        Me.SQLBuild.Size = New System.Drawing.Size(114, 26)
+        Me.SQLBuild.Size = New System.Drawing.Size(100, 26)
         Me.SQLBuild.TabIndex = 128
         Me.SQLBuild.Text = "Δόμηση SQL"
         Me.SQLBuild.UseVisualStyleBackColor = True
         '
-        'sql
+        'sqlText
         '
-        Me.sql.Location = New System.Drawing.Point(494, 214)
-        Me.sql.Multiline = True
-        Me.sql.Name = "sql"
-        Me.sql.Size = New System.Drawing.Size(533, 79)
-        Me.sql.TabIndex = 127
+        Me.sqlText.Location = New System.Drawing.Point(494, 307)
+        Me.sqlText.Multiline = True
+        Me.sqlText.Name = "sqlText"
+        Me.sqlText.Size = New System.Drawing.Size(533, 79)
+        Me.sqlText.TabIndex = 127
         '
         'DataGridView1
         '
@@ -346,16 +383,7 @@ Partial Class FrmstatAddSupplier
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Θεσσαλονίκης", "Καβάλας", "Αλεξανδρούπολης", "Αμυγδαλεώνα"})
-        Me.ComboBox1.Location = New System.Drawing.Point(318, 20)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(151, 21)
-        Me.ComboBox1.TabIndex = 133
-        '
-        'FrmstatAddSupplier
+        'Airport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -365,7 +393,7 @@ Partial Class FrmstatAddSupplier
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FrmstatAddSupplier"
+        Me.Name = "Airport"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Προσκεκλημένος"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -376,7 +404,6 @@ Partial Class FrmstatAddSupplier
 
     End Sub
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -397,7 +424,7 @@ Partial Class FrmstatAddSupplier
     Friend WithEvents cmdcancel As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents sql As System.Windows.Forms.TextBox
+    Friend WithEvents sqlText As System.Windows.Forms.TextBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents SQLBuild As System.Windows.Forms.Button
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
@@ -405,5 +432,8 @@ Partial Class FrmstatAddSupplier
     Friend WithEvents Subject As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents toexcel As System.Windows.Forms.Button
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cAirport As System.Windows.Forms.ComboBox
+    Friend WithEvents PTHSHAF As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents PTHSHAN As System.Windows.Forms.TextBox
 End Class

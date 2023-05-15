@@ -1533,12 +1533,16 @@ Public Class ergates
             '       Dim mORA As String = GridView1.CurrentRow.Cells("ΩΡΑ ΠΑΡΑΓ").Value.ToString
 
 
-
+            frmPEL.cAirport.Text = GridView1.CurrentRow.Cells("AIRPORT").Value.ToString
             frmPEL.CH1.Text = GridView1.CurrentRow.Cells("CH1").Value.ToString
             frmPEL.CH2.Text = GridView1.CurrentRow.Cells("CH2").Value.ToString
             frmPEL.PTHSHC5.Text = GridView1.CurrentRow.Cells("CH5").Value.ToString
 
+            frmPEL.PTHSHANAXC6.Text = GridView1.CurrentRow.Cells("CH6").Value.ToString
+
             frmPEL.rank.Text = GridView1.CurrentRow.Cells("RANK").Value.ToString
+
+            frmPEL.KINHTO.Text = GridView1.CurrentRow.Cells("KINHTO").Value.ToString
 
             frmPEL.email.Text = GridView1.CurrentRow.Cells("EMAIL").Value.ToString
             frmPEL.ONO.Text = GridView1.CurrentRow.Cells("EPO").Value.ToString
@@ -1558,7 +1562,7 @@ Public Class ergates
             Next
             Dim C4 As String
             C4 = GridView1.CurrentRow.Cells("CH4").Value.ToString
-            For L3 = 1 To 9
+            For L3 = 1 To 16
                 If Mid(C4, L3, 1) = "1" Then
                     frmPEL.CheckedListBox2.SetItemChecked(L3 - 1, True)
                 Else

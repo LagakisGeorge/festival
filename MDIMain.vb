@@ -2269,7 +2269,7 @@ Public Class MDIMain
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        Dim frm As New FrmstatAddSupplier
+        Dim frm As New Airport
         ' Make it a child of this MDI form before showing it.
         frm.MdiParent = Me
         frm.TopLevel = False
@@ -2746,7 +2746,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5 FROM PEL    ORDER BY EPO "
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5,isnull(AIRPORT,'') AS AIRPORT,ISNULL(CH6,'            ') AS CH6,KINHTO FROM PEL    ORDER BY EPO "
 
 
 

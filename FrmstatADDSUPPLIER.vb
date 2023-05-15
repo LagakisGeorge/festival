@@ -2,7 +2,7 @@
 Imports System.Net.Mail
 Imports System.Data.OleDb
 Imports System.Data.SqlClient
-Public Class FrmstatAddSupplier
+Public Class Airport
     Dim stockID As Integer
     Dim hOldID As Integer
     Dim M_ID As Long = 0
@@ -66,7 +66,7 @@ Public Class FrmstatAddSupplier
 
         Try
 
-            da = New OleDbDataAdapter(sql.Text, conn)
+            da = New OleDbDataAdapter(sqlText.Text, conn)
 
             'create command builder
             ' Dim cb As OleDbCommandBuilder = New OleDbCommandBuilder(da)
@@ -82,7 +82,7 @@ Public Class FrmstatAddSupplier
 
 
             Catch ex As Exception
-                MsgBox(Err.Description + Chr(13) + sql.Text)
+                MsgBox(Err.Description + Chr(13) + sqlText.Text)
 
             End Try
 
@@ -169,7 +169,7 @@ Public Class FrmstatAddSupplier
 
     End Sub
 
-    
+
     Private Sub sendEmail(ByVal ToEmail As String, ByVal PROSF As String)
 
 
@@ -299,7 +299,54 @@ Public Class FrmstatAddSupplier
     End Sub
 
     Private Sub SQLBuild_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SQLBuild.Click
-        Dim CH3 As String = ""
+        Dim SQL As String = ""
+        Dim cAND As String = ""
+        Dim cc As String = Me.Text
+        If Len(cAirport.Text.ToString) > 0 Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " AIRPORT='" + cAirport.Text + "'"
+        End If
+        If PTHSHAN.Text.Length > 0 Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " CH6='" + PTHSHAN.Text + "'"
+        End If
+        'Airport
+        If PTHSHAF.Text.Length > 0 Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " CH5='" + PTHSHAF.Text + "'"
+        End If
+
+        'DTCHECKIN   CONVERT(date, GETDATE())
+        If DTCheckin.Checked = True Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " CONVERT(date, CHECKIN)='" + Format(DTCheckin.Value, "MM/dd/yyyy") + "'"
+        End If
+
+        'DTCHECKIN   CONVERT(date, GETDATE())
+        If DTCheckout.Checked = True Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " CONVERT(date, CHECKOUT)='" + Format(DTCheckout.Value, "MM/dd/yyyy") + "'"
+        End If
+
+        ' dtAirAnax
+        If dtAirAnax.Checked = True Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " CONVERT(date, AIRANAX)='" + Format(dtAirAnax.Value, "MM/dd/yyyy") + "'"
+        End If
+
+        'DtAirAfixi
+        If DtAirAfixi.Checked = True Then
+            If SQL.Length = 0 Then cAND = "" Else cAND = " and "
+            SQL = SQL + cAND + " CONVERT(date, AIRAFIXI)='" + Format(DtAirAfixi.Value, "MM/dd/yyyy") + "'"
+        End If
+
+
+
+
+
+
+
+        Dim CH3 As String = ""   '  IIf(SQL.Length = 0, "(", " and ( ")
         For l As Integer = 0 To CheckedListBox1.Items.Count - 1
             If CheckedListBox1.GetItemChecked(l) = True Then
                 CH3 = IIf(Len(CH3) > 0, CH3 + " or ", "") + " SUBSTRING(CH3," + Format(l + 1, "0") + ",1)='1' "
@@ -317,8 +364,30 @@ Public Class FrmstatAddSupplier
                 'cc4 = cc4 + "0"
             End If
         Next
-        CH4 = IIf(Len(CH4) > 0, " WHERE " + CH4, "")
-        sql.Text = "select EPO,CH3,CH4,isnull(EMAIL,'') as EMAIL,ISNULL(ONO,'') AS ONO FROM PEL  " + CH4
+
+
+
+
+        ' CH4 = IIf(Len(CH4) = 0, " TRUE ", CH4)
+
+        Dim SQL2 As String = ""
+
+        If SQL.Length = 0 Then
+            SQL2 = CH4
+        Else
+            If CH4.Length = 0 Then
+                SQL2 = SQL
+            Else
+                SQL2 = SQL + " AND (" + CH4 + ")"
+            End If
+        End If
+        If SQL2.Length = 0 Then
+            sqlText.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5,isnull(AIRPORT,'') AS AIRPORT,ISNULL(CH6,'            ') AS CH6,KINHTO FROM PEL   "
+        Else
+            sqlText.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5,isnull(AIRPORT,'') AS AIRPORT,ISNULL(CH6,'            ') AS CH6,KINHTO FROM PEL  WHERE " + SQL2
+        End If
+
+
 
 
 
@@ -333,7 +402,7 @@ Public Class FrmstatAddSupplier
     Private Sub send_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles send.Click
 
         Dim SQLDT4 As New DataTable
-        SQLDT4 = ExecuteSQLQuery(sql.Text)
+        SQLDT4 = ExecuteSQLQuery(sqlText.Text)
 
 
 
@@ -349,8 +418,8 @@ Public Class FrmstatAddSupplier
         Next
     End Sub
 
-   
-   
+
+
     Private Sub toexcel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles toexcel.Click
         Dim filename As String = "c:\mercvb\ektyp.xlsx"
         Dim sheetname As String = "Φύλλο1"
@@ -372,7 +441,7 @@ Public Class FrmstatAddSupplier
 
 
 
-        sql2 = sql.Text
+        sql2 = sqlText.Text
 
 
         ExecuteSQLQuery(sql2, dt) 'D.PATIENTID,CHMEEIS desc

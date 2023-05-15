@@ -107,10 +107,10 @@ Public Class FrmAddSupplier
 
         If IsNew Then
 
-            SQL = "insert into PEL (CH5,RANK,SYNODOS,CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,ONO,DIE) VALUES ('" + PTHSHC5.Text + "'," + rank.Text + ",'" + Synodos.Text + "','" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + email.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + onoProsf.Text + "','" + mBaros + "')"
+            SQL = "insert into PEL (KINHTO,CH6,AIRPORT,CH5,RANK,SYNODOS,CH4,CH3,CHECKIN,CHECKOUT,AIRAFIXI,AIRANAX,EMAIL,EPO,ONO,DIE) VALUES ('" + KINHTO.Text + "','" + PTHSHANAXC6.Text + "','" + Airport.Text + "','" + PTHSHC5.Text + "'," + rank.Text + ",'" + Synodos.Text + "','" + cc4 + "','" + cc + "','" + ci + "','" + co + "','" + aaf + "','" + aan + "','" + email.Text + "','" + Replace(ONO.Text, "'", "`") + "','" + onoProsf.Text + "','" + mBaros + "')"
 
         Else
-            SQL = "UPDATE PEL SET CH5='" + PTHSHC5.Text + "',RANK=" + rank.Text + ",SYNODOS='" + Synodos.Text + "',CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',ONO='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
+            SQL = "UPDATE PEL SET AIRAFIXI='" + aaf + "',AIRANAX='" + aan + "',KINHTO='" + KINHTO.Text + "',CH6='" + PTHSHANAXC6.Text + "',AIRPORT='" + cAirport.Text + "',CH5='" + PTHSHC5.Text + "',RANK=" + rank.Text + ",SYNODOS='" + Synodos.Text + "',CH4='" + cc4 + "',CH3='" + cc + "',CHECKOUT='" + co + "',CHECKIN='" + ci + "',EMAIL='" + mkod + "',EPO='" + mono + "',ONO='" + m_mon + "',DIE='" + mBaros + "'  WHERE ID=" + Str(ID)
 
 
         End If

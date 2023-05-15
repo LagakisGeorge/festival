@@ -26,6 +26,12 @@ Partial Class FrmAddSupplier
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddSupplier))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.KINHTO = New System.Windows.Forms.TextBox
+        Me.Label20 = New System.Windows.Forms.Label
+        Me.PTHSHANAXC6 = New System.Windows.Forms.TextBox
+        Me.Label19 = New System.Windows.Forms.Label
+        Me.PTHSHC5 = New System.Windows.Forms.TextBox
+        Me.Label18 = New System.Windows.Forms.Label
         Me.rank = New System.Windows.Forms.TextBox
         Me.Label16 = New System.Windows.Forms.Label
         Me.Label15 = New System.Windows.Forms.Label
@@ -42,7 +48,7 @@ Partial Class FrmAddSupplier
         Me.Label17 = New System.Windows.Forms.Label
         Me.HotelName = New System.Windows.Forms.Label
         Me.Label14 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.cAirport = New System.Windows.Forms.ComboBox
         Me.cmdcancel = New System.Windows.Forms.Button
         Me.cmdsave = New System.Windows.Forms.Button
         Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox
@@ -70,8 +76,6 @@ Partial Class FrmAddSupplier
         Me.Label3 = New System.Windows.Forms.Label
         Me.email = New System.Windows.Forms.TextBox
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.PTHSHC5 = New System.Windows.Forms.TextBox
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -85,6 +89,10 @@ Partial Class FrmAddSupplier
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.KINHTO)
+        Me.GroupBox1.Controls.Add(Me.Label20)
+        Me.GroupBox1.Controls.Add(Me.PTHSHANAXC6)
+        Me.GroupBox1.Controls.Add(Me.Label19)
         Me.GroupBox1.Controls.Add(Me.PTHSHC5)
         Me.GroupBox1.Controls.Add(Me.Label18)
         Me.GroupBox1.Controls.Add(Me.rank)
@@ -97,7 +105,7 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.Controls.Add(Me.Subject)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.Panel1)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.cAirport)
         Me.GroupBox1.Controls.Add(Me.cmdcancel)
         Me.GroupBox1.Controls.Add(Me.cmdsave)
         Me.GroupBox1.Controls.Add(Me.CheckedListBox2)
@@ -130,6 +138,57 @@ Partial Class FrmAddSupplier
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
+        'KINHTO
+        '
+        Me.KINHTO.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.KINHTO.Location = New System.Drawing.Point(311, 66)
+        Me.KINHTO.MaxLength = 40
+        Me.KINHTO.Name = "KINHTO"
+        Me.KINHTO.Size = New System.Drawing.Size(101, 21)
+        Me.KINHTO.TabIndex = 140
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(239, 66)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(45, 13)
+        Me.Label20.TabIndex = 141
+        Me.Label20.Text = "Κινητό :"
+        '
+        'PTHSHANAXC6
+        '
+        Me.PTHSHANAXC6.Location = New System.Drawing.Point(311, 214)
+        Me.PTHSHANAXC6.Name = "PTHSHANAXC6"
+        Me.PTHSHANAXC6.Size = New System.Drawing.Size(100, 20)
+        Me.PTHSHANAXC6.TabIndex = 139
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(325, 198)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(73, 13)
+        Me.Label19.TabIndex = 138
+        Me.Label19.Text = "Αριθ. Πτήσης"
+        '
+        'PTHSHC5
+        '
+        Me.PTHSHC5.Location = New System.Drawing.Point(311, 170)
+        Me.PTHSHC5.Name = "PTHSHC5"
+        Me.PTHSHC5.Size = New System.Drawing.Size(100, 20)
+        Me.PTHSHC5.TabIndex = 137
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(328, 152)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(73, 13)
+        Me.Label18.TabIndex = 136
+        Me.Label18.Text = "Αριθ. Πτήσης"
+        '
         'rank
         '
         Me.rank.Location = New System.Drawing.Point(368, 92)
@@ -158,7 +217,7 @@ Partial Class FrmAddSupplier
         '
         'Synodos
         '
-        Me.Synodos.BackColor = System.Drawing.Color.PapayaWhip
+        Me.Synodos.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Synodos.CausesValidation = False
         Me.Synodos.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Synodos.Location = New System.Drawing.Point(87, 122)
@@ -277,19 +336,19 @@ Partial Class FrmAddSupplier
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "Ξενοδοχείο:"
         '
-        'ComboBox1
+        'cAirport
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Θεσσαλονίκης", "Καβάλας", "Αλεξανδρούπολης", "Αμυγδαλεώνα"})
-        Me.ComboBox1.Location = New System.Drawing.Point(290, 244)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 125
+        Me.cAirport.FormattingEnabled = True
+        Me.cAirport.Items.AddRange(New Object() {"Θεσσαλονίκης", "Καβάλας", "Αλεξανδρούπολης", "Αμυγδαλεώνα"})
+        Me.cAirport.Location = New System.Drawing.Point(290, 244)
+        Me.cAirport.Name = "cAirport"
+        Me.cAirport.Size = New System.Drawing.Size(121, 21)
+        Me.cAirport.TabIndex = 125
         '
         'cmdcancel
         '
         Me.cmdcancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdcancel.Location = New System.Drawing.Point(944, 441)
+        Me.cmdcancel.Location = New System.Drawing.Point(944, 476)
         Me.cmdcancel.Name = "cmdcancel"
         Me.cmdcancel.Size = New System.Drawing.Size(103, 26)
         Me.cmdcancel.TabIndex = 9
@@ -299,7 +358,7 @@ Partial Class FrmAddSupplier
         'cmdsave
         '
         Me.cmdsave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdsave.Location = New System.Drawing.Point(835, 441)
+        Me.cmdsave.Location = New System.Drawing.Point(837, 476)
         Me.cmdsave.Name = "cmdsave"
         Me.cmdsave.Size = New System.Drawing.Size(100, 26)
         Me.cmdsave.TabIndex = 8
@@ -309,10 +368,10 @@ Partial Class FrmAddSupplier
         'CheckedListBox2
         '
         Me.CheckedListBox2.FormattingEnabled = True
-        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry"})
-        Me.CheckedListBox2.Location = New System.Drawing.Point(634, 253)
+        Me.CheckedListBox2.Items.AddRange(New Object() {"Χορηγός", "Συνεργάτης", "Προσωπικό", "Σωματείο/Οργανισμός", "Masterclass/Panel", "Δημοσιογράφος", "VIP", "Pitching Lab", "Industry", "Κριτική Εθνικό", "Κριτική Διεθνές", "Κριτική Εθνικό Σπουδαστικό", "Κριτική Διεθνές Σπουδαστικό", "Κριτική Short & Green", "Κριτική KIDDO", "Κριτική Animation"})
+        Me.CheckedListBox2.Location = New System.Drawing.Point(634, 198)
         Me.CheckedListBox2.Name = "CheckedListBox2"
-        Me.CheckedListBox2.Size = New System.Drawing.Size(413, 169)
+        Me.CheckedListBox2.Size = New System.Drawing.Size(413, 244)
         Me.CheckedListBox2.TabIndex = 124
         '
         'CheckedListBox1
@@ -372,25 +431,25 @@ Partial Class FrmAddSupplier
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(257, 198)
+        Me.Label10.Location = New System.Drawing.Point(183, 198)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(144, 13)
+        Me.Label10.Size = New System.Drawing.Size(113, 13)
         Me.Label10.TabIndex = 116
-        Me.Label10.Text = "Αναχώρηση από Αεροδρόμιο"
+        Me.Label10.Text = "Αναχ.από Αεροδρόμιο"
         '
         'dtAirAnax
         '
         Me.dtAirAnax.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtAirAnax.Location = New System.Drawing.Point(260, 214)
+        Me.dtAirAnax.Location = New System.Drawing.Point(212, 214)
         Me.dtAirAnax.Name = "dtAirAnax"
-        Me.dtAirAnax.Size = New System.Drawing.Size(151, 20)
+        Me.dtAirAnax.Size = New System.Drawing.Size(84, 20)
         Me.dtAirAnax.TabIndex = 115
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(260, 154)
+        Me.Label9.Location = New System.Drawing.Point(188, 152)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(108, 13)
         Me.Label9.TabIndex = 114
@@ -399,9 +458,9 @@ Partial Class FrmAddSupplier
         'DtAirAfixi
         '
         Me.DtAirAfixi.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DtAirAfixi.Location = New System.Drawing.Point(260, 170)
+        Me.DtAirAfixi.Location = New System.Drawing.Point(212, 170)
         Me.DtAirAfixi.Name = "DtAirAfixi"
-        Me.DtAirAfixi.Size = New System.Drawing.Size(151, 20)
+        Me.DtAirAfixi.Size = New System.Drawing.Size(84, 20)
         Me.DtAirAfixi.TabIndex = 113
         '
         'DTCheckout
@@ -409,7 +468,7 @@ Partial Class FrmAddSupplier
         Me.DTCheckout.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DTCheckout.Location = New System.Drawing.Point(87, 214)
         Me.DTCheckout.Name = "DTCheckout"
-        Me.DTCheckout.Size = New System.Drawing.Size(160, 20)
+        Me.DTCheckout.Size = New System.Drawing.Size(100, 20)
         Me.DTCheckout.TabIndex = 112
         '
         'DTCheckin
@@ -417,7 +476,7 @@ Partial Class FrmAddSupplier
         Me.DTCheckin.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DTCheckin.Location = New System.Drawing.Point(86, 170)
         Me.DTCheckin.Name = "DTCheckin"
-        Me.DTCheckin.Size = New System.Drawing.Size(160, 20)
+        Me.DTCheckin.Size = New System.Drawing.Size(101, 20)
         Me.DTCheckin.TabIndex = 111
         '
         'Label1
@@ -466,7 +525,7 @@ Partial Class FrmAddSupplier
         Me.DIE.Location = New System.Drawing.Point(86, 66)
         Me.DIE.MaxLength = 40
         Me.DIE.Name = "DIE"
-        Me.DIE.Size = New System.Drawing.Size(325, 21)
+        Me.DIE.Size = New System.Drawing.Size(147, 21)
         Me.DIE.TabIndex = 5
         '
         'Label7
@@ -481,7 +540,7 @@ Partial Class FrmAddSupplier
         '
         'onoProsf
         '
-        Me.onoProsf.BackColor = System.Drawing.Color.PapayaWhip
+        Me.onoProsf.BackColor = System.Drawing.Color.PeachPuff
         Me.onoProsf.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.onoProsf.Location = New System.Drawing.Point(86, 39)
         Me.onoProsf.MaxLength = 50
@@ -501,6 +560,7 @@ Partial Class FrmAddSupplier
         '
         'ONO
         '
+        Me.ONO.BackColor = System.Drawing.Color.PeachPuff
         Me.ONO.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ONO.Location = New System.Drawing.Point(87, 12)
         Me.ONO.MaxLength = 100
@@ -532,22 +592,6 @@ Partial Class FrmAddSupplier
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(9, 244)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(73, 13)
-        Me.Label18.TabIndex = 136
-        Me.Label18.Text = "Αριθ. Πτήσης"
-        '
-        'PTHSHC5
-        '
-        Me.PTHSHC5.Location = New System.Drawing.Point(88, 244)
-        Me.PTHSHC5.Name = "PTHSHC5"
-        Me.PTHSHC5.Size = New System.Drawing.Size(100, 20)
-        Me.PTHSHC5.TabIndex = 137
         '
         'FrmAddSupplier
         '
@@ -597,7 +641,7 @@ Partial Class FrmAddSupplier
     Friend WithEvents txtTo As System.Windows.Forms.TextBox
     Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
     Friend WithEvents CheckedListBox2 As System.Windows.Forms.CheckedListBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cAirport As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents HotelRoom As System.Windows.Forms.Label
@@ -617,4 +661,8 @@ Partial Class FrmAddSupplier
     Friend WithEvents rank As System.Windows.Forms.TextBox
     Friend WithEvents PTHSHC5 As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents PTHSHANAXC6 As System.Windows.Forms.TextBox
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents KINHTO As System.Windows.Forms.TextBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
 End Class
