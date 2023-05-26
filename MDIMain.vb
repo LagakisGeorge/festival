@@ -2227,12 +2227,19 @@ Public Class MDIMain
 
 
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles countDays.Click
         ' SynoloOres.f_othonia = 2
         ' SynoloOres.Show()
 
-        ylika2("1", "Α υλες     ")
 
+        Dim dd As New DataTable
+        dd = ExecuteSQLQuery("select count(*) from PEL")
+        Dim N As Integer = dd.Rows(0)(0)
+        MsgBox("Προσκεκλημένοι " + Str(N))
+
+        dd = ExecuteSQLQuery("select count(*) from HOTROOMDAYS where IDPEL>0 ")
+        N = dd.Rows(0)(0)
+        MsgBox("Διανυκτερεύσεις " + Str(N))
 
 
 

@@ -103,7 +103,7 @@
                 MDIMain.excelanal.Enabled = True
                 '   MDIMain.cmdERGATES.Enabled = True
                 MDIMain.cmdCustomerOrder.Enabled = True
-                MDIMain.Button1.Enabled = True
+                MDIMain.countDays.Enabled = True
                 MDIMain.Button2.Enabled = True
                 MDIMain.Button3.Enabled = True
                 MDIMain.cmdExcel.Enabled = True
@@ -122,12 +122,12 @@
                 MDIMain.cmdSalesReceipt.Enabled = True
 
             Else
-               
+
                 MDIMain.ListaErgasion.Enabled = True
                 MDIMain.excelanal.Enabled = True
                 '   MDIMain.cmdERGATES.Enabled = True
                 MDIMain.cmdCustomerOrder.Enabled = True
-                MDIMain.Button1.Enabled = True
+                MDIMain.countDays.Enabled = True
                 MDIMain.Button2.Enabled = True
                 MDIMain.Button3.Enabled = True
                 MDIMain.cmdExcel.Enabled = True

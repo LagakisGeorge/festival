@@ -1075,7 +1075,7 @@ Public Class utilities
 
     Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
 
-        Dim C As String = "FEST.bak"
+        Dim C As String = "FESTIVAL.BAK"
 
 100:    C = InputBox("ΔΩΣΕ ΟΝΟΜΑ BACKUP ΤΗΣ ΒΑΣΗΣ THERMO ΣΤΟ FEST.bak", , C)
 110:    ExecuteSQLQuery("BACKUP DATABASE [TECHNOPLASTIKI] TO  DISK ='" + C + "' WITH NOFORMAT, NOINIT, SKIP, NOREWIND, NOUNLOAD,  STATS = 10")

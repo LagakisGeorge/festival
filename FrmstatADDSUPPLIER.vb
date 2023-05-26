@@ -173,36 +173,89 @@ Public Class Airport
     Private Sub sendEmail(ByVal ToEmail As String, ByVal PROSF As String)
 
 
+
+
+
         Try
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("lagakis@otenet.gr", "a8417!")
+            Smtp_Server.Credentials = New Net.NetworkCredential(gC1EMAIL, gC2PWD)
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
-            Smtp_Server.Host = "mailgate.otenet.gr"
+            Smtp_Server.Host = gC3HOST
 
             e_mail = New MailMessage()
             e_mail.From = New MailAddress(Trim(ToEmail))
+            If mattachment.Text.Length > 1 Then
+                Dim attachment As System.Net.Mail.Attachment
+                attachment = New System.Net.Mail.Attachment(mattachment.Text)
+                e_mail.Attachments.Add(attachment)
+            End If
 
-            Dim attachment As System.Net.Mail.Attachment
-            attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\timol1.csv")
-            e_mail.Attachments.Add(attachment)
 
-
-            e_mail.To.Add(ToEmail) ' txtTo.Text)
+            e_mail.To.Add(ToEmail)
             'Dim item As System.Net.Mail.Attachment
             'e_mail.Attachments.Add(item)
 
-            e_mail.Subject = Subject.Text + " " + ToEmail
+            e_mail.Subject = Subject.Text '"Email Sending"
             e_mail.IsBodyHtml = False
-            e_mail.Body = PROSF + Chr(13) + txtMessage.Text
+            e_mail.Body = txtMessage.Text
             Smtp_Server.Send(e_mail)
-            'MsgBox("Mail Sent")
+            MsgBox("Mail Sent " + ToEmail)
 
         Catch error_t As Exception
             MsgBox(error_t.ToString)
         End Try
+
+
+
+
+
+        ' MsgBox("Mail Sent")
+
+
+
+
+
+
+
+
+
+
+
+
+
+        'Try
+        '    Dim Smtp_Server As New SmtpClient
+        '    Dim e_mail As New MailMessage()
+        '    Smtp_Server.UseDefaultCredentials = False
+        '    Smtp_Server.Credentials = New Net.NetworkCredential("lagakis@otenet.gr", "a8417!")
+        '    Smtp_Server.Port = 587
+        '    Smtp_Server.EnableSsl = True
+        '    Smtp_Server.Host = "mailgate.otenet.gr"
+
+        '    e_mail = New MailMessage()
+        '    e_mail.From = New MailAddress(Trim(ToEmail))
+
+        '    Dim attachment As System.Net.Mail.Attachment
+        '    attachment = New System.Net.Mail.Attachment("c:\mercvb\reports\timol1.csv")
+        '    e_mail.Attachments.Add(attachment)
+
+
+        '    e_mail.To.Add(ToEmail) ' txtTo.Text)
+        '    'Dim item As System.Net.Mail.Attachment
+        '    'e_mail.Attachments.Add(item)
+
+        '    e_mail.Subject = Subject.Text + " " + ToEmail
+        '    e_mail.IsBodyHtml = False
+        '    e_mail.Body = PROSF + Chr(13) + txtMessage.Text
+        '    Smtp_Server.Send(e_mail)
+        '    'MsgBox("Mail Sent")
+
+        'Catch error_t As Exception
+        '    MsgBox(error_t.ToString)
+        'End Try
 
 
 
@@ -396,7 +449,7 @@ Public Class Airport
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         OpenFileDialog1.ShowDialog()
-        attachment.Text = OpenFileDialog1.FileName
+        mAttachment.Text = OpenFileDialog1.FileName
     End Sub
 
     Private Sub send_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles send.Click
@@ -408,14 +461,27 @@ Public Class Airport
 
         For k As Integer = 0 To SQLDT4.Rows.Count - 1 'DataGridView1.Rows.Count - 1
             Dim mEmail As String = SQLDT4.Rows(k)("email").ToString()
-            Dim PROSF As String = SQLDT4.Rows(k)("ONO").ToString()
-            If Len(mEmail) > 0 Then
-                Application.DoEvents()
-                Me.Text = mEmail
-                sendEmail(mEmail, PROSF)
-                txtTo.Text = mEmail
-            End If
-        Next
+            mEmail = mEmail + ";"
+            Dim PROSF As String
+            For ll As Integer = 0 To 10
+                If Len(Split(mEmail, ";")(ll)) > 0 Then
+
+
+
+
+                    PROSF = SQLDT4.Rows(k)("ONO").ToString()
+                    'If Len(mEmail) > 0 Then
+                    Application.DoEvents()
+                    Me.Text = mEmail
+                    sendEmail(Split(mEmail, ";")(ll), PROSF)
+                    txtTo.Text = Split(mEmail, ";")(ll)
+                    'End If
+                Else
+                Exit For
+                End If
+            Next ll
+
+        Next k
     End Sub
 
 

@@ -52,11 +52,11 @@ Partial Class Airport
         Me.toexcel = New System.Windows.Forms.Button
         Me.Subject = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
-        Me.attachment = New System.Windows.Forms.Label
         Me.SQLBuild = New System.Windows.Forms.Button
         Me.sqlText = New System.Windows.Forms.TextBox
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
+        Me.mAttachment = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -251,6 +251,7 @@ Partial Class Airport
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.mAttachment)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.PTHSHAN)
         Me.GroupBox1.Controls.Add(Me.PTHSHAF)
@@ -258,7 +259,6 @@ Partial Class Airport
         Me.GroupBox1.Controls.Add(Me.toexcel)
         Me.GroupBox1.Controls.Add(Me.Subject)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.attachment)
         Me.GroupBox1.Controls.Add(Me.SQLBuild)
         Me.GroupBox1.Controls.Add(Me.sqlText)
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
@@ -345,15 +345,6 @@ Partial Class Airport
         Me.Label3.TabIndex = 130
         Me.Label3.Text = "Θέμα:"
         '
-        'attachment
-        '
-        Me.attachment.AutoSize = True
-        Me.attachment.Location = New System.Drawing.Point(91, 466)
-        Me.attachment.Name = "attachment"
-        Me.attachment.Size = New System.Drawing.Size(16, 13)
-        Me.attachment.TabIndex = 129
-        Me.attachment.Text = "..."
-        '
         'SQLBuild
         '
         Me.SQLBuild.Location = New System.Drawing.Point(494, 392)
@@ -382,6 +373,15 @@ Partial Class Airport
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'mAttachment
+        '
+        Me.mAttachment.AutoSize = True
+        Me.mAttachment.Location = New System.Drawing.Point(91, 470)
+        Me.mAttachment.Name = "mAttachment"
+        Me.mAttachment.Size = New System.Drawing.Size(16, 13)
+        Me.mAttachment.TabIndex = 137
+        Me.mAttachment.Text = "..."
         '
         'Airport
         '
@@ -428,7 +428,6 @@ Partial Class Airport
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents SQLBuild As System.Windows.Forms.Button
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents attachment As System.Windows.Forms.Label
     Friend WithEvents Subject As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents toexcel As System.Windows.Forms.Button
@@ -436,4 +435,5 @@ Partial Class Airport
     Friend WithEvents PTHSHAF As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PTHSHAN As System.Windows.Forms.TextBox
+    Friend WithEvents mAttachment As System.Windows.Forms.Label
 End Class

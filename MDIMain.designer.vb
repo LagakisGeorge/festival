@@ -93,7 +93,7 @@ Partial Class MDIMain
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.LinkMaintain = New System.Windows.Forms.LinkLabel
         Me.cmdExcel = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
+        Me.countDays = New System.Windows.Forms.Button
         Me.PanelPurchasing = New System.Windows.Forms.Panel
         Me.cmdPhysical = New System.Windows.Forms.Button
         Me.cmdDefective = New System.Windows.Forms.Button
@@ -710,7 +710,7 @@ Partial Class MDIMain
         Me.PanelMaintain.Controls.Add(Me.cmdBusInfo)
         Me.PanelMaintain.Controls.Add(Me.Panel2)
         Me.PanelMaintain.Controls.Add(Me.cmdExcel)
-        Me.PanelMaintain.Controls.Add(Me.Button1)
+        Me.PanelMaintain.Controls.Add(Me.countDays)
         Me.PanelMaintain.Location = New System.Drawing.Point(3, 13)
         Me.PanelMaintain.Name = "PanelMaintain"
         Me.PanelMaintain.Size = New System.Drawing.Size(171, 170)
@@ -797,19 +797,19 @@ Partial Class MDIMain
         Me.cmdExcel.Text = "Booking"
         Me.cmdExcel.UseVisualStyleBackColor = False
         '
-        'Button1
+        'countDays
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Enabled = False
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.ImageKey = "buy_32.png"
-        Me.Button1.ImageList = Me.ImageList6
-        Me.Button1.Location = New System.Drawing.Point(1, 132)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(166, 27)
-        Me.Button1.TabIndex = 33
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.countDays.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
+        Me.countDays.BackColor = System.Drawing.Color.White
+        Me.countDays.Enabled = False
+        Me.countDays.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.countDays.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.countDays.Location = New System.Drawing.Point(1, 132)
+        Me.countDays.Name = "countDays"
+        Me.countDays.Size = New System.Drawing.Size(166, 27)
+        Me.countDays.TabIndex = 33
+        Me.countDays.Text = "Συν. Προσκ/νων-Διανυκτ"
+        Me.countDays.UseVisualStyleBackColor = False
         '
         'PanelPurchasing
         '
@@ -1312,7 +1312,7 @@ Partial Class MDIMain
     Friend WithEvents cmdSTATISTICS As System.Windows.Forms.LinkLabel
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents countDays As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents TabControl11 As TECHNOPLASTIKI.TabControlEx
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage

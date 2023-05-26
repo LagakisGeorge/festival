@@ -292,6 +292,10 @@ Public Class test
             Dim d As String = DGV.Rows(R).Cells(C).Value()
             Dim s As String = ""
             f1_row = R : f1_col = C
+            If d = Nothing Then
+                Exit Sub
+            End If
+
             If Len(Trim(d.Split("_")(0))) = 0 Then
                 Exit Sub
             End If
