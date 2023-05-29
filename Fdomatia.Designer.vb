@@ -90,12 +90,14 @@ Partial Class Fdomatia
         '
         'cat
         '
+        Me.cat.Enabled = False
         Me.cat.FormattingEnabled = True
         Me.cat.Items.AddRange(New Object() {"2", "3", "4", "5"})
         Me.cat.Location = New System.Drawing.Point(802, 37)
         Me.cat.Name = "cat"
         Me.cat.Size = New System.Drawing.Size(98, 21)
         Me.cat.TabIndex = 6
+        Me.cat.Visible = False
         '
         'Label1
         '

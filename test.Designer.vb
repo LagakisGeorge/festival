@@ -111,7 +111,7 @@ Partial Class test
         Me.DGV.GridColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV.Location = New System.Drawing.Point(12, 12)
         Me.DGV.Name = "DGV"
-        Me.DGV.Size = New System.Drawing.Size(1333, 575)
+        Me.DGV.Size = New System.Drawing.Size(1629, 575)
         Me.DGV.TabIndex = 3
         '
         'Column1
@@ -354,7 +354,7 @@ Partial Class test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1428, 780)
+        Me.ClientSize = New System.Drawing.Size(1761, 780)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Krarhseis)

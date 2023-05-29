@@ -47,10 +47,10 @@
             MsgBox("ΗΜΕΡΟΜΗΝΊΑ CHECKOUT EKTOΣ ΔΙΑΣΤΗΜΑΤΟΣ  " + gHMEARX.ToString + "-" + gHMETEL.ToString)
             Exit Sub
         End If
-        If cat.Text.Length = 0 Then
-            MsgBox("ΔΕΝ ΕΧΕΤΕ ΒΑΛΕΙ ΚΑΤΗΓΟΡΙΑ")
-            Exit Sub
-        End If
+        'If cat.Text.Length = 0 Then
+        '    MsgBox("ΔΕΝ ΕΧΕΤΕ ΒΑΛΕΙ ΚΑΤΗΓΟΡΙΑ")
+        '    Exit Sub
+        'End If
 
 
 
@@ -62,7 +62,7 @@
 
 
 
-        Dim SQL As String = "INSERT INTO HOTROOMS (ROOMN,HOTELID,KREBATIA,APO,EOS,CATEGORY) VALUES(" + domatio.Text + "," + Str(ID) + "," + kreb.Text + ",'" + Format(D1.Value, "MM/dd/yyyy") + "','" + Format(D2.Value, "MM/dd/yyyy") + "'," + cat.Text + ")"
+        Dim SQL As String = "INSERT INTO HOTROOMS (ROOMN,HOTELID,KREBATIA,APO,EOS) VALUES(" + domatio.Text + "," + Str(ID) + "," + kreb.Text + ",'" + Format(D1.Value, "MM/dd/yyyy") + "','" + Format(D2.Value, "MM/dd/yyyy") + "')"
         ExecuteSQLQuery(Sql)
         PAINTROOMS()
 
@@ -119,6 +119,10 @@
     End Sub
 
     Private Sub Fdomatia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+     D1.Value = gHMEARX 
+    D2.Value = gHMEARX 
+
+
         PAINTROOMS()
 
     End Sub

@@ -2241,9 +2241,23 @@ Public Class MDIMain
         N = dd.Rows(0)(0)
         MsgBox("Διανυκτερεύσεις " + Str(N))
 
+        Dim QQ As String = "SELECT CHECKIN,CHECKOUT, EPO,(DATEDIFF(DAY,CHECKIN,CHECKOUT) ) AS [ΑΙΤ.ΔΙΑΝ],(SELECT COUNT(*) FROM HOTROOMDAYS WHERE IDPEL=PEL.ID) AS [ΠΡΑΓ.ΔΙΑΝ],ID,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2 ,ID AS IDD  FROM PEL WHERE (DATEDIFF(DAY,CHECKIN,CHECKOUT) )<>(SELECT COUNT(*) FROM HOTROOMDAYS WHERE IDPEL=PEL.ID) "
 
+        Dim frm As New ergates  ' form2 
+        Dim Mn1 As String = "1"
+        frm.Label1.Text = QQ '"SELECT ONO AS [Ονομα ],KOD AS [ΚΩΔ],N1 AS [ΚΑΤΗΓ],BAROS AS [ΒΑΡΟΣ],C1,C2,ID  FROM YLIKA WHERE N1=" + Mn1 + " ORDER BY KOD "
 
-
+        frm.STHLHTOY_ID = 5
+        frm.TopLevel = False
+        frm.Visible = True
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Dock = DockStyle.Fill
+        Dim PAGE As New TabPage
+        N = TabControl1.TabPages.Count
+        PAGE.Text = "Προσκεκλημένοι με διαφορές ημερών/διανυκτερεύσεων      ."
+        TabControl1.TabPages.Add(PAGE)
+        TabControl1.TabPages(N).Controls.Add(frm)
+        TabControl1.SelectTab(N)
 
 
 
@@ -2753,7 +2767,7 @@ Public Class MDIMain
 
         Dim frm As New ergates  ' form2 
         'Dim Mn1 As String = "3"
-        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5,isnull(AIRPORT,'') AS AIRPORT,ISNULL(CH6,'            ') AS CH6,KINHTO FROM PEL    ORDER BY EPO "
+        frm.Label1.Text = "select EPO,CHECKIN,CHECKOUT,EMAIL,ONO,ISNULL(SYNODOS,'') AS SYNODOS,DIE  ,AIRAFIXI,AIRANAX,ISNULL(CH1,'            ') AS CH1,ISNULL(CH2,'            ') AS CH2,ISNULL(CH4,'            ') AS CH4,ISNULL(CH3,'            ') AS CH3,ID,RANK,ISNULL(CH5,'            ') AS CH5,isnull(AIRPORT,'') AS AIRPORT,ISNULL(CH6,'            ') AS CH6,KINHTO,ID FROM PEL    ORDER BY EPO "
 
 
 

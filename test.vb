@@ -53,7 +53,7 @@ Public Class test
         paint_grid()
     End Sub
     Private Sub paint_grid()
-
+        Dim test As Integer
         Dim HTR As New DataTable
         ' ΒΑΖΩ ΕΠΙΚΕΦΑΛΙΔΕΣ
         ExecuteSQLQuery("select MAX(DATECHECKIN) AS MAX1,MIN(DATECHECKIN) AS MIN1 from HOTROOMDAYS  ", HTR)
@@ -96,21 +96,22 @@ Public Class test
         Next
 
 
-        ExecuteSQLQuery("select HOTELNAME,ROOMN,DATECHECKIN,ISNULL(IDPEL,0) AS IDPEL,ISNULL((SELECT EPO FROM PEL WHERE ID=IDPEL),'-') AS EPO ,ID from HOTROOMDAYS ORDER BY HOTELNAME,ROOMN ", HTR)
+        ExecuteSQLQuery("select HOTELNAME,ROOMN,DATECHECKIN,ISNULL(IDPEL,0) AS IDPEL,ISNULL((SELECT EPO FROM PEL WHERE ID=IDPEL),'-') AS EPO ,ID from HOTROOMDAYS  ORDER BY HOTELNAME,ROOMN ", HTR)
         Dim X As String, R As String
         For K As Integer = 0 To HTR.Rows.Count - 1
             'ΠΡΟΣΔΙΟΡΙΖΩ ΤΗΝ ΣΕΙΡΑ
             X = Trim(HTR.Rows(K)("HOTELname"))
-            R = Trim(HTR.Rows(K)("ROOMN"))
+            R = Trim(HTR.Rows(K)("ROOMN")) ' ariumos domatioy p.x. 102
             Dim seira As Integer = 0
             For i As Integer = 0 To DGV.Rows.Count - 1
+                'αν βρηκα το ξενοδοχείο(Χ) και το δωμάτιο(R) τοτε τσιμπα  την σειρά
                 If X = DGV.Rows(i).Cells(0).Value And R = DGV.Rows(i).Cells(1).Value Then
                     seira = i
                     Exit For
                 End If
             Next
 
-            'ΠΡΟΣΔΙΟΡΙΖΩ ΤΗΝ ΣΤΗΛΗ
+            'ΠΡΟΣΔΙΟΡΙΖΩ ΤΗΝ ΣΤΗΛΗ  sygkrinontas to HOTROOMDAYS DATECHECKIN ME TON TITLO THS STHLHS KAI TSIMPAO THN STHLH
             Dim cc As String = Format(HTR.Rows(K)("datecheckin"), "dd/MM")
             Dim sthlh As Integer = 0
             For i = 0 To DGV.Columns.Count - 1
@@ -124,23 +125,34 @@ Public Class test
                 DGV.Rows(seira).Cells(sthlh).Value = HTR.Rows(K)("EPO") + "_                               " + Str(HTR.Rows(K)("id")) ' HTR.Rows(K)("idpel")
                 DGV.Rows(seira).Cells(sthlh).Style.BackColor = Color.Green
             Else
-                DGV.Rows(seira).Cells(sthlh).Value = "_                        " + Str(HTR.Rows(K)("id")) ' HTR.Rows(K)("IDPEL")
-                DGV.Rows(seira).Cells(sthlh).Style.BackColor = Color.Red
+                If DGV.Rows(seira).Cells(sthlh).Style.BackColor = Color.Green Then
+                    test = 1
+                Else
+                    DGV.Rows(seira).Cells(sthlh).Value = "_                        " + Str(HTR.Rows(K)("id")) ' HTR.Rows(K)("IDPEL")
+                    DGV.Rows(seira).Cells(sthlh).Style.BackColor = Color.Red
+                End If
+
             End If
 
 
 
         Next
+        DGV.Refresh()
+
 
     End Sub
 
 
     Private Sub Krarhseis_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Krarhseis.Click
-        '------------------------------------------  bookings ----------------------------------------------------------------
+        '------------------------------------------  bookings ----------------------------------------------------------------13032 FESTIV
         Dim PEL As New DataTable
+        Dim mRankPEL As String
+
+        Dim TEST As Integer
+        'SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL P LEFT JOIN HOTROOMDAYS H ON P.ID=H.IDPEL WHERE IDROOM IS NULL
         ' ΦΟΡΤΩΝΩ ΤΟΥΣ ΠΕΛΑΤΕΣ
         Dim MDAY As String, dcin As Date, DCOUT As Date
-        ExecuteSQLQuery("select convert(date,CHECKOUT) as CHECKOUTD,convert(date,CHECKIN) as CHECKIND,* from PEL WHERE HOTELID=0 OR HOTELID IS NULL ", PEL)
+        ExecuteSQLQuery("select  convert(date,CHECKOUT) as CHECKOUTD,convert(date,CHECKIN) as CHECKIND,* from PEL  P LEFT JOIN HOTROOMDAYS H ON P.ID=H.IDPEL WHERE IDROOM IS NULL", PEL)
         ListBox1.Items.Add("ΑΠΕΤΥΧΑΝ ΝΑ ΚΑΝΟΥΝ ΚΡΑΡΗΣΗ:")
         Dim ISOK As Boolean = True
 
@@ -155,6 +167,8 @@ Public Class test
                 MsgBox("ΔΕΝ ΕΧΕΙ RANK O/H" + PEL.Rows(K)("EPO"))
                 ISOK = False
             End If
+            mRankPel = PEL.Rows(K)("rank").ToString
+
 
             If ISOK Then
 
@@ -187,8 +201,16 @@ Public Class test
                 'ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE " + Sql, HTR)
 
                 ' ΑΚΡΙΒΩΣ ΓΙΑ ΤΗΝ ΗΜΕΡΑ ΤΟΥ CHECKIN ΒΛΕΠΩ ΤΑ ΔΙΑΘΕΣΙΜΑ ΔΩΜΑΤΙΑ
-                ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL,IDROOM,H.NAME,D.ROOMN AS ROOMN from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE CONVERT(CHAR(10),DATECHECKIN,103)='" + MDAY + "' AND (IDPEL IS NULL OR IDPEL=0) ORDER BY RANK ", HTR)
+                ExecuteSQLQuery("select  DATECHECKIN,IDPEL,D.ID AS ID,HOTELID,IDPEL,IDROOM,H.NAME,D.ROOMN AS ROOMN from HOTROOMDAYS D INNER JOIN HOTELS H ON D.HOTELID=H.ID  WHERE  H.RANK<=" + mRankpEL + " AND CONVERT(CHAR(10),DATECHECKIN,103)='" + MDAY + "' AND (IDPEL IS NULL OR IDPEL=0) ORDER BY H.RANK desc ", HTR)
                 For L As Integer = 0 To HTR.Rows.Count - 1 ' ΟΛΑ ΤΑ ΔΙΑΘΕΣΙΜΑ
+
+                    If PEL.Rows(K)("ID") = 13032 Then
+                        TEST = 1
+                    End If
+
+
+
+
                     ' ΠΡΕΠΕΙ ΝΑ ΕΛΕΓΞΩ ΤΙΣ ΜΕΡΕΣ ΔΙΑΜΟΝΗΣ ΤΟΥ ΠΡΟΣΚΕΚΛΗΜΕΝΟΥ ΑΝ ΕΙΝΑΙ ΔΙΑΘΕΣΙΜΕΣ ΣΤΟ ΙΔΙΟ ΔΩΜΑΤΙΟ IDROOM
                     Dim HRDAYS As New DataTable
                     '
@@ -196,7 +218,7 @@ Public Class test
                     Try
 
 
-                        ExecuteSQLQuery("select count(*) from HOTROOMDAYS WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString, HRDAYS)
+                        ExecuteSQLQuery("select count(*) from HOTROOMDAYS WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString + " AND IDPEL=0", HRDAYS)
                         If HRDAYS(0)(0) = hmeres Then  ' εχει διαθεσιμες ολες τις ημερες οποτε οκ
                             ExecuteSQLQuery("UPDATE PEL SET CH2='" + HTR.Rows(0)("NAME") + "',CH1=" + HTR.Rows(0)("ROOMN") + ",HOTELID=" + HTR.Rows(0)("HOTELID").ToString + " WHERE ID=" + PEL(K)("ID").ToString)
                             ExecuteSQLQuery("update HOTROOMDAYS set IDPEL=" + PEL(K)("ID").ToString + " WHERE DATECHECKIN>='" + Format(DCIND, "MM/dd/yyyy") + "' AND DATECHECKIN<'" + Format(DCOUTD, "MM/dd/yyyy") + "' AND IDROOM=" + HTR(L)("IDROOM").ToString)
@@ -223,6 +245,7 @@ Public Class test
         PAINTGRID1()
         'UPDATE HOTROOMDAYS SET IDPEL=0
         MsgBox("OK")
+        paint_grid()
     End Sub
 
 
@@ -324,6 +347,11 @@ Public Class test
 
             'ΒΡΙΣΚΩ ΤΟ ΑΡΙΣΤΕΡΟ ΚΟΥΤΑΚΙ ΑΠΟ ΑΥΤΟ ΠΟΥ ΕΚΑΝΑ ΚΛΙΚ ΜΗΝ ΤΥΧΟΝ ΑΝΗΚΕΙ ΣΤΟΝ ΙΔΙΟ ΠΕΛΑΤΗ
             d = DGV.Rows(R).Cells(C - 1).Value()
+            If d = Nothing Then
+              '  Exit Sub
+            End If
+
+
             If C - 1 < 2 Then ' einai akrh
                 f_CanMoveLeft = 0
             Else
@@ -620,7 +648,7 @@ Public Class test
 
 
     Private Sub PAINTGRID1()
-        Dim Q As String = "SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL WHERE HOTELID=0 OR HOTELID IS NULL"
+        Dim Q As String = "SELECT EPO as [ΦΙΛΟΞΕΝΟΥΜΕΝΟΙ ΧΩΡΙΣ ΚΡΑΤΗΣΗ],CHECKIN,CHECKOUT FROM PEL P LEFT JOIN HOTROOMDAYS H ON P.ID=H.IDPEL WHERE IDROOM IS NULL" ' HOTELID=0 OR HOTELID IS NULL"
         Dim SQLqry
         ' SQLqry = Label1.Text '"SELECT NAME,N1,ID FROM ERGATES " ' ORDER BY HME "
         Dim conn As SqlConnection = New SqlConnection(gConSQL)
